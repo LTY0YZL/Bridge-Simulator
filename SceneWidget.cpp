@@ -5,50 +5,63 @@
 SceneWidget::SceneWidget(QWidget *parent)
     : QWidget(parent),
     world(b2Vec2(0.0f, -10.0f)),
-    timer(this)
+    timer(this),
+    selectedBody(nullptr) // Initialize selectedBody to nullptr
 {
-    // Define the ground body.
+    // Define the ground body
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f, 0.0f); // Set ground at y = 0 (bottom of the Box2D world)
 
     // Create the ground body
-    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+    groundBody = world.CreateBody(&groundBodyDef);
 
-    // Define the ground box shape.
+    // Define the ground box shape
     b2PolygonShape groundBox;
     groundBox.SetAsBox(50.0f, 10.0f); // 50 units wide, 10 units tall
 
-    // Add the ground fixture to the ground body.
+    // Add the ground fixture to the ground body
     groundBody->CreateFixture(&groundBox, 0.0f);
 
-    // Store the ground body for drawing
-    this->groundBody = groundBody;
+    // Create the first dynamic body
+    createDynamicBody(0.0f, 20.0f, 1.0f, 2.0f);
+    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
+    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
+    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
 
-    // Define the dynamic body.
+    connect(&timer, &QTimer::timeout, this, &SceneWidget::updateWorld);
+    timer.start(10);
+}
+
+void SceneWidget::createDynamicBody(float posX, float posY, float width, float height)
+{
+    // Define the dynamic body
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(0.0f, 20.0f); // Start the dynamic box 20 units above the ground
+    bodyDef.position.Set(posX, posY);
 
-    body = world.CreateBody(&bodyDef);
+    b2Body* newBody = world.CreateBody(&bodyDef);
 
-    // Define the dynamic box shape.
+    // Define the dynamic box shape
     b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(1.0f, 1.0f); // 1x1 box
+    dynamicBox.SetAsBox(width / 2.0f, height / 2.0f); // SetAsBox uses half-widths
 
-    // Define the dynamic body fixture.
+    // Define the dynamic body fixture
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &dynamicBox;
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 0.1; // Add some bounciness
+    fixtureDef.restitution = 0.1;
 
-    // Add the shape to the body.
-    body->CreateFixture(&fixtureDef);
+    // Add the shape to the body
+    newBody->CreateFixture(&fixtureDef);
 
-    printf("Init world\n");
+    // Add the new body to the list of dynamic bodies
+    dynamicBodies.push_back(newBody);
 
-    connect(&timer, &QTimer::timeout, this, &SceneWidget::updateWorld);
-    timer.start(10);
+    // Set this as the selected body
+    selectedBody = newBody;
+
+    qDebug() << "dynamicBodies size (" << dynamicBodies.size() << ")";
 }
 
 void SceneWidget::paintEvent(QPaintEvent *)
@@ -62,9 +75,24 @@ void SceneWidget::paintEvent(QPaintEvent *)
     painter.translate(width() / 2, height()); // Move origin to the center bottom
     painter.scale(1, -1);                     // Flip the y-axis for proper alignment
 
-    // Draw all the Box2D shapes
-    drawShape(painter, groundBody, Qt::green); // Draw the ground in green
-    drawShape(painter, body, Qt::blue);        // Draw the dynamic body in blue
+    // Draw the ground body
+    drawShape(painter, groundBody, Qt::green);
+
+    // Initialize a counter for dynamic bodies
+    int bodyCounter = 1;
+
+    // Draw all dynamic bodies
+    for (b2Body* b : dynamicBodies)
+    {
+        // Print which body is being drawn
+        qDebug() << "Drawing body #" << bodyCounter;
+
+        // Draw the body
+        drawShape(painter, b, Qt::blue);
+
+        // Increment the counter
+        bodyCounter++;
+    }
 }
 
 void SceneWidget::paintBackground(QPainter &painter)
@@ -99,9 +127,28 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
     }
 }
 
+void SceneWidget::applyForceToBox(const b2Vec2& force)
+{
+    // Apply force to the center of the selected body
+    if (selectedBody)
+    {
+        selectedBody->ApplyForceToCenter(force, true);
+        qDebug() << "Force applied: (" << force.x << "," << force.y << ")";
+    }
+}
+
 void SceneWidget::updateWorld()
 {
     // Step the Box2D world
     world.Step(1.0 / 60.0, 6, 2);
+
+    // Debug: Print the location of all dynamic bodies
+    for (b2Body* b : dynamicBodies)
+    {
+        b2Vec2 position = b->GetPosition();
+        //qDebug() << "Dynamic body position: (x =" << position.x << ", y =" << position.y << ")";
+    }
+
+    // Trigger a repaint
     update();
 }
