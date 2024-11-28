@@ -25,11 +25,16 @@ SceneWidget::SceneWidget(QWidget *parent)
     // Create the first dynamic body
     createDynamicBody(0.0f, 20.0f, 1.0f, 2.0f);
     createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
-    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
-    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
+    createDynamicBody(2.0f, 30.0f, 5.0f, 2.0f);
+    createDynamicBody(2.0f, 30.0f, 2.0f, 2.0f);
 
     connect(&timer, &QTimer::timeout, this, &SceneWidget::updateWorld);
     timer.start(10);
+}
+void SceneWidget::addDynamicBody()
+{
+    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
+    qDebug() << "Dynamic body added via addDynamicBody()";
 }
 
 void SceneWidget::createDynamicBody(float posX, float posY, float width, float height)
@@ -84,8 +89,6 @@ void SceneWidget::paintEvent(QPaintEvent *)
     // Draw all dynamic bodies
     for (b2Body* b : dynamicBodies)
     {
-        // Print which body is being drawn
-        qDebug() << "Drawing body #" << bodyCounter;
 
         // Draw the body
         drawShape(painter, b, Qt::blue);
@@ -127,26 +130,15 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
     }
 }
 
-void SceneWidget::applyForceToBox(const b2Vec2& force)
-{
-    // Apply force to the center of the selected body
-    if (selectedBody)
-    {
-        selectedBody->ApplyForceToCenter(force, true);
-        qDebug() << "Force applied: (" << force.x << "," << force.y << ")";
-    }
-}
 
 void SceneWidget::updateWorld()
 {
     // Step the Box2D world
     world.Step(1.0 / 60.0, 6, 2);
 
-    // Debug: Print the location of all dynamic bodies
     for (b2Body* b : dynamicBodies)
     {
         b2Vec2 position = b->GetPosition();
-        //qDebug() << "Dynamic body position: (x =" << position.x << ", y =" << position.y << ")";
     }
 
     // Trigger a repaint

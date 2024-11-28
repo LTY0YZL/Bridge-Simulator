@@ -3,8 +3,8 @@
 
 #include <QWidget>
 #include <QTimer>
-#include <vector>
 #include <Box2D/Box2D.h>
+#include <vector>
 
 class SceneWidget : public QWidget
 {
@@ -13,9 +13,12 @@ class SceneWidget : public QWidget
 public:
     explicit SceneWidget(QWidget *parent = nullptr);
 
-    // Public methods
-    void applyForceToBox(const b2Vec2& force);
+    // Public method to create a dynamic body
     void createDynamicBody(float posX, float posY, float width, float height);
+
+    // Public slot to handle adding a new dynamic body (used in MainWindow)
+public slots:
+    void addDynamicBody();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
