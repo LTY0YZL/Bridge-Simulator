@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../SceneWidget.h"
+#include "C:/Users/Alienware/Downloads/a9-edu-app-f24-4loop-main/SceneWidget.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
