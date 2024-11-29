@@ -107,7 +107,7 @@ void SceneWidget::paintEvent(QPaintEvent *)
     painter.scale(1, -1);                     // Flip the y-axis for proper alignment
 
     // Draw the ground body
-    drawShape(painter, groundBody, Qt::green);
+    drawShape(painter, groundBody, Qt::magenta);
 
     // Draw all placeables
     for (const auto& placeable : placeables)

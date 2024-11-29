@@ -56,6 +56,7 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     SceneWidget.cpp \
+    gamelevel.cpp \
     main.cpp \
     MainWindow.cpp \
     placeable.cpp
@@ -110,6 +111,7 @@ HEADERS += \
     Box2D/Rope/b2Rope.h \
     MainWindow.h \
     SceneWidget.h \
+    gamelevel.h \
     placeable.h
 
 FORMS += \
