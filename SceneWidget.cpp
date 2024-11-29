@@ -1,13 +1,15 @@
 #include "SceneWidget.h"
 #include <QPainter>
 #include <QDebug>
+#include <QMouseEvent>
 
 SceneWidget::SceneWidget(QWidget *parent)
     : QWidget(parent),
     world(b2Vec2(0.0f, -10.0f)),
-    timer(this),
-    selectedBody(nullptr) // Initialize selectedBody to nullptr
+    selectedBody(nullptr),
+    timer(this) // Initialize selectedBody to nullptr
 {
+    setMouseTracking(true);
     // Define the ground body
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f, 0.0f); // Set ground at y = 0 (bottom of the Box2D world)
@@ -17,7 +19,8 @@ SceneWidget::SceneWidget(QWidget *parent)
 
     // Define the ground box shape
     b2PolygonShape groundBox;
-    groundBox.SetAsBox(50.0f, 10.0f); // 50 units wide, 10 units tall
+    groundBox.SetAsBox(worldSize.width() / 2.0f, worldSize.height() / 10.0f); // Adjust size dynamically
+
 
     // Add the ground fixture to the ground body
     groundBody->CreateFixture(&groundBox, 0.0f);
@@ -35,6 +38,18 @@ void SceneWidget::addDynamicBody()
 {
     createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
     qDebug() << "Dynamic body added via addDynamicBody()";
+}
+void SceneWidget::mouseMoveEvent(QMouseEvent *event)
+{
+    QPointF worldPos = screenToWorld(event->pos()); // Use the helper function
+    emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit signal with world coordinates
+}
+
+void SceneWidget::mousePressEvent(QMouseEvent *event)
+{
+    QPointF worldPos = screenToWorld(event->pos()); // Use the helper function
+    createDynamicBody(worldPos.x(), worldPos.y(), 2.0f, 2.0f); // Create a box at world coordinates
+    qDebug() << "Box created at Box2D world position (" << worldPos.x() << "," << worldPos.y() << ")";
 }
 
 void SceneWidget::createDynamicBody(float posX, float posY, float width, float height)
@@ -109,7 +124,6 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
 {
     painter.setBrush(color);
 
-    // Iterate through all fixtures attached to the body
     for (const b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
     {
         const b2Shape* shape = fixture->GetShape();
@@ -122,25 +136,23 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
             for (int i = 0; i < polygon->m_count; ++i)
             {
                 b2Vec2 vertex = body->GetWorldPoint(polygon->m_vertices[i]);
-                QPointF qPoint(vertex.x * 20, vertex.y * 20); // Scale Box2D units to pixels
+                QPointF qPoint(vertex.x * worldScale, vertex.y * worldScale); // Scale Box2D to screen
                 qPolygon << qPoint;
             }
             painter.drawPolygon(qPolygon);
         }
     }
 }
-
+QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
+{
+    float box2dX = (screenPos.x() - width() / 2) / worldScale; // Convert X to Box2D world
+    float box2dY = -(screenPos.y() - height()) / worldScale;   // Convert Y to Box2D world
+    return QPointF(box2dX, box2dY);
+}
 
 void SceneWidget::updateWorld()
 {
     // Step the Box2D world
     world.Step(1.0 / 60.0, 6, 2);
-
-    for (b2Body* b : dynamicBodies)
-    {
-        b2Vec2 position = b->GetPosition();
-    }
-
-    // Trigger a repaint
     update();
 }

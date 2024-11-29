@@ -15,7 +15,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+private slots:
+    void updateMouseLocation(float x, float y); // Slot to update mouse location in QLabel
 private:
     Ui::MainWindow *ui;         // Pointer to the UI object
     SceneWidget *sceneWidget;   // Pointer to the SceneWidget instance

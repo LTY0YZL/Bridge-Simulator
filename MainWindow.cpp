@@ -14,9 +14,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Connect the button's clicked signal to SceneWidget's addDynamicBody slot
     connect(ui->pushButton, &QPushButton::clicked, sceneWidget, &SceneWidget::addDynamicBody);
+    connect(sceneWidget, &SceneWidget::mouseMovedInWorld, this, &MainWindow::updateMouseLocation);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+void MainWindow::updateMouseLocation(float x, float y)
+{
+    // Update the mouseLocation QLabel with the Box2D world coordinates
+    ui->mouseLocation->setText(QString("X: %1, Y: %2").arg(x).arg(y));
 }

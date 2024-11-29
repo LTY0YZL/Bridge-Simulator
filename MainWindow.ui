@@ -30,13 +30,29 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
-      <width>611</width>
-      <height>411</height>
+      <x>10</x>
+      <y>20</y>
+      <width>601</width>
+      <height>391</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
+   <widget class="QLabel" name="mouseLocation">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>10</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
