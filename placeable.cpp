@@ -39,3 +39,34 @@ void Placeable::setColor(const QColor& color)
 {
     this->color = color;
 }
+
+// Method to create a Box2D body
+b2Body* Placeable::createBody(b2World* world, float posX, float posY)
+{
+    // Define the body
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(posX, posY);
+
+    b2Body* newBody = world->CreateBody(&bodyDef);
+
+    // Define the box shape
+    b2PolygonShape boxShape;
+    boxShape.SetAsBox(width / 2.0f, height / 2.0f);
+
+    // Define the fixture
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &boxShape;
+    fixtureDef.density = density;
+    fixtureDef.friction = friction;
+    fixtureDef.restitution = restitution;
+
+    // Attach the fixture to the body
+    newBody->CreateFixture(&fixtureDef);
+
+    // Assign the created body to this Placeable
+    assignBody(newBody);
+
+    return newBody;
+}
+

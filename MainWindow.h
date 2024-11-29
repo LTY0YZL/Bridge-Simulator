@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "SceneWidget.h" // Include the SceneWidget class
+#include "GameLevel.h"
+#include "SceneWidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,15 +16,18 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
 private slots:
-    void updateMouseLocation(float x, float y); // Slot to update mouse location in QLabel
-    void on_pushButton_8_clicked();
+    void updateMouseLocation(float x, float y); // Slot to update the mouse location label
 
     void on_playButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
-    Ui::MainWindow *ui;         // Pointer to the UI object
-    SceneWidget *sceneWidget;   // Pointer to the SceneWidget instance
+    Ui::MainWindow *ui;
+    GameLevel* gameLevel; // Pointer to the GameLevel instance
+    SceneWidget* sceneWidget;
 };
 
 #endif // MAINWINDOW_H
