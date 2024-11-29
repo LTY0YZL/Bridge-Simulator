@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <Box2D/Box2D.h>
 #include <vector>
+#include "Placeable.h"
 
 class SceneWidget : public QWidget
 {
@@ -12,9 +13,8 @@ class SceneWidget : public QWidget
 
 public:
     explicit SceneWidget(QWidget *parent = nullptr);
-
-    // Public method to create a dynamic body
-    void createDynamicBody(float posX, float posY, float width, float height);
+    void startSimulation();
+    void createDynamicBody(Placeable& placeable, float posX, float posY);
     QPointF screenToWorld(const QPointF& screenPos) const;
 
 public slots:
@@ -36,7 +36,7 @@ private:
     b2World world;                      // Box2D world object
     b2Body* groundBody;                 // Ground body
     b2Body* selectedBody;               // Selected body
-    std::vector<b2Body*> dynamicBodies; // List of all dynamic bodies
+    std::vector<Placeable> placeables; // List of all dynamic bodies
     QTimer timer;                       // Timer to step the Box2D world
     float worldScale = 20.0f;           // World scale factor (pixels per Box2D unit)
     QSizeF worldSize = QSizeF(100.0f, 50.0f); // World size (Box2D units)

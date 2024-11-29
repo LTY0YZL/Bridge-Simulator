@@ -26,3 +26,11 @@ void MainWindow::updateMouseLocation(float x, float y)
     // Update the mouseLocation QLabel with the Box2D world coordinates
     ui->mouseLocation->setText(QString("X: %1, Y: %2").arg(x).arg(y));
 }
+
+void MainWindow::on_playButton_clicked()
+{
+    sceneWidget->startSimulation();
+
+    ui->playButton->setEnabled(false);
+}
+

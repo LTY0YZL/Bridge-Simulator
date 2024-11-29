@@ -24,65 +24,76 @@ SceneWidget::SceneWidget(QWidget *parent)
 
     // Add the ground fixture to the ground body
     groundBody->CreateFixture(&groundBox, 0.0f);
-
+    Placeable wood("Wood", Qt::gray, 2.0f, 4.0f);
     // Create the first dynamic body
-    createDynamicBody(0.0f, 20.0f, 1.0f, 2.0f);
-    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
-    createDynamicBody(2.0f, 30.0f, 5.0f, 2.0f);
-    createDynamicBody(2.0f, 30.0f, 2.0f, 2.0f);
-
+    createDynamicBody(wood, 0.0f, 20.0f);
+    createDynamicBody(wood, 1.0f, 20.0f);
+    createDynamicBody(wood, 2.0f, 20.0f);
+    createDynamicBody(wood, 3.0f, 20.0f);
     connect(&timer, &QTimer::timeout, this, &SceneWidget::updateWorld);
-    timer.start(10);
+    timer.stop();
 }
 void SceneWidget::addDynamicBody()
 {
-    createDynamicBody(2.0f, 30.0f, 1.0f, 2.0f);
+    Placeable wood("Wood", Qt::darkYellow, 1.0f, 4.0f);
+    createDynamicBody(wood,2.0f, 30.0f);
     qDebug() << "Dynamic body added via addDynamicBody()";
 }
 void SceneWidget::mouseMoveEvent(QMouseEvent *event)
 {
-    QPointF worldPos = screenToWorld(event->pos()); // Use the helper function
+    QPointF worldPos = screenToWorld(event->pos());
     emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit signal with world coordinates
 }
 
 void SceneWidget::mousePressEvent(QMouseEvent *event)
 {
-    QPointF worldPos = screenToWorld(event->pos()); // Use the helper function
-    createDynamicBody(worldPos.x(), worldPos.y(), 2.0f, 2.0f); // Create a box at world coordinates
+    QPointF worldPos = screenToWorld(event->pos()); // Convert screen to world coordinates
+
+    // Create a new Placeable object
+    Placeable newPlaceable("Box", Qt::blue, 2.0f, 2.0f);
+
+    // Create a Box2D body and associate it with the Placeable
+    createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
+    updateWorld();
+
     qDebug() << "Box created at Box2D world position (" << worldPos.x() << "," << worldPos.y() << ")";
 }
 
-void SceneWidget::createDynamicBody(float posX, float posY, float width, float height)
+void SceneWidget::createDynamicBody(Placeable& placeable, float posX, float posY)
 {
-    // Define the dynamic body
+    // Define the body
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(posX, posY);
 
-    b2Body* newBody = world.CreateBody(&bodyDef);
+    // Create the Box2D body in the world
+    b2Body* body = world.CreateBody(&bodyDef);
 
-    // Define the dynamic box shape
-    b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(width / 2.0f, height / 2.0f); // SetAsBox uses half-widths
+    // Define the box shape
+    b2PolygonShape boxShape;
+    boxShape.SetAsBox(placeable.width / 2.0f, placeable.height / 2.0f);
 
-    // Define the dynamic body fixture
+    // Define the fixture
     b2FixtureDef fixtureDef;
-    fixtureDef.shape = &dynamicBox;
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 0.1;
+    fixtureDef.shape = &boxShape;
+    fixtureDef.density = placeable.density;
+    fixtureDef.friction = placeable.friction;
+    fixtureDef.restitution = placeable.restitution;
 
-    // Add the shape to the body
-    newBody->CreateFixture(&fixtureDef);
+    // Attach the fixture to the body
+    body->CreateFixture(&fixtureDef);
 
-    // Add the new body to the list of dynamic bodies
-    dynamicBodies.push_back(newBody);
+    // Assign the created body to the Placeable
+    placeable.assignBody(body);
 
-    // Set this as the selected body
-    selectedBody = newBody;
+    // Add the Placeable to the list
+    placeables.push_back(placeable);
 
-    qDebug() << "dynamicBodies size (" << dynamicBodies.size() << ")";
+    //qDebug() << "Dynamic body created: Name =" << placeable.getName()
+    //         << ", Color =" << placeable.getColor().name()
+    //         << ", Position = (" << posX << "," << posY << ")";
 }
+
 
 void SceneWidget::paintEvent(QPaintEvent *)
 {
@@ -98,18 +109,13 @@ void SceneWidget::paintEvent(QPaintEvent *)
     // Draw the ground body
     drawShape(painter, groundBody, Qt::green);
 
-    // Initialize a counter for dynamic bodies
-    int bodyCounter = 1;
-
-    // Draw all dynamic bodies
-    for (b2Body* b : dynamicBodies)
+    // Draw all placeables
+    for (const auto& placeable : placeables)
     {
-
-        // Draw the body
-        drawShape(painter, b, Qt::blue);
-
-        // Increment the counter
-        bodyCounter++;
+        if (placeable.getBody()) // Ensure the Placeable has a valid Box2D body
+        {
+            drawShape(painter, placeable.getBody(), placeable.getColor());
+        }
     }
 }
 
@@ -143,6 +149,13 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
         }
     }
 }
+void SceneWidget::startSimulation()
+{
+    if (!timer.isActive()) {
+        timer.start(10); // Restart the timer if it's not already running
+        qDebug() << "Simulation started.";
+    }
+}
 QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
 {
     float box2dX = (screenPos.x() - width() / 2) / worldScale; // Convert X to Box2D world
@@ -152,7 +165,9 @@ QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
 
 void SceneWidget::updateWorld()
 {
-    // Step the Box2D world
-    world.Step(1.0 / 60.0, 6, 2);
+    // Only step the Box2D world if simulation is active
+    if (timer.isActive()) {
+        world.Step(1.0 / 60.0, 6, 2);
+    }
     update();
 }

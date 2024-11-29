@@ -57,7 +57,8 @@ SOURCES += \
     Box2D/Rope/b2Rope.cpp \
     SceneWidget.cpp \
     main.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    placeable.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -108,7 +109,8 @@ HEADERS += \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
     MainWindow.h \
-    SceneWidget.h
+    SceneWidget.h \
+    placeable.h
 
 FORMS += \
     MainWindow.ui

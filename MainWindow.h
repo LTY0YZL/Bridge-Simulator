@@ -17,6 +17,10 @@ public:
     ~MainWindow();
 private slots:
     void updateMouseLocation(float x, float y); // Slot to update mouse location in QLabel
+    void on_pushButton_8_clicked();
+
+    void on_playButton_clicked();
+
 private:
     Ui::MainWindow *ui;         // Pointer to the UI object
     SceneWidget *sceneWidget;   // Pointer to the SceneWidget instance
