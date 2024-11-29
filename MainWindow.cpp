@@ -34,3 +34,9 @@ void MainWindow::on_playButton_clicked()
     ui->playButton->setEnabled(false);
 }
 
+
+void MainWindow::on_pushButton_8_clicked()
+{
+
+}
+
