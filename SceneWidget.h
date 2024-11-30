@@ -31,17 +31,23 @@ private:
     int currentTool;
     float worldScale;
     void paintBackground(QPainter &painter);
-    void drawShape(QPainter &painter, const b2Body* body, const QColor &color);
-    QPointF screenToWorld(const QPointF& screenPos) const; // Helper to convert screen to Box2D world coordinates
     QTimer* simulationTimer;
     GameLevel* gameLevel;
-    Placeable* findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables);
-    std::vector<Placeable>::iterator findPlaceableIteratorAt( const QPointF& worldPos, std::vector<Placeable>& placeables);
+    bool showPreview;
     QPointF firstPoint;
     QPointF secondPoint;
+    QPointF currentMousePos; // Tracks the current mouse position for preview
     bool isFirstPointSet;
+
+
+    void drawShape(QPainter &painter, const b2Body* body, const QColor &color);
+    QPointF screenToWorld(const QPointF& screenPos) const; // Helper to convert screen to Box2D world coordinates
+    Placeable* findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables);
+    std::vector<Placeable>::iterator findPlaceableIteratorAt( const QPointF& worldPos, std::vector<Placeable>& placeables);
     void recordTwoWorldPoint(const QPointF& worldPos);
     void createGroundWithTwoPoints(const QPointF& worldPos);
+    void areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2);
+    void linePreview(QPainter& painter, const QPointF& start, const QPointF& end);
 };
 
 #endif // SCENEWIDGET_H

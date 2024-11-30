@@ -6,6 +6,7 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     worldScale(20.0f),
     simulationTimer(new QTimer(this)),
     gameLevel(level),
+    showPreview(false),
     isFirstPointSet(false)
 {
     setMouseTracking(true);
@@ -42,7 +43,17 @@ void SceneWidget::paintEvent(QPaintEvent *)
             drawShape(painter, placeable.getBody(), placeable.getColor());
         }
     }
+
+    // Draw the preview if applicable
+    if (showPreview && isFirstPointSet)
+    {
+        areaPreview(painter, firstPoint, currentMousePos); // Preview rectangle
+        linePreview(painter, firstPoint, currentMousePos); // Preview dashed line
+    }
 }
+
+
+
 
 void SceneWidget::setWorldScale(float scale)
 {
@@ -104,22 +115,26 @@ void SceneWidget::setCurrentTool(int ID)
 void SceneWidget::mousePressEvent(QMouseEvent *event)
 {
     QPointF worldPos = screenToWorld(event->pos());
-    auto& placeables = gameLevel->getPlaceables();
-    if (event->button() == Qt::RightButton) // Right click Case
+
+    if (event->button() == Qt::RightButton)
     {
-        createGroundWithTwoPoints(worldPos);
-        return;
+        if (currentTool == -1)
+        {
+            createGroundWithTwoPoints(worldPos);
+            showPreview = isFirstPointSet; // Show preview only after the first point is set
+            return;
+        }
     }
+
+    auto& placeables = gameLevel->getPlaceables();
     if (currentTool == 0) // Left click Case
     {
-        // Create a new Placeable at the clicked position
         Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
         gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
         update();
     }
     else if (currentTool == 1)
     {
-        // Select tool: Change color of the object under the mouse
         Placeable* placeable = findPlaceableAt(worldPos, placeables);
         if (placeable)
         {
@@ -129,7 +144,6 @@ void SceneWidget::mousePressEvent(QMouseEvent *event)
     }
     else if (currentTool == 2)
     {
-        // Delete tool: Remove the object under the mouse
         auto it = findPlaceableIteratorAt(worldPos, placeables);
         if (it != placeables.end())
         {
@@ -144,13 +158,21 @@ void SceneWidget::mousePressEvent(QMouseEvent *event)
     }
 }
 
-
 void SceneWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QPointF screenPos = event->pos();
     QPointF worldPos = screenToWorld(screenPos);
+
+    if (isFirstPointSet) // Update preview if the first point is set
+    {
+        currentMousePos = worldPos;
+        showPreview = true;
+        update(); // Repaint to show the preview
+    }
+
     emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit the signal with world coordinates
 }
+
 void SceneWidget::wheelEvent(QWheelEvent* event)
 {
     if (event->angleDelta().y() > 0) {
@@ -229,7 +251,7 @@ void SceneWidget::recordTwoWorldPoint(const QPointF& worldPos)
 }
 void SceneWidget::createGroundWithTwoPoints(const QPointF& worldPos)
 {
-    recordTwoWorldPoint(worldPos); // Record the point
+    recordTwoWorldPoint(worldPos);
 
     // If both points are recorded, create the ground body
     if (!isFirstPointSet) // Means second point was just set
@@ -242,10 +264,43 @@ void SceneWidget::createGroundWithTwoPoints(const QPointF& worldPos)
 
         qDebug() << "Creating ground body at center (" << centerX << "," << centerY
                  << ") with width =" << width << " and height =" << height;
-
-        // Delegate ground body creation to GameLevel
         gameLevel->createGround(centerX, centerY, width, height);
 
-        update(); // Update the scene to reflect changes
+        update();
     }
 }
+void SceneWidget::areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2)
+{
+    float width = std::abs(point2.x() - point1.x());
+    float height = std::abs(point2.y() - point1.y());
+    float centerX = (point1.x() + point2.x()) / 2.0f;
+    float centerY = (point1.y() + point2.y()) / 2.0f;
+
+    QRectF previewRect(
+        (centerX - width / 2.0f) * worldScale,
+        (centerY - height / 2.0f) * worldScale,
+        width * worldScale,
+        height * worldScale
+        );
+
+    painter.setBrush(QBrush(Qt::yellow, Qt::DiagCrossPattern));
+    painter.setPen(Qt::DashLine);
+    painter.drawRect(previewRect);
+}
+void SceneWidget::linePreview(QPainter& painter, const QPointF& start, const QPointF& end)
+{
+    QPen dashedPen(Qt::DashLine);
+    dashedPen.setColor(Qt::red); // Set the color to red
+    dashedPen.setWidth(2);
+    painter.setPen(dashedPen);
+
+    // Apply world-to-screen transformation
+    QPointF screenStart(start.x() * worldScale, start.y() * worldScale);
+    QPointF screenEnd(end.x() * worldScale, end.y() * worldScale);
+
+    // Draw the line
+    painter.drawLine(screenStart, screenEnd);
+}
+
+
+
