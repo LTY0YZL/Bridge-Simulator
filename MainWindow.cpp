@@ -45,12 +45,24 @@ void MainWindow::on_pushButton_clicked()
 {
     float randomX = (rand() % 20) - 10.0f; // Random X position between -10 and 10
     float skyY = 30.0f; // Fixed Y position above the ground
-    Placeable skyBox("SkyBox", Qt::red, 0.5f, 0.5f); // Customize name, color, and size as needed
+    Placeable skyBox("SkyBox", 100, Qt::red,  0.5f, 0.5f); // Customize name, color, and size as needed
 
     // Add the Placeable to the GameLevel
     gameLevel->createDynamicBody(skyBox, randomX, skyY);
 
     // Update the SceneWidget to reflect the changes
     sceneWidget->update();
+}
+
+
+void MainWindow::on_selectTool_clicked()
+{
+    sceneWidget->setCurrentTool(1);
+}
+
+
+void MainWindow::on_boxToolButton_clicked()
+{
+    sceneWidget->setCurrentTool(0);
 }
 

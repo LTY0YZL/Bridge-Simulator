@@ -9,7 +9,8 @@ class Placeable
 {
 public:
     Placeable(const QString& name,
-              const QColor& color,
+              const int cost = 50,
+              const QColor& color= Qt::blue,
               float width = 1.0f,
               float height = 1.0f,
               float density = 0.5f,
@@ -17,23 +18,26 @@ public:
               float restitution = 0.5f);
 
     // Method to create a Box2D body in the given world
-    b2Body* createBody(b2World* world, float posX, float posY);
+    b2Body* createBody( b2World* world, float posX, float posY);
 
     // Accessors
+    int getCost() const;
     QString getName() const;
     QColor getColor() const;
     b2Body* getBody() const;
 
     // Mutators
     void setName(const QString& name);
-    void setColor(const QColor& color);
+    void setDisplayColor(QColor color);
 
     // Assign Box2D body to Placeable
     void assignBody(b2Body* body);
 
 private:
+    int cost;
     QString name;       // Name of the object
     QColor color;       // Color of the object
+    QColor displayColor;// Color for display
     float width;        // Width of the object
     float height;       // Height of the object
     float density;      // Density for Box2D fixture

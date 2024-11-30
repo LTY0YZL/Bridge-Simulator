@@ -1,10 +1,11 @@
 #include "SceneWidget.h"
-#include "qtimer.h"
-#include <QPainter>
-#include <QMouseEvent>
 
 SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
-    : QWidget(parent), simulationTimer(new QTimer(this)), gameLevel(level)
+    : QWidget(parent),
+    currentTool(0),
+    worldScale(20.0f),
+    simulationTimer(new QTimer(this)),
+    gameLevel(level) // Initialize worldScale with default value
 {
     setMouseTracking(true);
     connect(simulationTimer, &QTimer::timeout, [this]() {
@@ -24,8 +25,12 @@ void SceneWidget::paintEvent(QPaintEvent *)
     painter.translate(width() / 2, height());
     painter.scale(1, -1);
 
-    // Draw ground body
-    drawShape(painter, gameLevel->getGroundBody(), Qt::green);
+    // Draw all ground bodies
+    const auto& groundBodies = gameLevel->getGroundBodies();
+    for (const b2Body* groundBody : groundBodies)
+    {
+        drawShape(painter, groundBody, Qt::green); // Paint ground bodies in green
+    }
 
     // Draw all dynamic bodies
     const auto& placeables = gameLevel->getPlaceables();
@@ -38,17 +43,15 @@ void SceneWidget::paintEvent(QPaintEvent *)
     }
 }
 
-void SceneWidget::mousePressEvent(QMouseEvent *event)
+void SceneWidget::setWorldScale(float scale)
 {
-    QPointF worldPos = screenToWorld(event->pos());
-
-    // Create a new Placeable
-    Placeable newPlaceable("Box", Qt::blue, 2.0f, 2.0f);
-
-    // Delegate body creation to GameLevel
-    gameLevel->createDynamicBody( newPlaceable, worldPos.x(), worldPos.y());
-    update();
+    if (scale > 0) {
+        worldScale = scale;
+    } else {
+        qDebug() << "Invalid world scale. Scale must be positive.";
+    }
 }
+
 void SceneWidget::startSimulation()
 {
     if (!simulationTimer->isActive()) {
@@ -76,7 +79,7 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
             for (int i = 0; i < polygon->m_count; ++i)
             {
                 b2Vec2 vertex = body->GetWorldPoint(polygon->m_vertices[i]);
-                QPointF qPoint(vertex.x * 20, vertex.y * 20); // Scale
+                QPointF qPoint(vertex.x * worldScale, vertex.y * worldScale);
                 qPolygon << qPoint;
             }
             painter.drawPolygon(qPolygon);
@@ -84,15 +87,79 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
     }
 }
 
-void SceneWidget::mouseMoveEvent(QMouseEvent *event)
-{
-    QPointF worldPos = screenToWorld(event->pos()); // Convert screen coordinates to Box2D world coordinates
-    emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit the signal with world coordinates
-}
-
 QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
 {
-    float box2dX = (screenPos.x() - width() / 2) / gameLevel->getWorldScale(); // Convert screen X to Box2D X
-    float box2dY = -(screenPos.y() - height()) / gameLevel->getWorldScale();  // Convert screen Y to Box2D Y
+    float box2dX = (screenPos.x() - width() / 2) / worldScale;
+    float box2dY = -(screenPos.y() - height()) / worldScale;
     return QPointF(box2dX, box2dY);
+}
+
+void SceneWidget::setCurrentTool(int ID)
+{
+
+    currentTool=ID;
+}
+
+void SceneWidget::mousePressEvent(QMouseEvent *event)
+{
+    QPointF worldPos = screenToWorld(event->pos());
+    if (currentTool == 0)
+    {
+        // Create a new Placeable at the clicked position
+        Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
+        gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
+        update();
+    }
+    else if (currentTool == 1)
+    {
+        // Check if there is a Box2D object at the clicked location
+        for (auto& placeable : gameLevel->getPlaceables())
+        {
+            b2Body* body = placeable.getBody();
+            if (body)
+            {
+                b2Fixture* fixture = body->GetFixtureList();
+                while (fixture)
+                {
+                    if (fixture->TestPoint(b2Vec2(worldPos.x(), worldPos.y())))
+                    {
+                        // Change the color of the clicked object to black
+                        placeable.setDisplayColor(QColor ("forestgreen"));
+                        update();
+                        return; // Exit after modifying the first found object
+                    }
+                    fixture = fixture->GetNext();
+                }
+            }
+        }
+    }
+
+}
+
+void SceneWidget::mouseMoveEvent(QMouseEvent *event)
+{
+    QPointF screenPos = event->pos();
+    QPointF worldPos = screenToWorld(screenPos);
+    emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit the signal with world coordinates
+}
+void SceneWidget::wheelEvent(QWheelEvent* event)
+{
+    // Determine the zoom direction
+    if (event->angleDelta().y() > 0) {
+        // Zoom in by increasing worldScale by 5%
+        worldScale *= 1.05;
+    } else {
+        // Zoom out by decreasing worldScale by 5%
+        worldScale /= 1.05;
+    }
+
+    // Clamp worldScale to avoid invalid values
+    if (worldScale < 1.0f) {
+        worldScale = 1.0f; // Minimum zoom level
+    }
+
+    qDebug() << "Zoomed to worldScale:" << worldScale;
+
+    // Trigger a repaint with the updated scale
+    update();
 }

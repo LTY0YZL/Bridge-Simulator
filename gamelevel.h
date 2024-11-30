@@ -12,19 +12,19 @@ public:
     ~GameLevel();
 
     void initialize();
-    void createGround(float width, float height);
+    void createGround(float posX, float posY, float width, float height);
     b2Body* createDynamicBody(Placeable placeable, float posX, float posY);
     void stepWorld(float timeStep, int velocityIterations, int positionIterations);
 
-    const std::vector<Placeable>& getPlaceables() const;
+    std::vector<Placeable>& getPlaceables();
+    std::vector<b2Body*>& getGroundBodies();
     b2Body* getGroundBody() const;
 
-    // Add getter for world scale
     float getWorldScale() const;
 
 private:
     b2World world;
-    b2Body* groundBody;
+    std::vector<b2Body*> groundBodies;
     std::vector<Placeable> placeables;
 
     float worldScale; // Scaling factor for Box2D world

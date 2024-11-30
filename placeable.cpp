@@ -1,20 +1,23 @@
 #include "Placeable.h"
 
-Placeable::Placeable(const QString& name,
+Placeable::Placeable(const QString& name, const int,
                      const QColor& color,
                      float width,
                      float height,
                      float density,
                      float friction,
                      float restitution)
-    : name(name), color(color), width(width), height(height),
-    density(density), friction(friction), restitution(restitution), body(nullptr) {}
+    : cost(cost), name(name), color(color), displayColor(color),
+    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr) {}
 
 void Placeable::assignBody(b2Body* body)
 {
     this->body = body;
 }
-
+int Placeable::getCost() const
+{
+    return cost;
+}
 b2Body* Placeable::getBody() const
 {
     return body;
@@ -27,7 +30,7 @@ QString Placeable::getName() const
 
 QColor Placeable::getColor() const
 {
-    return color;
+    return displayColor;
 }
 
 void Placeable::setName(const QString& name)
@@ -35,9 +38,9 @@ void Placeable::setName(const QString& name)
     this->name = name;
 }
 
-void Placeable::setColor(const QColor& color)
+void Placeable::setDisplayColor( QColor color)
 {
-    this->color = color;
+    this->displayColor = color;
 }
 
 // Method to create a Box2D body
@@ -57,9 +60,9 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY)
     // Define the fixture
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &boxShape;
-    fixtureDef.density = density;
+    fixtureDef.density = density; // Weight
     fixtureDef.friction = friction;
-    fixtureDef.restitution = restitution;
+    fixtureDef.restitution = restitution; // Bounceyness
 
     // Attach the fixture to the body
     newBody->CreateFixture(&fixtureDef);
