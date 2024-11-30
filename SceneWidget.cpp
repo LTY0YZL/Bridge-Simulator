@@ -5,7 +5,8 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     currentTool(0),
     worldScale(20.0f),
     simulationTimer(new QTimer(this)),
-    gameLevel(level) // Initialize worldScale with default value
+    gameLevel(level),
+    isFirstPointSet(false)
 {
     setMouseTracking(true);
     connect(simulationTimer, &QTimer::timeout, [this]() {
@@ -103,7 +104,13 @@ void SceneWidget::setCurrentTool(int ID)
 void SceneWidget::mousePressEvent(QMouseEvent *event)
 {
     QPointF worldPos = screenToWorld(event->pos());
-    if (currentTool == 0)
+    auto& placeables = gameLevel->getPlaceables();
+    if (event->button() == Qt::RightButton) // Right click Case
+    {
+        createGroundWithTwoPoints(worldPos);
+        return;
+    }
+    if (currentTool == 0) // Left click Case
     {
         // Create a new Placeable at the clicked position
         Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
@@ -112,29 +119,31 @@ void SceneWidget::mousePressEvent(QMouseEvent *event)
     }
     else if (currentTool == 1)
     {
-        // Check if there is a Box2D object at the clicked location
-        for (auto& placeable : gameLevel->getPlaceables())
+        // Select tool: Change color of the object under the mouse
+        Placeable* placeable = findPlaceableAt(worldPos, placeables);
+        if (placeable)
         {
-            b2Body* body = placeable.getBody();
-            if (body)
-            {
-                b2Fixture* fixture = body->GetFixtureList();
-                while (fixture)
-                {
-                    if (fixture->TestPoint(b2Vec2(worldPos.x(), worldPos.y())))
-                    {
-                        // Change the color of the clicked object to black
-                        placeable.setDisplayColor(QColor ("forestgreen"));
-                        update();
-                        return; // Exit after modifying the first found object
-                    }
-                    fixture = fixture->GetNext();
-                }
-            }
+            placeable->setDisplayColor(QColor("forestgreen"));
+            update();
         }
     }
-
+    else if (currentTool == 2)
+    {
+        // Delete tool: Remove the object under the mouse
+        auto it = findPlaceableIteratorAt(worldPos, placeables);
+        if (it != placeables.end())
+        {
+            b2Body* body = it->getBody();
+            if (body)
+            {
+                gameLevel->destroyBody(body);
+            }
+            placeables.erase(it);
+            update();
+        }
+    }
 }
+
 
 void SceneWidget::mouseMoveEvent(QMouseEvent *event)
 {
@@ -144,7 +153,6 @@ void SceneWidget::mouseMoveEvent(QMouseEvent *event)
 }
 void SceneWidget::wheelEvent(QWheelEvent* event)
 {
-    // Determine the zoom direction
     if (event->angleDelta().y() > 0) {
         // Zoom in by increasing worldScale by 5%
         worldScale *= 1.05;
@@ -154,12 +162,90 @@ void SceneWidget::wheelEvent(QWheelEvent* event)
     }
 
     // Clamp worldScale to avoid invalid values
-    if (worldScale < 1.0f) {
+    if (worldScale < 0.5f) {
         worldScale = 1.0f; // Minimum zoom level
+    }
+    else if (worldScale > 200.0f) {
+        worldScale = 200.0f; // Minimum zoom level
     }
 
     qDebug() << "Zoomed to worldScale:" << worldScale;
 
     // Trigger a repaint with the updated scale
     update();
+}
+Placeable* SceneWidget::findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables)
+{
+    for (auto& placeable : placeables)
+    {
+        b2Body* body = placeable.getBody();
+        if (body)
+        {
+            for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+            {
+                if (fixture->TestPoint(b2Vec2(worldPos.x(), worldPos.y())))
+                {
+                    return &placeable;
+                }
+            }
+        }
+    }
+    return nullptr; // No matching placeable found
+}
+std::vector<Placeable>::iterator SceneWidget::findPlaceableIteratorAt(
+    const QPointF& worldPos, std::vector<Placeable>& placeables)
+{
+    for (auto it = placeables.begin(); it != placeables.end(); ++it)
+    {
+        b2Body* body = it->getBody();
+        if (body)
+        {
+            for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+            {
+                if (fixture->TestPoint(b2Vec2(worldPos.x(), worldPos.y())))
+                {
+                    return it; // Get the vector contains the item want to deal with
+                }
+            }
+        }
+    }
+    return placeables.end();
+}
+void SceneWidget::recordTwoWorldPoint(const QPointF& worldPos)
+{
+    if (!isFirstPointSet)
+    {
+        // Record the first point
+        firstPoint = worldPos;
+        isFirstPointSet = true;
+    }
+    else
+    {
+        // Record the second point
+        secondPoint = worldPos;
+        isFirstPointSet = false; // Reset for future use
+        qDebug() << "Box2D World Points: First =" << firstPoint << ", Second =" << secondPoint;
+    }
+}
+void SceneWidget::createGroundWithTwoPoints(const QPointF& worldPos)
+{
+    recordTwoWorldPoint(worldPos); // Record the point
+
+    // If both points are recorded, create the ground body
+    if (!isFirstPointSet) // Means second point was just set
+    {
+        // Calculate dimensions and center for the ground body
+        float width = std::abs(secondPoint.x() - firstPoint.x());
+        float height = std::abs(secondPoint.y() - firstPoint.y());
+        float centerX = (firstPoint.x() + secondPoint.x()) / 2.0f;
+        float centerY = (firstPoint.y() + secondPoint.y()) / 2.0f;
+
+        qDebug() << "Creating ground body at center (" << centerX << "," << centerY
+                 << ") with width =" << width << " and height =" << height;
+
+        // Delegate ground body creation to GameLevel
+        gameLevel->createGround(centerX, centerY, width, height);
+
+        update(); // Update the scene to reflect changes
+    }
 }

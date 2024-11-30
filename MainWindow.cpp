@@ -66,3 +66,9 @@ void MainWindow::on_boxToolButton_clicked()
     sceneWidget->setCurrentTool(0);
 }
 
+
+void MainWindow::on_deleteToolButton_clicked()
+{
+    sceneWidget->setCurrentTool(2);
+}
+

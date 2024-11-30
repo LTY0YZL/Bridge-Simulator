@@ -74,7 +74,13 @@ std::vector<b2Body*>& GameLevel::getGroundBodies()
     return groundBodies;
 
 }
-
+void GameLevel::destroyBody(b2Body* body)
+{
+    if (body)
+    {
+        world.DestroyBody(body);
+    }
+}
 float GameLevel::getWorldScale() const
 {
     return worldScale;

@@ -15,6 +15,7 @@ public:
     void createGround(float posX, float posY, float width, float height);
     b2Body* createDynamicBody(Placeable placeable, float posX, float posY);
     void stepWorld(float timeStep, int velocityIterations, int positionIterations);
+    void destroyBody(b2Body* body);
 
     std::vector<Placeable>& getPlaceables();
     std::vector<b2Body*>& getGroundBodies();

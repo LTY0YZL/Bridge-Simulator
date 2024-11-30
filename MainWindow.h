@@ -28,6 +28,8 @@ private slots:
 
     void on_boxToolButton_clicked();
 
+    void on_deleteToolButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance

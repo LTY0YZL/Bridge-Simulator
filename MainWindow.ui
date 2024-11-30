@@ -86,16 +86,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="boxToolButton">
+         <widget class="QPushButton" name="deleteToolButton">
           <property name="text">
-           <string>box</string>
+           <string>Delete</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="boxToolButton">
           <property name="text">
-           <string>PushButton</string>
+           <string>box</string>
           </property>
          </widget>
         </item>

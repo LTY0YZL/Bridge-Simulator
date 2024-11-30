@@ -34,7 +34,14 @@ private:
     void drawShape(QPainter &painter, const b2Body* body, const QColor &color);
     QPointF screenToWorld(const QPointF& screenPos) const; // Helper to convert screen to Box2D world coordinates
     QTimer* simulationTimer;
-    GameLevel* gameLevel; // Pointer to GameLevel
+    GameLevel* gameLevel;
+    Placeable* findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables);
+    std::vector<Placeable>::iterator findPlaceableIteratorAt( const QPointF& worldPos, std::vector<Placeable>& placeables);
+    QPointF firstPoint;
+    QPointF secondPoint;
+    bool isFirstPointSet;
+    void recordTwoWorldPoint(const QPointF& worldPos);
+    void createGroundWithTwoPoints(const QPointF& worldPos);
 };
 
 #endif // SCENEWIDGET_H
