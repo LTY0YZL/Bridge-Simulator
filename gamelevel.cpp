@@ -81,6 +81,16 @@ void GameLevel::destroyBody(b2Body* body)
         world.DestroyBody(body);
     }
 }
+void GameLevel::destroyGround(b2Body* groundBody)
+{
+    auto it = std::find(groundBodies.begin(), groundBodies.end(), groundBody);
+    if (it != groundBodies.end())
+    {
+        world.DestroyBody(*it); // Destroy the body in the Box2D world
+        groundBodies.erase(it); // Remove it from the list
+    }
+}
+
 float GameLevel::getWorldScale() const
 {
     return worldScale;

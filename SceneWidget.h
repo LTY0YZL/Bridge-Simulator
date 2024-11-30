@@ -46,6 +46,8 @@ private:
     std::vector<Placeable>::iterator findPlaceableIteratorAt( const QPointF& worldPos, std::vector<Placeable>& placeables);
     void recordTwoWorldPoint(const QPointF& worldPos);
     void createGroundWithTwoPoints(const QPointF& worldPos);
+    void deleteGroundAt(const QPointF& worldPos);
+    b2Body* findGroundAt(const QPointF& worldPos) const;
     void areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2);
     void linePreview(QPainter& painter, const QPointF& start, const QPointF& end);
 };

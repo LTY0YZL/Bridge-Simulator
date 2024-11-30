@@ -55,7 +55,7 @@ void SceneWidget::paintEvent(QPaintEvent *)
 
 
 
-void SceneWidget::setWorldScale(float scale)
+void SceneWidget::setWorldScale(float scale) // World scale for zooming
 {
     if (scale > 0) {
         worldScale = scale;
@@ -122,6 +122,11 @@ void SceneWidget::mousePressEvent(QMouseEvent *event)
         {
             createGroundWithTwoPoints(worldPos);
             showPreview = isFirstPointSet; // Show preview only after the first point is set
+            return;
+        }
+        else if (currentTool == -2) // Tool to delete ground objects
+        {
+            deleteGroundAt(worldPos);
             return;
         }
     }
@@ -268,6 +273,31 @@ void SceneWidget::createGroundWithTwoPoints(const QPointF& worldPos)
 
         update();
     }
+}
+void SceneWidget::deleteGroundAt(const QPointF& worldPos)
+{
+    b2Body* groundBody = findGroundAt(worldPos);
+    if (groundBody)
+    {
+        gameLevel->destroyGround(groundBody); // Call GameLevel to remove it
+        update();
+    }
+}
+
+b2Body* SceneWidget::findGroundAt(const QPointF& worldPos) const
+{
+    const auto& groundBodies = gameLevel->getGroundBodies();
+    for (b2Body* body : groundBodies)
+    {
+        for (b2Fixture* fixture = body->GetFixtureList(); fixture; fixture = fixture->GetNext())
+        {
+            if (fixture->TestPoint(b2Vec2(worldPos.x(), worldPos.y())))
+            {
+                return body;
+            }
+        }
+    }
+    return nullptr; // No ground object found
 }
 void SceneWidget::areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2)
 {

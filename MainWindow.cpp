@@ -78,3 +78,9 @@ void MainWindow::on_drawGroundButton_clicked()
     sceneWidget->setCurrentTool(-1);
 }
 
+
+void MainWindow::on_deleteGroundButton_clicked()
+{
+    sceneWidget->setCurrentTool(-2);
+}
+

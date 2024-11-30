@@ -33,7 +33,7 @@
       <x>150</x>
       <y>40</y>
       <width>511</width>
-      <height>391</height>
+      <height>471</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -51,16 +51,16 @@
      <enum>QFrame::Shape::Box</enum>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Mouse World Location</string>
     </property>
    </widget>
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>40</y>
+      <x>670</x>
+      <y>140</y>
       <width>111</width>
-      <height>381</height>
+      <height>371</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -72,33 +72,12 @@
        <x>0</x>
        <y>0</y>
        <width>109</width>
-       <height>379</height>
+       <height>369</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <layout class="QVBoxLayout" name="toolArea">
-        <item>
-         <widget class="QPushButton" name="selectTool">
-          <property name="text">
-           <string>Select</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="deleteToolButton">
-          <property name="text">
-           <string>Delete</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="boxToolButton">
-          <property name="text">
-           <string>box</string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QPushButton" name="drawGroundButton">
           <property name="text">
@@ -107,9 +86,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_6">
+         <widget class="QPushButton" name="deleteGroundButton">
           <property name="text">
-           <string>PushButton</string>
+           <string>DeleteGround</string>
           </property>
          </widget>
         </item>
@@ -143,8 +122,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>53</width>
-      <height>15</height>
+      <width>111</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
@@ -155,13 +134,115 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>440</y>
+      <y>520</y>
       <width>511</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Play</string>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>111</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>109</width>
+       <height>379</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="toolArea_2">
+        <item>
+         <widget class="QPushButton" name="selectTool">
+          <property name="text">
+           <string>Select</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deleteToolButton">
+          <property name="text">
+           <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="boxToolButton">
+          <property name="text">
+           <string>box</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>100</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Level Edit Tool:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>In Game Tool:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>120</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Right Click To Use</string>
     </property>
    </widget>
   </widget>

@@ -32,6 +32,8 @@ private slots:
 
     void on_drawGroundButton_clicked();
 
+    void on_deleteGroundButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance
