@@ -23,7 +23,7 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void wheelEvent(QWheelEvent* event) override;
-
+    void mouseReleaseEvent(QMouseEvent* event) override;
 signals:
     void mouseMovedInWorld(float x, float y); // Signal to update the UI with mouse location
 
@@ -38,10 +38,15 @@ private:
     QPointF secondPoint;
     QPointF currentMousePos; // Tracks the current mouse position for preview
     bool isFirstPointSet;
+    QPoint lastMousePos;    // Stores the last position of the mouse during a drag
+    float panOffsetX;       // Pan offset along the x-axis
+    float panOffsetY;       // Pan offset along the y-axis
+    bool isPanning;         // Whether the user is currently panning
 
 
     void drawShape(QPainter &painter, const b2Body* body, const QColor &color);
     QPointF screenToWorld(const QPointF& screenPos) const; // Helper to convert screen to Box2D world coordinates
+    QPointF box2DWorldToScreen(const b2Vec2& worldPos) const;
     Placeable* findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables);
     std::vector<Placeable>::iterator findPlaceableIteratorAt( const QPointF& worldPos, std::vector<Placeable>& placeables);
     void recordTwoWorldPoint(const QPointF& worldPos);

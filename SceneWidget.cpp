@@ -7,7 +7,10 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     simulationTimer(new QTimer(this)),
     gameLevel(level),
     showPreview(false),
-    isFirstPointSet(false)
+    isFirstPointSet(false),
+    panOffsetX(0.0f),   // Initialize the pan offsets
+    panOffsetY(0.0f),
+    isPanning(false)
 {
     setMouseTracking(true);
     connect(simulationTimer, &QTimer::timeout, [this]() {
@@ -23,15 +26,17 @@ void SceneWidget::paintEvent(QPaintEvent *)
     // Paint the background
     paintBackground(painter);
 
-    // Transform for Box2D world alignment
-    painter.translate(width() / 2, height());
+    // Translate the painter to apply pan offsets
+    painter.translate(width() / 2 + panOffsetX, height() + panOffsetY);
+
+    // Apply scaling to make y-axis point upwards
     painter.scale(1, -1);
 
     // Draw all ground bodies
     const auto& groundBodies = gameLevel->getGroundBodies();
     for (const b2Body* groundBody : groundBodies)
     {
-        drawShape(painter, groundBody, Qt::green); // Paint ground bodies in green
+        drawShape(painter, groundBody, Qt::green);
     }
 
     // Draw all dynamic bodies
@@ -47,10 +52,11 @@ void SceneWidget::paintEvent(QPaintEvent *)
     // Draw the preview if applicable
     if (showPreview && isFirstPointSet)
     {
-        areaPreview(painter, firstPoint, currentMousePos); // Preview rectangle
-        linePreview(painter, firstPoint, currentMousePos); // Preview dashed line
+        areaPreview(painter, firstPoint, currentMousePos);
+        linePreview(painter, firstPoint, currentMousePos);
     }
 }
+
 
 
 
@@ -91,7 +97,8 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
             for (int i = 0; i < polygon->m_count; ++i)
             {
                 b2Vec2 vertex = body->GetWorldPoint(polygon->m_vertices[i]);
-                QPointF qPoint(vertex.x * worldScale, vertex.y * worldScale);
+                //QPointF qPoint(vertex.x * worldScale, vertex.y * worldScale);
+                QPointF qPoint = box2DWorldToScreen(vertex);
                 qPolygon << qPoint;
             }
             painter.drawPolygon(qPolygon);
@@ -102,9 +109,16 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
 QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
 {
     float box2dX = (screenPos.x() - width() / 2) / worldScale;
-    float box2dY = -(screenPos.y() - height()) / worldScale;
+    float box2dY = (height() - screenPos.y()) / worldScale;
     return QPointF(box2dX, box2dY);
 }
+QPointF SceneWidget::box2DWorldToScreen(const b2Vec2& worldPos) const
+{
+    float screenX = (worldPos.x * worldScale) ;
+    float screenY = (worldPos.y * worldScale);
+    return QPointF(screenX, screenY);
+}
+
 
 void SceneWidget::setCurrentTool(int ID)
 {
@@ -112,72 +126,106 @@ void SceneWidget::setCurrentTool(int ID)
     currentTool=ID;
 }
 
-void SceneWidget::mousePressEvent(QMouseEvent *event)
+void SceneWidget::mousePressEvent(QMouseEvent* event)
 {
-    QPointF worldPos = screenToWorld(event->pos());
-
-    if (event->button() == Qt::RightButton)
+    if (event->button() == Qt::MiddleButton)
     {
-        if (currentTool == -1)
+        isPanning = true;               // Start the panning operation
+        lastMousePos = event->pos();    // Store the initial position of the mouse
+    }
+    else
+    {
+        // Existing code for other tools
+        QPointF worldPos = screenToWorld(event->pos());
+
+        if (event->button() == Qt::RightButton)
         {
-            createGroundWithTwoPoints(worldPos);
-            showPreview = isFirstPointSet; // Show preview only after the first point is set
-            return;
+            if (currentTool == -1)
+            {
+                createGroundWithTwoPoints(worldPos);
+                showPreview = isFirstPointSet; // Show preview only after the first point is set
+                return;
+            }
+            else if (currentTool == -2) // Tool to delete ground objects
+            {
+                deleteGroundAt(worldPos);
+                return;
+            }
         }
-        else if (currentTool == -2) // Tool to delete ground objects
+
+        auto& placeables = gameLevel->getPlaceables();
+        if (currentTool == 0) // Left click Case
         {
-            deleteGroundAt(worldPos);
-            return;
+            Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
+            gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
+            update();
+        }
+        else if (currentTool == 1)
+        {
+            Placeable* placeable = findPlaceableAt(worldPos, placeables);
+            if (placeable)
+            {
+                placeable->setDisplayColor(QColor("forestgreen"));
+                update();
+            }
+        }
+        else if (currentTool == 2)
+        {
+            auto it = findPlaceableIteratorAt(worldPos, placeables);
+            if (it != placeables.end())
+            {
+                b2Body* body = it->getBody();
+                if (body)
+                {
+                    gameLevel->destroyBody(body);
+                }
+                placeables.erase(it);
+                update();
+            }
         }
     }
+}
 
-    auto& placeables = gameLevel->getPlaceables();
-    if (currentTool == 0) // Left click Case
+void SceneWidget::mouseMoveEvent(QMouseEvent* event)
+{
+    if (isPanning)
     {
-        Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
-        gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
+        // Calculate the difference between the current and last mouse position
+        QPoint delta = event->pos() - lastMousePos;
+
+        // Update the pan offsets
+        panOffsetX += delta.x();
+        panOffsetY += delta.y();
+
+        // Update the last mouse position
+        lastMousePos = event->pos();
+
+        // Trigger repaint to reflect the panning
         update();
     }
-    else if (currentTool == 1)
+    else
     {
-        Placeable* placeable = findPlaceableAt(worldPos, placeables);
-        if (placeable)
+        QPointF screenPos = event->pos();
+        QPointF worldPos = screenToWorld(screenPos);
+
+        if (isFirstPointSet) // Update preview if the first point is set
         {
-            placeable->setDisplayColor(QColor("forestgreen"));
-            update();
+            currentMousePos = worldPos;
+            showPreview = true;
+            update(); // Repaint to show the preview
         }
-    }
-    else if (currentTool == 2)
-    {
-        auto it = findPlaceableIteratorAt(worldPos, placeables);
-        if (it != placeables.end())
-        {
-            b2Body* body = it->getBody();
-            if (body)
-            {
-                gameLevel->destroyBody(body);
-            }
-            placeables.erase(it);
-            update();
-        }
+
+        emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit the signal with world coordinates
     }
 }
 
-void SceneWidget::mouseMoveEvent(QMouseEvent *event)
+void SceneWidget::mouseReleaseEvent(QMouseEvent* event)
 {
-    QPointF screenPos = event->pos();
-    QPointF worldPos = screenToWorld(screenPos);
-
-    if (isFirstPointSet) // Update preview if the first point is set
+    if (event->button() == Qt::MiddleButton)
     {
-        currentMousePos = worldPos;
-        showPreview = true;
-        update(); // Repaint to show the preview
+        isPanning = false; // End the panning operation
     }
-
-    emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit the signal with world coordinates
 }
-
 void SceneWidget::wheelEvent(QWheelEvent* event)
 {
     if (event->angleDelta().y() > 0) {
