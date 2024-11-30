@@ -17,9 +17,9 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>0</y>
-      <width>91</width>
+      <x>680</x>
+      <y>10</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
@@ -41,9 +41,9 @@
    <widget class="QLabel" name="mouseLocation">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>10</y>
-      <width>111</width>
+      <x>470</x>
+      <y>20</y>
+      <width>141</width>
       <height>16</height>
      </rect>
     </property>
@@ -84,9 +84,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>90</y>
       <width>111</width>
-      <height>381</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="widgetResizable">
@@ -98,7 +98,7 @@
        <x>0</x>
        <y>0</y>
        <width>109</width>
-       <height>379</height>
+       <height>259</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -161,12 +161,50 @@
      <rect>
       <x>150</x>
       <y>20</y>
-      <width>301</width>
+      <width>321</width>
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
-     <string>Scroll to Zoom, Middle Mouse To Shift(Half Done)</string>
+     <string>Scroll to Zoom, Middle Mouse To Shift</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>111</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Click To Use</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>360</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Help Info (TODO)</string>
     </property>
    </widget>
    <widget class="QWidget" name="">
@@ -242,6 +280,12 @@
        </item>
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
           <string>Right Click To Use</string>
          </property>
@@ -260,7 +304,7 @@
           <x>0</x>
           <y>0</y>
           <width>207</width>
-          <height>223</height>
+          <height>219</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">

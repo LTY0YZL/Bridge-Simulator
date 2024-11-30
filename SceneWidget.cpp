@@ -108,8 +108,9 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
 
 QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
 {
-    float box2dX = (screenPos.x() - width() / 2) / worldScale;
-    float box2dY = (height() - screenPos.y()) / worldScale;
+    // Adjust screen position by pan offset before applying transformation
+    float box2dX = (screenPos.x() - (width() / 2 + panOffsetX)) / worldScale;
+    float box2dY = (height() + panOffsetY - screenPos.y()) / worldScale;
     return QPointF(box2dX, box2dY);
 }
 QPointF SceneWidget::box2DWorldToScreen(const b2Vec2& worldPos) const
