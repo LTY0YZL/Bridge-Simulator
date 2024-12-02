@@ -76,6 +76,15 @@ void SceneWidget::startSimulation()
         simulationTimer->start(16); // Start at ~60 FPS
     }
 }
+
+void SceneWidget::stopSimulation()
+{
+    if (simulationTimer->isActive())
+    {
+        simulationTimer->stop();
+    }
+}
+
 void SceneWidget::paintBackground(QPainter &painter)
 {
     painter.setBrush(QBrush(Qt::lightGray));

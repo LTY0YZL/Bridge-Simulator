@@ -9,16 +9,31 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::MainWindow),
     gameLevel(new GameLevel),
-    sceneWidget(nullptr)
+    sceneWidget(nullptr),
+    currentLevelNumber(1),
+    levelsDirectory("levels")
 {
     ui->setupUi(this);
 
     // Initialize the game level
-    gameLevel->initialize();
+    QString initialLevelFile = QString("%1/level%2.json").arg(levelsDirectory).arg(currentLevelNumber);
+    if (gameLevel->loadLevel(initialLevelFile))
+    {
+        qDebug() << "Initial level loaded successfully.";
+    }
+    else
+    {
+        qDebug() << "Failed to load the initial level.";
+        gameLevel->initialize();
+    }
+
+    ui->levelNumberLabel->setText(QString("Level %1").arg(currentLevelNumber));
 
     // Create SceneWidget and pass GameLevel
     sceneWidget = new SceneWidget(gameLevel, this);
     ui->verticalLayout->addWidget(sceneWidget);
+
+    ui->playButton->setEnabled(true);
 
     // Connect the mouseMovedInWorld signal to update the label
     connect(sceneWidget, &SceneWidget::mouseMovedInWorld, this, &MainWindow::updateMouseLocation);
@@ -112,8 +127,12 @@ void MainWindow::on_loadButton_clicked()
     {
         if (gameLevel->loadLevel(filename))
         {
+            sceneWidget->stopSimulation();
+            ui->playButton->setEnabled(true);
             sceneWidget->update();
-            QMessageBox::information(this, "Load Level", "Level loaded successfully.");
+
+            QMessageBox::information(this, "Load Level", QString("Level %1 loaded successfully.").arg(currentLevelNumber));
+            qDebug() << "Level" << currentLevelNumber << "loaded successfully.";
         }
         else
         {
@@ -122,3 +141,76 @@ void MainWindow::on_loadButton_clicked()
     }
 }
 
+void MainWindow::on_nextLevelButton_clicked()
+{
+    currentLevelNumber++;
+
+    QString filename = QString("%1/level%2.json").arg(levelsDirectory).arg(currentLevelNumber);
+
+    qDebug() << "Attempting to load level from:" << filename;
+
+    QFile file(filename);
+    if (!file.exists())
+    {
+        QMessageBox::warning(this, "Next Level", "No more levels available.");
+        currentLevelNumber--;
+        return;
+    }
+
+    if (gameLevel->loadLevel(filename))
+    {
+        sceneWidget->stopSimulation();
+        ui->playButton->setEnabled(true);
+        ui->levelNumberLabel->setText(QString("Level %1").arg(currentLevelNumber));
+        sceneWidget->update();
+
+        QMessageBox::information(this, "Next Level", QString("Level %1 loaded successfully.").arg(currentLevelNumber));
+        qDebug() << "Level" << currentLevelNumber << "loaded successfully.";
+    }
+    else
+    {
+        QMessageBox::warning(this, "Next Level", "Failed to load the next level.");
+        currentLevelNumber--;
+    }
+}
+
+void MainWindow::on_goToLevelButton_clicked()
+{
+    QString levelText = ui->levelLineEdit->text().trimmed();
+
+    bool ok;
+    int levelNumber = levelText.toInt(&ok);
+
+    if (!ok || levelNumber <= 0)
+    {
+        QMessageBox::warning(this, "Invalid Input", "Please enter a valid positive integer for the level number.");
+        return;
+    }
+
+    QString filename = QString("%1/level%2.json").arg(levelsDirectory).arg(levelNumber);
+
+    qDebug() << "Attempting to load level from:" << filename;
+
+    QFile file(filename);
+    if (!file.exists())
+    {
+        QMessageBox::warning(this, "Level Not Found", QString("Level %1 does not exist.").arg(levelNumber));
+        return;
+    }
+
+    if (gameLevel->loadLevel(filename))
+    {
+        sceneWidget->stopSimulation();
+        ui->playButton->setEnabled(true);
+        currentLevelNumber = levelNumber;
+        ui->levelNumberLabel->setText(QString("Level %1").arg(currentLevelNumber));
+        sceneWidget->update();
+
+        QMessageBox::information(this, "Level Loaded", QString("Level %1 loaded successfully.").arg(currentLevelNumber));
+        qDebug() << "Level" << currentLevelNumber << "loaded successfully.";
+    }
+    else
+    {
+        QMessageBox::warning(this, "Load Failed", QString("Failed to load Level %1.").arg(levelNumber));
+    }
+}

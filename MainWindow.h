@@ -38,10 +38,17 @@ private slots:
 
     void on_loadButton_clicked();
 
+    void on_nextLevelButton_clicked();
+
+    void on_goToLevelButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance
     SceneWidget* sceneWidget;
+
+    int currentLevelNumber;
+    QString levelsDirectory;
 };
 
 #endif // MAINWINDOW_H

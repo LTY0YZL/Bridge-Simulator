@@ -265,12 +265,44 @@
       <x>670</x>
       <y>230</y>
       <width>201</width>
-      <height>311</height>
+      <height>343</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QPushButton" name="nextLevelButton">
+         <property name="text">
+          <string>Play Next Level</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <widget class="QLabel" name="levelNumberLabel">
+           <property name="text">
+            <string>level</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="goToLevelButton">
+           <property name="text">
+            <string>Go to Level</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="levelLineEdit">
+           <property name="text">
+            <string>Enter level number</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
@@ -317,8 +349,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>197</width>
-          <height>175</height>
+          <width>180</width>
+          <height>132</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">

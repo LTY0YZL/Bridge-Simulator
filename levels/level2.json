@@ -1,0 +1,114 @@
+{
+    "grounds": [
+        {
+            "height": 2,
+            "posX": 0,
+            "posY": 5,
+            "width": 20
+        },
+        {
+            "height": 50,
+            "posX": 0,
+            "posY": -5,
+            "width": 1
+        }
+    ],
+    "placeables": [
+        {
+            "color": "#0000ff",
+            "cost": 1640800604,
+            "density": 1,
+            "friction": 0.30000001192092896,
+            "height": 2,
+            "name": "Box1",
+            "posX": -10,
+            "posY": 20,
+            "restitution": 0.20000000298023224,
+            "width": 2
+        },
+        {
+            "color": "#ff0000",
+            "cost": 189789816,
+            "density": 1,
+            "friction": 0.30000001192092896,
+            "height": 1.5,
+            "name": "Box2",
+            "posX": 5,
+            "posY": 15,
+            "restitution": 0.20000000298023224,
+            "width": 3
+        },
+        {
+            "color": "#00ff00",
+            "cost": 1640800695,
+            "density": 1,
+            "friction": 0.5,
+            "height": 1,
+            "name": "Box3",
+            "posX": 0,
+            "posY": 10,
+            "restitution": 0.4000000059604645,
+            "width": 1
+        },
+        {
+            "color": "#0000ff",
+            "cost": 189775656,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": 5.400000095367432,
+            "posY": 10.350000381469727,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": 189775656,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -4.300000190734863,
+            "posY": 11.199999809265137,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": 189775656,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": 1.25,
+            "posY": 7.699999809265137,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": 189775656,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -5.599999904632568,
+            "posY": 8.050000190734863,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": 189775656,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -6.400000095367432,
+            "posY": 15.75,
+            "restitution": 0.5,
+            "width": 2
+        }
+    ]
+}

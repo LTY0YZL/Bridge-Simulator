@@ -1805,7 +1805,16 @@ debug/gamelevel.o: gamelevel.cpp GameLevel.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qurl.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/quuid.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qendian.h \
-		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QDebug
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QDebug \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QJsonArray \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qjsonarray.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QJsonDocument \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qjsondocument.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QFile \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qfile.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qfiledevice.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qiodevice.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QIODevice
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gamelevel.o gamelevel.cpp
 
 debug/main.o: main.cpp MainWindow.h \
@@ -2330,7 +2339,8 @@ debug/MainWindow.o: MainWindow.cpp MainWindow.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qdialogbuttonbox.h
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QRegularExpression
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\MainWindow.o MainWindow.cpp
 
 debug/placeable.o: placeable.cpp Placeable.h \

@@ -15,6 +15,7 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -61,6 +62,11 @@ public:
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_2;
+    QPushButton *nextLevelButton;
+    QVBoxLayout *verticalLayout_10;
+    QLabel *levelNumberLabel;
+    QPushButton *goToLevelButton;
+    QLineEdit *levelLineEdit;
     QLabel *label;
     QPushButton *saveButton;
     QPushButton *loadButton;
@@ -189,12 +195,37 @@ public:
 
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(670, 230, 201, 311));
+        layoutWidget1->setGeometry(QRect(670, 230, 201, 343));
         verticalLayout_5 = new QVBoxLayout(layoutWidget1);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
+        nextLevelButton = new QPushButton(layoutWidget1);
+        nextLevelButton->setObjectName("nextLevelButton");
+
+        verticalLayout_2->addWidget(nextLevelButton);
+
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setObjectName("verticalLayout_10");
+        levelNumberLabel = new QLabel(layoutWidget1);
+        levelNumberLabel->setObjectName("levelNumberLabel");
+
+        verticalLayout_10->addWidget(levelNumberLabel);
+
+        goToLevelButton = new QPushButton(layoutWidget1);
+        goToLevelButton->setObjectName("goToLevelButton");
+
+        verticalLayout_10->addWidget(goToLevelButton);
+
+        levelLineEdit = new QLineEdit(layoutWidget1);
+        levelLineEdit->setObjectName("levelLineEdit");
+
+        verticalLayout_10->addWidget(levelLineEdit);
+
+
+        verticalLayout_2->addLayout(verticalLayout_10);
+
         label = new QLabel(layoutWidget1);
         label->setObjectName("label");
 
@@ -224,7 +255,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 175));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 180, 132));
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -289,6 +320,10 @@ public:
         pushButton_2->setText(QCoreApplication::translate("MainWindow", "Help Info (TODO)", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Level Goal:(TODO)", nullptr));
         checkBox->setText(QCoreApplication::translate("MainWindow", "CheckBox", nullptr));
+        nextLevelButton->setText(QCoreApplication::translate("MainWindow", "Play Next Level", nullptr));
+        levelNumberLabel->setText(QCoreApplication::translate("MainWindow", "level", nullptr));
+        goToLevelButton->setText(QCoreApplication::translate("MainWindow", "Go to Level", nullptr));
+        levelLineEdit->setText(QCoreApplication::translate("MainWindow", "Enter level number", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Level Edit Tool:", nullptr));
         saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
         loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));

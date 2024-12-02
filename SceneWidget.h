@@ -16,6 +16,7 @@ class SceneWidget : public QWidget
 public:
     explicit SceneWidget(GameLevel* level, QWidget* parent = nullptr);
     void startSimulation();
+    void stopSimulation();
     void setCurrentTool(int ID);
     void setWorldScale(float scale);
 protected:
