@@ -23,12 +23,16 @@ public:
 
     float getWorldScale() const;
 
+    bool saveLevel(const QString& filename) const;
+    bool loadLevel(const QString& filename);
+
 private:
     b2World world;
     std::vector<b2Body*> groundBodies;
     std::vector<Placeable> placeables;
 
     float worldScale; // Scaling factor for Box2D world
+    void clearLevel();
 };
 
 #endif // GAMELEVEL_H

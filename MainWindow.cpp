@@ -2,6 +2,8 @@
 #include "ui_MainWindow.h"
 #include "SceneWidget.h"
 #include "GameLevel.h"
+#include <QFileDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -20,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Connect the mouseMovedInWorld signal to update the label
     connect(sceneWidget, &SceneWidget::mouseMovedInWorld, this, &MainWindow::updateMouseLocation);
+
 }
 
 MainWindow::~MainWindow()
@@ -82,5 +85,40 @@ void MainWindow::on_drawGroundButton_clicked()
 void MainWindow::on_deleteGroundButton_clicked()
 {
     sceneWidget->setCurrentTool(-2);
+}
+
+void MainWindow::on_saveButton_clicked()
+{
+    QString filename = QFileDialog::getSaveFileName(this, "Save Level", "", "JSON Files (*.json)");
+    if (!filename.isEmpty())
+    {
+        if (gameLevel->saveLevel(filename))
+        {
+            QMessageBox::information(this, "Save Level", "Level saved successfully.");
+        }
+        else
+        {
+            QMessageBox::warning(this, "Save Level", "Failed to save the level.");
+        }
+    }
+}
+
+void MainWindow::on_loadButton_clicked()
+{
+    qDebug() << "Load button clicked.";
+
+    QString filename = QFileDialog::getOpenFileName(this, "Load Level", "", "JSON Files (*.json)");
+    if (!filename.isEmpty())
+    {
+        if (gameLevel->loadLevel(filename))
+        {
+            sceneWidget->update();
+            QMessageBox::information(this, "Load Level", "Level loaded successfully.");
+        }
+        else
+        {
+            QMessageBox::warning(this, "Load Level", "Failed to load the level.");
+        }
+    }
 }
 

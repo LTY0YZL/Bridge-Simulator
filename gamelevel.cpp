@@ -1,5 +1,9 @@
 #include "GameLevel.h"
 #include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
+#include <QIODevice>
 
 GameLevel::GameLevel()
     : world(b2Vec2(0.0f, -10.0f)), worldScale(20.0f) {
@@ -94,4 +98,103 @@ void GameLevel::destroyGround(b2Body* groundBody)
 float GameLevel::getWorldScale() const
 {
     return worldScale;
+}
+
+bool GameLevel::saveLevel(const QString& filename) const
+{
+    QJsonObject levelObject;
+
+    QJsonArray placeablesArray;
+    for (const auto& placeable : placeables)
+    {
+        placeablesArray.append(placeable.toJson());
+    }
+    levelObject["placeables"] = placeablesArray;
+
+    QJsonArray groundsArray;
+    for (const b2Body* groundBody : groundBodies)
+    {
+        QJsonObject groundObj;
+        b2Vec2 position = groundBody->GetPosition();
+        groundObj["posX"] = position.x;
+        groundObj["posY"] = position.y;
+
+        const b2PolygonShape* shape = static_cast<const b2PolygonShape*>(groundBody->GetFixtureList()->GetShape());
+        float width = std::abs(shape->m_vertices[2].x - shape->m_vertices[0].x);
+        float height = std::abs(shape->m_vertices[2].y - shape->m_vertices[0].y);
+
+        groundObj["width"] = width;
+        groundObj["height"] = height;
+
+        groundsArray.append(groundObj);
+    }
+    levelObject["grounds"] = groundsArray;
+
+    QJsonDocument doc(levelObject);
+    QFile file(filename);
+    if (!file.open(QIODevice::WriteOnly))
+    {
+        qDebug() << "Failed to open file for writing:" << filename;
+        return false;
+    }
+    file.write(doc.toJson());
+    file.close();
+    return true;
+}
+
+bool GameLevel::loadLevel(const QString& filename)
+{
+    clearLevel();
+
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        qDebug() << "Failed to open file for reading:" << filename;
+        return false;
+    }
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (doc.isNull() || !doc.isObject())
+    {
+        qDebug() << "Invalid JSON document in file:" << filename;
+        return false;
+    }
+    QJsonObject levelObject = doc.object();
+
+    QJsonArray groundsArray = levelObject["grounds"].toArray();
+    for (const QJsonValue& value : groundsArray)
+    {
+        QJsonObject groundObj = value.toObject();
+        float posX = groundObj["posX"].toDouble();
+        float posY = groundObj["posY"].toDouble();
+        float width = groundObj["width"].toDouble();
+        float height = groundObj["height"].toDouble();
+        createGround(posX, posY, width, height);
+    }
+
+    QJsonArray placeablesArray = levelObject["placeables"].toArray();
+    for (const QJsonValue& value : placeablesArray)
+    {
+        QJsonObject placeableObj = value.toObject();
+        Placeable placeable = Placeable::fromJson(placeableObj);
+
+        createDynamicBody(placeable, placeable.getPosX(), placeable.getPosY());
+    }
+
+    return true;
+}
+
+void GameLevel::clearLevel()
+{
+    for (b2Body* body = world.GetBodyList(); body != nullptr;)
+    {
+        b2Body* nextBody = body->GetNext();
+        world.DestroyBody(body);
+        body = nextBody;
+    }
+
+    groundBodies.clear();
+    placeables.clear();
 }

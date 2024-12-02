@@ -8,7 +8,7 @@ Placeable::Placeable(const QString& name, const int,
                      float friction,
                      float restitution)
     : cost(cost), name(name), color(color), displayColor(color),
-    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr) {}
+    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr), posX(0.0f), posY(0.0f) {}
 
 void Placeable::assignBody(b2Body* body)
 {
@@ -46,6 +46,10 @@ void Placeable::setDisplayColor( QColor color)
 // Method to create a Box2D body
 b2Body* Placeable::createBody(b2World* world, float posX, float posY)
 {
+    // Store the position in the member variables
+    this->posX = posX;
+    this->posY = posY;
+
     // Define the body
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -62,7 +66,7 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY)
     fixtureDef.shape = &boxShape;
     fixtureDef.density = density; // Weight
     fixtureDef.friction = friction;
-    fixtureDef.restitution = restitution; // Bounceyness
+    fixtureDef.restitution = restitution; // Bounciness
 
     // Attach the fixture to the body
     newBody->CreateFixture(&fixtureDef);
@@ -73,3 +77,53 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY)
     return newBody;
 }
 
+QJsonObject Placeable::toJson() const
+{
+    QJsonObject obj;
+    obj["name"] = name;
+    obj["cost"] = cost;
+    obj["color"] = color.name();
+    obj["width"] = width;
+    obj["height"] = height;
+    obj["density"] = density;
+    obj["friction"] = friction;
+    obj["restitution"] = restitution;
+    obj["posX"] = posX;
+    obj["posY"] = posY;
+    return obj;
+}
+
+Placeable Placeable::fromJson(const QJsonObject& obj)
+{
+    QString name = obj["name"].toString();
+    int cost = obj["cost"].toInt();
+    QColor color(obj["color"].toString());
+    float width = obj["width"].toDouble();
+    float height = obj["height"].toDouble();
+    float density = obj["density"].toDouble();
+    float friction = obj["friction"].toDouble();
+    float restitution = obj["restitution"].toDouble();
+    float posX = obj["posX"].toDouble();
+    float posY = obj["posY"].toDouble();
+
+    Placeable placeable(name, cost, color, width, height, density, friction, restitution);
+    placeable.setPosition(posX, posY);
+
+    return placeable;
+}
+
+void Placeable::setPosition(float x, float y)
+{
+    posX = x;
+    posY = y;
+}
+
+float Placeable::getPosX() const
+{
+    return posX;
+}
+
+float Placeable::getPosY() const
+{
+    return posY;
+}

@@ -4,6 +4,8 @@
 #include <QString>
 #include <QColor>
 #include <Box2D/Box2D.h>
+#include <QJsonObject>
+
 
 class Placeable
 {
@@ -29,9 +31,18 @@ public:
     // Mutators
     void setName(const QString& name);
     void setDisplayColor(QColor color);
+    void setPosition(float x, float y);
 
     // Assign Box2D body to Placeable
     void assignBody(b2Body* body);
+
+    // Serialization methods
+    QJsonObject toJson() const;
+    static Placeable fromJson(const QJsonObject& obj);
+
+    // Accessors for position
+    float getPosX() const;
+    float getPosY() const;
 
 private:
     int cost;
@@ -44,6 +55,8 @@ private:
     float friction;     // Friction for Box2D fixture
     float restitution;  // Restitution (bounciness) for Box2D fixture
     b2Body* body;       // Pointer to the associated Box2D body
+    float posX;         // Position X for serialization
+    float posY;         // Position Y for serialization
 };
 
 #endif // PLACEABLE_H

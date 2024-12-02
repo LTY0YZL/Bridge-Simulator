@@ -1,0 +1,150 @@
+{
+    "grounds": [
+        {
+            "height": 2,
+            "posX": 0,
+            "posY": 5,
+            "width": 20
+        },
+        {
+            "height": 50,
+            "posX": 0,
+            "posY": -5,
+            "width": 1
+        }
+    ],
+    "placeables": [
+        {
+            "color": "#0000ff",
+            "cost": -113078253,
+            "density": 1,
+            "friction": 0.30000001192092896,
+            "height": 2,
+            "name": "Box1",
+            "posX": -10,
+            "posY": 20,
+            "restitution": 0.20000000298023224,
+            "width": 2
+        },
+        {
+            "color": "#ff0000",
+            "cost": -2065959912,
+            "density": 1,
+            "friction": 0.30000001192092896,
+            "height": 1.5,
+            "name": "Box2",
+            "posX": 5,
+            "posY": 15,
+            "restitution": 0.20000000298023224,
+            "width": 3
+        },
+        {
+            "color": "#00ff00",
+            "cost": -113078370,
+            "density": 1,
+            "friction": 0.5,
+            "height": 1,
+            "name": "Box3",
+            "posX": 0,
+            "posY": 10,
+            "restitution": 0.4000000059604645,
+            "width": 1
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -6.150000095367432,
+            "posY": 13.550000190734863,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -4.900000095367432,
+            "posY": 16.649999618530273,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -0.949999988079071,
+            "posY": 15.5,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": 2.4000000953674316,
+            "posY": 11.449999809265137,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": 4.849999904632568,
+            "posY": 7.150000095367432,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -6.650000095367432,
+            "posY": 9.75,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -4.75,
+            "posY": 6.150000095367432,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": -2065974344,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "name": "Box",
+            "posX": -2.3499999046325684,
+            "posY": 10.199999809265137,
+            "restitution": 0.5,
+            "width": 2
+        }
+    ]
+}
