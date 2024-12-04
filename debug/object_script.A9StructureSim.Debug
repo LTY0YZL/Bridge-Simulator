@@ -46,6 +46,7 @@ debug/b2WorldCallbacks.o
 debug/b2Rope.o
 debug/SceneWidget.o
 debug/gamelevel.o
+debug/joint.o
 debug/main.o
 debug/MainWindow.o
 debug/placeable.o

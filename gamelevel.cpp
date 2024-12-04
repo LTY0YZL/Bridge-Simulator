@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <QIODevice>
+#include "joint.h"
 
 GameLevel::GameLevel()
     : world(b2Vec2(0.0f, -10.0f)), worldScale(20.0f) {

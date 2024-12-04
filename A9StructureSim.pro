@@ -57,6 +57,7 @@ SOURCES += \
     Box2D/Rope/b2Rope.cpp \
     SceneWidget.cpp \
     gamelevel.cpp \
+    joint.cpp \
     main.cpp \
     MainWindow.cpp \
     placeable.cpp
@@ -112,6 +113,7 @@ HEADERS += \
     MainWindow.h \
     SceneWidget.h \
     gamelevel.h \
+    joint.h \
     placeable.h
 
 FORMS += \

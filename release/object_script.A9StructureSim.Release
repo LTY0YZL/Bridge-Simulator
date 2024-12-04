@@ -46,6 +46,7 @@ release/b2WorldCallbacks.o
 release/b2Rope.o
 release/SceneWidget.o
 release/gamelevel.o
+release/joint.o
 release/main.o
 release/MainWindow.o
 release/placeable.o
