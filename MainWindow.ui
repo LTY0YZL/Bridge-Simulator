@@ -14,19 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>10</y>
-      <width>181</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>drop</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -54,19 +41,6 @@
      <string>Mouse World Location</string>
     </property>
    </widget>
-   <widget class="QLabel" name="budgetLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Budget:(TODO)</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="playButton">
     <property name="geometry">
      <rect>
@@ -77,7 +51,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Play</string>
+     <string>Simulate</string>
     </property>
    </widget>
    <widget class="QScrollArea" name="scrollArea_2">
@@ -224,58 +198,6 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>680</x>
-      <y>70</y>
-      <width>181</width>
-      <height>137</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <widget class="QWidget" name="widget" native="true">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>Level Goal:(TODO)</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBox">
-          <property name="text">
-           <string>CheckBox</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QProgressBar" name="progressBar">
-          <property name="value">
-           <number>24</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
       <x>670</x>
       <y>230</y>
       <width>201</width>
@@ -362,9 +284,15 @@
         <property name="geometry">
          <rect>
           <x>0</x>
+<<<<<<< HEAD
           <y>-13</y>
           <width>183</width>
           <height>165</height>
+=======
+          <y>0</y>
+          <width>197</width>
+          <height>123</height>
+>>>>>>> 8ee3171 (Udptae A bit UI)
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
@@ -426,45 +354,92 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
+   <widget class="QScrollArea" name="scrollArea_3">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>420</y>
-      <width>141</width>
-      <height>151</height>
+      <x>670</x>
+      <y>20</y>
+      <width>201</width>
+      <height>201</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_6">
-     <item>
-      <widget class="QPushButton" name="hailButton">
-       <property name="text">
-        <string>Hail</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="hailSpinBox">
-       <property name="maximum">
-        <number>5</number>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="earthquakeButton">
-       <property name="text">
-        <string>Earthquake</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="earthquakeSpinBox">
-       <property name="maximum">
-        <number>6</number>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>199</width>
+       <height>199</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="toolArea_3">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QPushButton" name="hailButton">
+            <property name="text">
+             <string>Hail</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="hailSpinBox">
+            <property name="maximum">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="earthquakeButton">
+            <property name="text">
+             <string>Earthquake</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="earthquakeSpinBox">
+            <property name="maximum">
+             <number>6</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>0</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Weather System:</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -478,7 +453,7 @@
    </property>
    <widget class="QMenu" name="menuSelectLevel_todo">
     <property name="title">
-     <string>SelectLevel(todo)</string>
+     <string>Structural Simulation V0.1</string>
     </property>
    </widget>
    <addaction name="menuSelectLevel_todo"/>
