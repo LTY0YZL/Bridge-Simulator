@@ -19,6 +19,8 @@ public:
     void stopSimulation();
     void setCurrentTool(int ID);
     void setWorldScale(float scale);
+    bool hailSpawnPaused = false;
+
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;

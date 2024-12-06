@@ -42,6 +42,10 @@ private slots:
 
     void on_goToLevelButton_clicked();
 
+    void on_hailButton_clicked();
+
+    void on_earthquakeButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance

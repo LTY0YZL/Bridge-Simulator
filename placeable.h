@@ -5,7 +5,7 @@
 #include <QColor>
 #include <Box2D/Box2D.h>
 #include <QJsonObject>
-
+#include <QDateTime>
 
 class Placeable
 {
@@ -44,6 +44,13 @@ public:
     float getPosX() const;
     float getPosY() const;
 
+    //hail tracking
+    void setAsHail(bool hail);
+    bool isHailStone() const;
+
+    void setCreationTime(const QDateTime& time);
+    QDateTime getCreationTime() const;
+
 private:
     int cost;
     QString name;       // Name of the object
@@ -57,6 +64,8 @@ private:
     b2Body* body;       // Pointer to the associated Box2D body
     float posX;         // Position X for serialization
     float posY;         // Position Y for serialization
+    bool hail;          // Indicates hail
+    QDateTime creationTime;
 };
 
 #endif // PLACEABLE_H

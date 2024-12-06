@@ -7,7 +7,7 @@
 #include "joint.h"
 
 GameLevel::GameLevel()
-    : world(b2Vec2(0.0f, -10.0f)), worldScale(20.0f) {
+    : world(b2Vec2(0.0f, -10.0f)), worldScale(20.0f), hailLevel(0), earthquakeLevel(0) {
     qDebug() << "GameLevel initialized with worldScale:" << worldScale;
 }
 
@@ -130,6 +130,8 @@ bool GameLevel::saveLevel(const QString& filename) const
         groundsArray.append(groundObj);
     }
     levelObject["grounds"] = groundsArray;
+    levelObject["hailLevel"] = hailLevel;
+    levelObject["earthquakeLevel"] = earthquakeLevel;
 
     QJsonDocument doc(levelObject);
     QFile file(filename);
@@ -184,6 +186,17 @@ bool GameLevel::loadLevel(const QString& filename)
         createDynamicBody(placeable, placeable.getPosX(), placeable.getPosY());
     }
 
+    if (levelObject.contains("hailLevel"))
+        hailLevel = levelObject["hailLevel"].toInt();
+    else
+        hailLevel = 0;
+
+    if (levelObject.contains("earthquakeLevel"))
+        earthquakeLevel = levelObject["earthquakeLevel"].toInt();
+    else
+        earthquakeLevel = 0;
+
+
     return true;
 }
 
@@ -198,4 +211,22 @@ void GameLevel::clearLevel()
 
     groundBodies.clear();
     placeables.clear();
+}
+
+void GameLevel::setHailLevel(int level)
+{
+    hailLevel = level;
+}
+int GameLevel::getHailLevel() const
+{
+    return hailLevel;
+}
+
+void GameLevel::setEarthquakeLevel(int level)
+{
+    earthquakeLevel = level;
+}
+int GameLevel::getEarthquakeLevel() const
+{
+    return earthquakeLevel;
 }

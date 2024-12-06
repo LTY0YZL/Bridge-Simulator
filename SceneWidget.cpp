@@ -1,4 +1,5 @@
 #include "SceneWidget.h"
+#include <algorithm>
 
 SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     : QWidget(parent),
@@ -14,7 +15,94 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
 {
     setMouseTracking(true);
     connect(simulationTimer, &QTimer::timeout, [this]() {
-        gameLevel->stepWorld(1.0f / 60.0f, 6, 2); // Step the simulation
+        gameLevel->stepWorld(1.0f / 60.0f, 6, 2);
+
+        // Hail
+        int hLevel = gameLevel->getHailLevel();
+        if (hLevel > 0 && !hailSpawnPaused)
+        {
+            static int hailCounter = 0;
+            hailCounter++;
+            int spawnInterval = std::max(1, 60 / hLevel);
+            if (hailCounter % spawnInterval == 0)
+            {
+                float hailSize = 0.2f + 0.2f * hLevel;
+                float randomX = ((rand() % 20) - 10.0f);
+                float spawnY = 40.0f;
+
+                Placeable hailStone("Hail", 0, Qt::white, hailSize, hailSize, 0.1f, 0.3f, 0.1f);
+                hailStone.setAsHail(true);
+                hailStone.setCreationTime(QDateTime::currentDateTime());
+
+                gameLevel->createDynamicBody(hailStone, randomX, spawnY);
+            }
+        }
+
+        // Earthquake
+        int eqLevel = gameLevel->getEarthquakeLevel();
+        if (eqLevel > 0)
+        {
+            float shakeIntensity = (float)eqLevel * 0.5f;
+            float shakeX = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
+            float shakeY = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
+
+            panOffsetX = shakeX * worldScale;
+            panOffsetY = shakeY * worldScale;
+
+            auto& placeables = gameLevel->getPlaceables();
+
+            float nearGroundThreshold = 2.0f;
+            float velocityThreshold = 0.1f;
+
+            for (auto &p : placeables)
+            {
+                b2Body* body = p.getBody();
+                if (!body) continue;
+
+                if (p.getName() == "Hail")
+                {
+                    b2Vec2 pos = body->GetPosition();
+                    b2Vec2 vel = body->GetLinearVelocity();
+
+                    if (pos.y <= nearGroundThreshold && fabs(vel.y) < velocityThreshold)
+                    {
+                        float impulse = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * 0.5f);
+                        body->ApplyLinearImpulse(b2Vec2(impulse, 0), body->GetWorldCenter(), true);
+                    }
+                }
+                else
+                {
+                    float impulse = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * 0.5f);
+                    body->ApplyLinearImpulse(b2Vec2(impulse, 0), body->GetWorldCenter(), true);
+                }
+            }
+        }
+        else
+        {
+            panOffsetX = 0;
+            panOffsetY = 0;
+        }
+
+        // Remove hail older than 10 seconds
+        {
+            auto& placeables = gameLevel->getPlaceables();
+            QDateTime now = QDateTime::currentDateTime();
+
+            placeables.erase(std::remove_if(placeables.begin(), placeables.end(),
+                                            [this, &now](const Placeable& p) {
+                                                if (p.isHailStone()) {
+                                                    qint64 elapsedMs = p.getCreationTime().msecsTo(now);
+                                                    if (elapsedMs > 15000) {
+                                                        if (b2Body* body = p.getBody()) {
+                                                            gameLevel->destroyBody(body);
+                                                        }
+                                                        return true;
+                                                    }
+                                                }
+                                                return false;
+                                            }), placeables.end());
+        }
+
         update(); // Repaint the widget
     });
 }
@@ -56,10 +144,6 @@ void SceneWidget::paintEvent(QPaintEvent *)
         linePreview(painter, firstPoint, currentMousePos);
     }
 }
-
-
-
-
 
 void SceneWidget::setWorldScale(float scale) // World scale for zooming
 {
@@ -106,11 +190,19 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
             for (int i = 0; i < polygon->m_count; ++i)
             {
                 b2Vec2 vertex = body->GetWorldPoint(polygon->m_vertices[i]);
-                //QPointF qPoint(vertex.x * worldScale, vertex.y * worldScale);
                 QPointF qPoint = box2DWorldToScreen(vertex);
                 qPolygon << qPoint;
             }
             painter.drawPolygon(qPolygon);
+        }
+        else if (shape->GetType() == b2Shape::e_circle)
+        {
+            const b2CircleShape* circle = static_cast<const b2CircleShape*>(shape);
+            b2Vec2 center = body->GetWorldPoint(circle->m_p);
+            float radius = circle->m_radius * worldScale;
+
+            QPointF screenCenter = box2DWorldToScreen(center);
+            painter.drawEllipse(screenCenter, radius, radius);
         }
     }
 }

@@ -26,6 +26,12 @@ public:
     bool saveLevel(const QString& filename) const;
     bool loadLevel(const QString& filename);
 
+    void setHailLevel(int level);
+    int getHailLevel() const;
+
+    void setEarthquakeLevel(int level);
+    int getEarthquakeLevel() const;
+
 private:
     b2World world;
     std::vector<b2Body*> groundBodies;
@@ -33,6 +39,9 @@ private:
 
     float worldScale; // Scaling factor for Box2D world
     void clearLevel();
+
+    int hailLevel;
+    int earthquakeLevel;
 };
 
 #endif // GAMELEVEL_H

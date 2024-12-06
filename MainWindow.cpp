@@ -131,6 +131,11 @@ void MainWindow::on_loadButton_clicked()
             ui->playButton->setEnabled(true);
             sceneWidget->update();
 
+            sceneWidget->hailSpawnPaused = true;
+            QTimer::singleShot(3000, sceneWidget, [this]() {
+                sceneWidget->hailSpawnPaused = false;
+            });
+
             QMessageBox::information(this, "Load Level", QString("Level %1 loaded successfully.").arg(currentLevelNumber));
             qDebug() << "Level" << currentLevelNumber << "loaded successfully.";
         }
@@ -213,4 +218,20 @@ void MainWindow::on_goToLevelButton_clicked()
     {
         QMessageBox::warning(this, "Load Failed", QString("Failed to load Level %1.").arg(levelNumber));
     }
+}
+
+void MainWindow::on_hailButton_clicked()
+{
+    int hLevel = ui->hailSpinBox->value();
+    gameLevel->setHailLevel(hLevel);
+    qDebug() << "Hail level set to:" << hLevel;
+    QMessageBox::information(this, "Hail Level Set", QString("Hail level set to %1").arg(hLevel));
+}
+
+void MainWindow::on_earthquakeButton_clicked()
+{
+    int eqLevel = ui->earthquakeSpinBox->value();
+    gameLevel->setEarthquakeLevel(eqLevel);
+    qDebug() << "Earthquake level set to:" << eqLevel;
+    QMessageBox::information(this, "Earthquake Level Set", QString("Earthquake level set to %1").arg(eqLevel));
 }

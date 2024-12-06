@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>935</width>
-    <height>600</height>
+    <width>912</width>
+    <height>626</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -218,15 +218,15 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Level Goal:(TODO)</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QWidget" name="widget" native="true">
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Level Goal:(TODO)</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QCheckBox" name="checkBox">
           <property name="text">
@@ -398,13 +398,53 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>420</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QPushButton" name="hailButton">
+       <property name="text">
+        <string>Hail</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="hailSpinBox">
+       <property name="maximum">
+        <number>5</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="earthquakeButton">
+       <property name="text">
+        <string>Earthquake</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="earthquakeSpinBox">
+       <property name="maximum">
+        <number>6</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>935</width>
+     <width>912</width>
      <height>26</height>
     </rect>
    </property>

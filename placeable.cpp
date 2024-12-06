@@ -1,4 +1,5 @@
 #include "Placeable.h"
+#include <QDateTime>
 
 Placeable::Placeable(const QString& name, const int,
                      const QColor& color,
@@ -8,7 +9,7 @@ Placeable::Placeable(const QString& name, const int,
                      float friction,
                      float restitution)
     : cost(cost), name(name), color(color), displayColor(color),
-    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr), posX(0.0f), posY(0.0f) {}
+    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr), posX(0.0f), posY(0.0f), hail(false) {}
 
 void Placeable::assignBody(b2Body* body)
 {
@@ -57,19 +58,32 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY)
 
     b2Body* newBody = world->CreateBody(&bodyDef);
 
-    // Define the box shape
-    b2PolygonShape boxShape;
-    boxShape.SetAsBox(width / 2.0f, height / 2.0f);
+    // If this is hail, use a circular shape
+    if (hail && name == "Hail") {
+        b2CircleShape circle;
+        // radius is half the width if we assume width=height for hail
+        circle.m_radius = width / 2.0f;
 
-    // Define the fixture
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &boxShape;
-    fixtureDef.density = density; // Weight
-    fixtureDef.friction = friction;
-    fixtureDef.restitution = restitution; // Bounciness
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &circle;
+        fixtureDef.density = density;
+        fixtureDef.friction = friction;
+        fixtureDef.restitution = restitution;
 
-    // Attach the fixture to the body
-    newBody->CreateFixture(&fixtureDef);
+        newBody->CreateFixture(&fixtureDef);
+    } else {
+        // Default to a box shape for non-hail
+        b2PolygonShape boxShape;
+        boxShape.SetAsBox(width / 2.0f, height / 2.0f);
+
+        b2FixtureDef fixtureDef;
+        fixtureDef.shape = &boxShape;
+        fixtureDef.density = density;
+        fixtureDef.friction = friction;
+        fixtureDef.restitution = restitution;
+
+        newBody->CreateFixture(&fixtureDef);
+    }
 
     // Assign the created body to this Placeable
     assignBody(newBody);
@@ -90,6 +104,7 @@ QJsonObject Placeable::toJson() const
     obj["restitution"] = restitution;
     obj["posX"] = posX;
     obj["posY"] = posY;
+    obj["isHail"] = hail;
     return obj;
 }
 
@@ -109,6 +124,11 @@ Placeable Placeable::fromJson(const QJsonObject& obj)
     Placeable placeable(name, cost, color, width, height, density, friction, restitution);
     placeable.setPosition(posX, posY);
 
+    if (obj.contains("isHail")) {
+        bool isHail = obj["isHail"].toBool();
+        placeable.setAsHail(isHail);
+    }
+
     return placeable;
 }
 
@@ -126,4 +146,24 @@ float Placeable::getPosX() const
 float Placeable::getPosY() const
 {
     return posY;
+}
+
+void Placeable::setAsHail(bool hailValue)
+{
+    hail = hailValue;
+}
+
+bool Placeable::isHailStone() const
+{
+    return hail;
+}
+
+void Placeable::setCreationTime(const QDateTime& time)
+{
+    creationTime = time;
+}
+
+QDateTime Placeable::getCreationTime() const
+{
+    return creationTime;
 }

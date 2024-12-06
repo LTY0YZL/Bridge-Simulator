@@ -23,6 +23,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -53,9 +54,9 @@ public:
     QPushButton *pushButton_2;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_4;
-    QLabel *label_4;
     QWidget *widget;
     QVBoxLayout *verticalLayout_3;
+    QLabel *label_4;
     QCheckBox *checkBox;
     QProgressBar *progressBar;
     QSpacerItem *verticalSpacer_3;
@@ -79,6 +80,12 @@ public:
     QPushButton *deleteGroundButton;
     QPushButton *pushButton_7;
     QSpacerItem *verticalSpacer;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_6;
+    QPushButton *hailButton;
+    QSpinBox *hailSpinBox;
+    QPushButton *earthquakeButton;
+    QSpinBox *earthquakeSpinBox;
     QMenuBar *menubar;
     QMenu *menuSelectLevel_todo;
     QStatusBar *statusbar;
@@ -87,7 +94,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(935, 600);
+        MainWindow->resize(912, 626);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         pushButton = new QPushButton(centralwidget);
@@ -166,15 +173,15 @@ public:
         verticalLayout_4 = new QVBoxLayout(layoutWidget);
         verticalLayout_4->setObjectName("verticalLayout_4");
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
-        label_4 = new QLabel(layoutWidget);
-        label_4->setObjectName("label_4");
-
-        verticalLayout_4->addWidget(label_4);
-
         widget = new QWidget(layoutWidget);
         widget->setObjectName("widget");
         verticalLayout_3 = new QVBoxLayout(widget);
         verticalLayout_3->setObjectName("verticalLayout_3");
+        label_4 = new QLabel(widget);
+        label_4->setObjectName("label_4");
+
+        verticalLayout_3->addWidget(label_4);
+
         checkBox = new QCheckBox(widget);
         checkBox->setObjectName("checkBox");
 
@@ -286,10 +293,38 @@ public:
 
         verticalLayout_5->addWidget(scrollArea);
 
+        verticalLayoutWidget_2 = new QWidget(centralwidget);
+        verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
+        verticalLayoutWidget_2->setGeometry(QRect(0, 420, 141, 151));
+        verticalLayout_6 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_6->setObjectName("verticalLayout_6");
+        verticalLayout_6->setContentsMargins(0, 0, 0, 0);
+        hailButton = new QPushButton(verticalLayoutWidget_2);
+        hailButton->setObjectName("hailButton");
+
+        verticalLayout_6->addWidget(hailButton);
+
+        hailSpinBox = new QSpinBox(verticalLayoutWidget_2);
+        hailSpinBox->setObjectName("hailSpinBox");
+        hailSpinBox->setMaximum(5);
+
+        verticalLayout_6->addWidget(hailSpinBox);
+
+        earthquakeButton = new QPushButton(verticalLayoutWidget_2);
+        earthquakeButton->setObjectName("earthquakeButton");
+
+        verticalLayout_6->addWidget(earthquakeButton);
+
+        earthquakeSpinBox = new QSpinBox(verticalLayoutWidget_2);
+        earthquakeSpinBox->setObjectName("earthquakeSpinBox");
+        earthquakeSpinBox->setMaximum(6);
+
+        verticalLayout_6->addWidget(earthquakeSpinBox);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 935, 26));
+        menubar->setGeometry(QRect(0, 0, 912, 26));
         menuSelectLevel_todo = new QMenu(menubar);
         menuSelectLevel_todo->setObjectName("menuSelectLevel_todo");
         MainWindow->setMenuBar(menubar);
@@ -331,6 +366,8 @@ public:
         drawGroundButton->setText(QCoreApplication::translate("MainWindow", "DrawGround", nullptr));
         deleteGroundButton->setText(QCoreApplication::translate("MainWindow", "DeleteGround", nullptr));
         pushButton_7->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        hailButton->setText(QCoreApplication::translate("MainWindow", "Hail", nullptr));
+        earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "SelectLevel(todo)", nullptr));
     } // retranslateUi
 
