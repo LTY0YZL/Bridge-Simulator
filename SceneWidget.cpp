@@ -274,7 +274,7 @@ void SceneWidget::setCurrentTool(int ID)
     placeablePreview = (ID == 0 || ID == 3 || ID == 4);
     if (ID == 0)
     {
-        currentBlock= Placeable("Box", 50, Qt::blue, 2.0f, 2.0f,0.5,0.5,0.1); // Normal Block
+        currentBlock= Placeable("Box", 50, Qt::blue, 2.0f, 2.0f,0.5,0.5,0.1);
     }
     else if (ID == 3)
     {
