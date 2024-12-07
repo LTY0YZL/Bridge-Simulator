@@ -53,6 +53,10 @@ public:
     void setCreationTime(const QDateTime& time);
     QDateTime getCreationTime() const;
 
+    // ID handling
+    void setID(int id);
+    int getID() const;
+
 private:
     int cost;
     QString name;       // Name of the object
@@ -68,6 +72,7 @@ private:
     float posY;         // Position Y for serialization
     bool hail;          // Indicates hail
     QDateTime creationTime;
+    int id;
 };
 
 #endif // PLACEABLE_H

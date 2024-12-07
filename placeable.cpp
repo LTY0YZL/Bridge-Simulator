@@ -9,7 +9,7 @@ Placeable::Placeable(const QString& name, const int,
                      float friction,
                      float restitution)
     : cost(cost), name(name), color(color), displayColor(color),
-    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr), posX(0.0f), posY(0.0f), hail(false) {}
+    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr), posX(0.0f), posY(0.0f), hail(false), id(-1) {}
 
 void Placeable::assignBody(b2Body* body)
 {
@@ -105,6 +105,7 @@ QJsonObject Placeable::toJson() const
     obj["posX"] = posX;
     obj["posY"] = posY;
     obj["isHail"] = hail;
+    obj["id"] = id;
     return obj;
 }
 
@@ -127,6 +128,10 @@ Placeable Placeable::fromJson(const QJsonObject& obj)
     if (obj.contains("isHail")) {
         bool isHail = obj["isHail"].toBool();
         placeable.setAsHail(isHail);
+    }
+
+    if (obj.contains("id")) {
+        placeable.setID(obj["id"].toInt());
     }
 
     return placeable;
@@ -174,4 +179,14 @@ float Placeable::getWidth() const
 float Placeable::getHeight() const
 {
     return height;
+}
+
+void Placeable::setID(int idValue)
+{
+    id = idValue;
+}
+
+int Placeable::getID() const
+{
+    return id;
 }

@@ -1,0 +1,117 @@
+{
+    "earthquakeLevel": 0,
+    "grounds": [
+        {
+            "height": 2,
+            "posX": 0,
+            "posY": 5,
+            "width": 20
+        },
+        {
+            "height": 50,
+            "posX": 0,
+            "posY": -5,
+            "width": 1
+        }
+    ],
+    "hailLevel": 0,
+    "joints": [
+        {
+            "anchorAx": -4.75,
+            "anchorAy": 10.300000190734863,
+            "anchorBx": -5.900000095367432,
+            "anchorBy": 9.699999809265137,
+            "bodyA_id": 5,
+            "bodyB_id": 6,
+            "dampingRatio": 0.800000011920929,
+            "frequencyHz": 1,
+            "type": "distance"
+        }
+    ],
+    "placeables": [
+        {
+            "color": "#0000ff",
+            "cost": 54,
+            "density": 1,
+            "friction": 0.30000001192092896,
+            "height": 2,
+            "id": 1,
+            "isHail": false,
+            "name": "Box1",
+            "posX": -10,
+            "posY": 20,
+            "restitution": 0.20000000298023224,
+            "width": 2
+        },
+        {
+            "color": "#ff0000",
+            "cost": 54,
+            "density": 1,
+            "friction": 0.30000001192092896,
+            "height": 1.5,
+            "id": 2,
+            "isHail": false,
+            "name": "Box2",
+            "posX": 5,
+            "posY": 15,
+            "restitution": 0.20000000298023224,
+            "width": 3
+        },
+        {
+            "color": "#00ff00",
+            "cost": 54,
+            "density": 1,
+            "friction": 0.5,
+            "height": 1,
+            "id": 3,
+            "isHail": false,
+            "name": "Box3",
+            "posX": 0,
+            "posY": 10,
+            "restitution": 0.4000000059604645,
+            "width": 1
+        },
+        {
+            "color": "#0000ff",
+            "cost": 54,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "id": 4,
+            "isHail": false,
+            "name": "Box",
+            "posX": 5.400000095367432,
+            "posY": 10.350000381469727,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": 54,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "id": 5,
+            "isHail": false,
+            "name": "Box",
+            "posX": -4.300000190734863,
+            "posY": 11.199999809265137,
+            "restitution": 0.5,
+            "width": 2
+        },
+        {
+            "color": "#0000ff",
+            "cost": 0,
+            "density": 0.5,
+            "friction": 0.5,
+            "height": 2,
+            "id": 6,
+            "isHail": false,
+            "name": "Box",
+            "posX": -5.949999809265137,
+            "posY": 8.699999809265137,
+            "restitution": 0.10000000149011612,
+            "width": 2
+        }
+    ]
+}

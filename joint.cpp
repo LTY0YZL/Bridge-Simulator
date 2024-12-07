@@ -49,7 +49,7 @@ b2Joint* Joint::connectDistanceJoint(Placeable& bodyA, Placeable& bodyB, const b
 }
 
 // Method to get all joints for drawing or other purposes
-std::vector<b2Joint*>& Joint::getJoints()
+std::vector<b2Joint*>& Joint::getJoints() const
 {
     static std::vector<b2Joint*> jointList;
     jointList.clear();
@@ -104,4 +104,11 @@ void Joint::update()
         }
         ++it;
     }
+}
+
+void Joint::deleteAllJoints() {
+    for (auto& jd : joints) {
+        world->DestroyJoint(jd.joint);
+    }
+    joints.clear();
 }

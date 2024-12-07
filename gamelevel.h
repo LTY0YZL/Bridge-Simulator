@@ -35,6 +35,9 @@ public:
     void setEarthquakeLevel(int level);
     int getEarthquakeLevel() const;
 
+    int getPlaceableIDForBody(b2Body* body) const;
+    b2Body* getBodyForPlaceableID(int id) const;
+
 private:
     b2World world;
     std::vector<b2Body*> groundBodies;
@@ -46,6 +49,8 @@ private:
 
     int hailLevel;
     int earthquakeLevel;
+
+    int nextPlaceableID;
 };
 
 #endif // GAMELEVEL_H

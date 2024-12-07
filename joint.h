@@ -18,12 +18,14 @@ public:
     b2Joint* connectDistanceJoint(Placeable& bodyA, Placeable& bodyB, const b2Vec2& anchorA, const b2Vec2& anchorB, float frequencyHz, float dampingRatio, float maxForce);
 
     // Method to get all joints
-    std::vector<b2Joint*>& getJoints();
+    std::vector<b2Joint*>& getJoints() const;
 
     void deleteJointsForBody(b2Body* body);
 
     // Method to update joints and handle breaking logic
     void update();
+
+    void deleteAllJoints();
 
 private:
     b2World* world;
