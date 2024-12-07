@@ -47,6 +47,8 @@ public:
     QPushButton *selectTool;
     QPushButton *deleteToolButton;
     QPushButton *boxToolButton;
+    QPushButton *stringToolButton;
+    QPushButton *rebarToolButton;
     QSpacerItem *verticalSpacer_2;
     QLabel *label_2;
     QLabel *label_5;
@@ -78,6 +80,8 @@ public:
     QVBoxLayout *toolArea;
     QPushButton *drawGroundButton;
     QPushButton *deleteGroundButton;
+    QPushButton *createAnchorButton;
+    QPushButton *deleteAnchorButton;
     QPushButton *pushButton_7;
     QSpacerItem *verticalSpacer;
     QWidget *verticalLayoutWidget_2;
@@ -122,7 +126,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 117, 242));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 109, 259));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setObjectName("gridLayout_2");
         toolArea_2 = new QVBoxLayout();
@@ -141,6 +145,16 @@ public:
         boxToolButton->setObjectName("boxToolButton");
 
         toolArea_2->addWidget(boxToolButton);
+
+        stringToolButton = new QPushButton(scrollAreaWidgetContents_2);
+        stringToolButton->setObjectName("stringToolButton");
+
+        toolArea_2->addWidget(stringToolButton);
+
+        rebarToolButton = new QPushButton(scrollAreaWidgetContents_2);
+        rebarToolButton->setObjectName("rebarToolButton");
+
+        toolArea_2->addWidget(rebarToolButton);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -262,7 +276,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 180, 132));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -13, 183, 165));
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -276,6 +290,16 @@ public:
         deleteGroundButton->setObjectName("deleteGroundButton");
 
         toolArea->addWidget(deleteGroundButton);
+
+        createAnchorButton = new QPushButton(scrollAreaWidgetContents);
+        createAnchorButton->setObjectName("createAnchorButton");
+
+        toolArea->addWidget(createAnchorButton);
+
+        deleteAnchorButton = new QPushButton(scrollAreaWidgetContents);
+        deleteAnchorButton->setObjectName("deleteAnchorButton");
+
+        toolArea->addWidget(deleteAnchorButton);
 
         pushButton_7 = new QPushButton(scrollAreaWidgetContents);
         pushButton_7->setObjectName("pushButton_7");
@@ -324,7 +348,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 912, 26));
+        menubar->setGeometry(QRect(0, 0, 912, 20));
         menuSelectLevel_todo = new QMenu(menubar);
         menuSelectLevel_todo->setObjectName("menuSelectLevel_todo");
         MainWindow->setMenuBar(menubar);
@@ -349,6 +373,8 @@ public:
         selectTool->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
         deleteToolButton->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         boxToolButton->setText(QCoreApplication::translate("MainWindow", "box", nullptr));
+        stringToolButton->setText(QCoreApplication::translate("MainWindow", "String", nullptr));
+        rebarToolButton->setText(QCoreApplication::translate("MainWindow", "Rebar", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Click To Use", nullptr));
@@ -365,6 +391,8 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "Right Click To Use", nullptr));
         drawGroundButton->setText(QCoreApplication::translate("MainWindow", "DrawGround", nullptr));
         deleteGroundButton->setText(QCoreApplication::translate("MainWindow", "DeleteGround", nullptr));
+        createAnchorButton->setText(QCoreApplication::translate("MainWindow", "Create Anchor", nullptr));
+        deleteAnchorButton->setText(QCoreApplication::translate("MainWindow", "Delete Anchor", nullptr));
         pushButton_7->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         hailButton->setText(QCoreApplication::translate("MainWindow", "Hail", nullptr));
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));

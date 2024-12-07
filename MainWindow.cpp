@@ -90,6 +90,15 @@ void MainWindow::on_deleteToolButton_clicked()
     sceneWidget->setCurrentTool(2);
 }
 
+void MainWindow::on_stringToolButton_clicked()
+{
+    sceneWidget->setCurrentTool(3);
+}
+
+void MainWindow::on_rebarToolButton_clicked()
+{
+    sceneWidget->setCurrentTool(4);
+}
 
 void MainWindow::on_drawGroundButton_clicked()
 {
@@ -100,6 +109,16 @@ void MainWindow::on_drawGroundButton_clicked()
 void MainWindow::on_deleteGroundButton_clicked()
 {
     sceneWidget->setCurrentTool(-2);
+}
+
+void MainWindow::on_createAnchorButton_clicked()
+{
+    sceneWidget->setCurrentTool(-3);
+}
+
+void MainWindow::on_deleteAnchorButton_clicked()
+{
+    sceneWidget->setCurrentTool(-4);
 }
 
 void MainWindow::on_saveButton_clicked()

@@ -97,8 +97,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>117</width>
-       <height>242</height>
+       <width>109</width>
+       <height>259</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -122,6 +122,20 @@
          <widget class="QPushButton" name="boxToolButton">
           <property name="text">
            <string>box</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="stringToolButton">
+          <property name="text">
+           <string>String</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="rebarToolButton">
+          <property name="text">
+           <string>Rebar</string>
           </property>
          </widget>
         </item>
@@ -348,9 +362,9 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>0</y>
-          <width>180</width>
-          <height>132</height>
+          <y>-13</y>
+          <width>183</width>
+          <height>165</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
@@ -367,6 +381,20 @@
             <widget class="QPushButton" name="deleteGroundButton">
              <property name="text">
               <string>DeleteGround</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="createAnchorButton">
+             <property name="text">
+              <string>Create Anchor</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="deleteAnchorButton">
+             <property name="text">
+              <string>Delete Anchor</string>
              </property>
             </widget>
            </item>
@@ -445,7 +473,7 @@
      <x>0</x>
      <y>0</y>
      <width>912</width>
-     <height>26</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSelectLevel_todo">

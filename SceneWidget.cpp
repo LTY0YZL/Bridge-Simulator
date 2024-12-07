@@ -103,7 +103,7 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
                                             }), placeables.end());
         }
 
-        update(); // Repaint the widget
+        update();
     });
 }
 
@@ -137,11 +137,22 @@ void SceneWidget::paintEvent(QPaintEvent *)
         }
     }
 
+    // Draw all joints
+    const auto& joints = gameLevel->getJoint().getJoints();
+    drawJoints(painter, joints);
+
     // Draw the preview if applicable
     if (showPreview && isFirstPointSet)
     {
-        areaPreview(painter, firstPoint, currentMousePos);
-        linePreview(painter, firstPoint, currentMousePos);
+        if (currentTool == -1)
+        {
+            areaPreview(painter, firstPoint, currentMousePos);
+            linePreview(painter, firstPoint, currentMousePos);
+        }
+        else if (currentTool == 3 || currentTool == 4)
+        {
+            linePreview(painter, firstPoint, currentMousePos);
+        }
     }
 }
 
@@ -207,6 +218,28 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
     }
 }
 
+void SceneWidget::drawJoints(QPainter& painter, const std::vector<b2Joint*>& joints)
+{
+    QPen jointPen(Qt::SolidLine);
+    jointPen.setColor(Qt::black); // Set the color to blue for joints
+    jointPen.setWidth(5);
+    painter.setPen(jointPen);
+
+    for (const auto& joint : joints)
+    {
+        if (!joint || !joint->GetBodyA() || !joint->GetBodyB())
+            return;
+
+        b2Vec2 anchorA = joint->GetAnchorA();
+        b2Vec2 anchorB = joint->GetAnchorB();
+
+        QPointF screenPointA = box2DWorldToScreen(anchorA);
+        QPointF screenPointB = box2DWorldToScreen(anchorB);
+
+        painter.drawLine(screenPointA, screenPointB);
+    }
+}
+
 QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
 {
     // Adjust screen position by pan offset before applying transformation
@@ -214,6 +247,7 @@ QPointF SceneWidget::screenToWorld(const QPointF& screenPos) const
     float box2dY = (height() + panOffsetY - screenPos.y()) / worldScale;
     return QPointF(box2dX, box2dY);
 }
+
 QPointF SceneWidget::box2DWorldToScreen(const b2Vec2& worldPos) const
 {
     float screenX = (worldPos.x * worldScale) ;
@@ -224,7 +258,6 @@ QPointF SceneWidget::box2DWorldToScreen(const b2Vec2& worldPos) const
 
 void SceneWidget::setCurrentTool(int ID)
 {
-
     currentTool=ID;
 }
 
@@ -242,15 +275,24 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
 
         if (event->button() == Qt::RightButton)
         {
-            if (currentTool == -1)
+            if (currentTool == -1) //Tool to create ground objects
             {
                 createGroundWithTwoPoints(worldPos);
-                showPreview = isFirstPointSet; // Show preview only after the first point is set
                 return;
             }
             else if (currentTool == -2) // Tool to delete ground objects
             {
                 deleteGroundAt(worldPos);
+                return;
+            }
+            else if (currentTool == -3) // Tool to create anchor objects
+            {
+                createAnchorAt(worldPos);
+                return;
+            }
+            else if (currentTool == -4) // Tool to delete anchor objects
+            {
+                deleteAnchorAt(worldPos);
                 return;
             }
         }
@@ -260,7 +302,6 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
         {
             Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
             gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
-            update();
         }
         else if (currentTool == 1)
         {
@@ -268,7 +309,6 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
             if (placeable)
             {
                 placeable->setDisplayColor(QColor("forestgreen"));
-                update();
             }
         }
         else if (currentTool == 2)
@@ -282,10 +322,15 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
                     gameLevel->destroyBody(body);
                 }
                 placeables.erase(it);
-                update();
             }
         }
+        else if (currentTool == 3 || currentTool == 4) // Select two placeables to create a joint
+        {
+            createJointWithTwoPoints(worldPos);
+            return;
+        }
     }
+    update();
 }
 
 void SceneWidget::mouseMoveEvent(QMouseEvent* event)
@@ -328,6 +373,7 @@ void SceneWidget::mouseReleaseEvent(QMouseEvent* event)
         isPanning = false; // End the panning operation
     }
 }
+
 void SceneWidget::wheelEvent(QWheelEvent* event)
 {
     if (event->angleDelta().y() > 0) {
@@ -351,6 +397,7 @@ void SceneWidget::wheelEvent(QWheelEvent* event)
     // Trigger a repaint with the updated scale
     update();
 }
+
 Placeable* SceneWidget::findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables)
 {
     for (auto& placeable : placeables)
@@ -369,6 +416,7 @@ Placeable* SceneWidget::findPlaceableAt(const QPointF& worldPos, std::vector<Pla
     }
     return nullptr; // No matching placeable found
 }
+
 std::vector<Placeable>::iterator SceneWidget::findPlaceableIteratorAt(
     const QPointF& worldPos, std::vector<Placeable>& placeables)
 {
@@ -388,6 +436,7 @@ std::vector<Placeable>::iterator SceneWidget::findPlaceableIteratorAt(
     }
     return placeables.end();
 }
+
 void SceneWidget::recordTwoWorldPoint(const QPointF& worldPos)
 {
     if (!isFirstPointSet)
@@ -404,6 +453,36 @@ void SceneWidget::recordTwoWorldPoint(const QPointF& worldPos)
         qDebug() << "Box2D World Points: First =" << firstPoint << ", Second =" << secondPoint;
     }
 }
+
+void SceneWidget::createJointWithTwoPoints(const QPointF& worldPos)
+{
+    recordTwoWorldPoint(worldPos);
+    auto& placeables = gameLevel->getPlaceables();
+
+    // If both points are recorded, create the ground body
+    if (!isFirstPointSet) // Means second point was just set
+    {
+        Placeable* firstPlaceable = findPlaceableAt(firstPoint, placeables);
+        Placeable* secondPlaceable = findPlaceableAt(secondPoint, placeables);
+        if (firstPlaceable && secondPlaceable && firstPlaceable != secondPlaceable)
+        {
+            b2Vec2 anchorA(firstPoint.x(), firstPoint.y());
+            b2Vec2 anchorB(secondPoint.x(), secondPoint.y());
+
+            if (currentTool == 3) // Create a more elastic joint
+            {
+                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
+            }
+            else if (currentTool == 4) // Create a less elastic joint
+            {
+                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 1.0f, 0.8f, 30.0f);
+            }
+        }
+        showPreview = false;
+        update();
+    }
+}
+
 void SceneWidget::createGroundWithTwoPoints(const QPointF& worldPos)
 {
     recordTwoWorldPoint(worldPos);
@@ -424,6 +503,7 @@ void SceneWidget::createGroundWithTwoPoints(const QPointF& worldPos)
         update();
     }
 }
+
 void SceneWidget::deleteGroundAt(const QPointF& worldPos)
 {
     b2Body* groundBody = findGroundAt(worldPos);
@@ -449,6 +529,41 @@ b2Body* SceneWidget::findGroundAt(const QPointF& worldPos) const
     }
     return nullptr; // No ground object found
 }
+
+void SceneWidget::createAnchorAt(const QPointF& worldPos)
+{
+    b2Body* groundBody = findGroundAt(worldPos);
+    if (groundBody)
+    {
+        Placeable newPlaceable("Dynamic", 50, Qt::red, 1.0f, 1.0f);
+        b2Body* dynamicBody = gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
+
+        if (dynamicBody)
+        {
+            b2Vec2 anchor(worldPos.x(), worldPos.y());
+            gameLevel->getJoint().connectRevoluteJoint(dynamicBody, groundBody, anchor, anchor);
+            qDebug() << "Revolute joint created between dynamic body and ground at:" << anchor.x << anchor.y;
+        }
+    }
+    update();
+}
+
+void SceneWidget::deleteAnchorAt(const QPointF& worldPos)
+{
+    auto& placeables = gameLevel->getPlaceables();
+    auto it = findPlaceableIteratorAt(worldPos, placeables);
+    if (it != placeables.end())
+    {
+        b2Body* body = it->getBody();
+        if (body)
+        {
+            gameLevel->destroyBody(body);
+        }
+        placeables.erase(it);
+    }
+    update();
+}
+
 void SceneWidget::areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2)
 {
     float width = std::abs(point2.x() - point1.x());
@@ -467,6 +582,7 @@ void SceneWidget::areaPreview(QPainter& painter, const QPointF& point1, const QP
     painter.setPen(Qt::DashLine);
     painter.drawRect(previewRect);
 }
+
 void SceneWidget::linePreview(QPainter& painter, const QPointF& start, const QPointF& end)
 {
     QPen dashedPen(Qt::DashLine);
@@ -481,6 +597,3 @@ void SceneWidget::linePreview(QPainter& painter, const QPointF& start, const QPo
     // Draw the line
     painter.drawLine(screenStart, screenEnd);
 }
-
-
-

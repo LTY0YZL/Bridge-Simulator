@@ -30,9 +30,17 @@ private slots:
 
     void on_deleteToolButton_clicked();
 
+    void on_stringToolButton_clicked();
+
+    void on_rebarToolButton_clicked();
+
     void on_drawGroundButton_clicked();
 
     void on_deleteGroundButton_clicked();
+
+    void on_createAnchorButton_clicked();
+
+    void on_deleteAnchorButton_clicked();
 
     void on_saveButton_clicked();
 

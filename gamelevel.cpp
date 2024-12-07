@@ -4,10 +4,9 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <QIODevice>
-#include "joint.h"
 
 GameLevel::GameLevel()
-    : world(b2Vec2(0.0f, -10.0f)), worldScale(20.0f), hailLevel(0), earthquakeLevel(0) {
+    : world(b2Vec2(0.0f, -10.0f)), worldScale(20.0f), joint(&world), hailLevel(0), earthquakeLevel(0) {
     qDebug() << "GameLevel initialized with worldScale:" << worldScale;
 }
 
@@ -66,6 +65,7 @@ b2Body* GameLevel::createDynamicBody(Placeable placeable, float posX, float posY
 void GameLevel::stepWorld(float timeStep, int velocityIterations, int positionIterations)
 {
     world.Step(timeStep, velocityIterations, positionIterations);
+    joint.update();
 }
 
 std::vector<Placeable>& GameLevel::getPlaceables()
@@ -75,17 +75,18 @@ std::vector<Placeable>& GameLevel::getPlaceables()
 
 std::vector<b2Body*>& GameLevel::getGroundBodies()
 {
-
     return groundBodies;
-
 }
+
 void GameLevel::destroyBody(b2Body* body)
 {
     if (body)
     {
+        joint.deleteJointsForBody(body);
         world.DestroyBody(body);
     }
 }
+
 void GameLevel::destroyGround(b2Body* groundBody)
 {
     auto it = std::find(groundBodies.begin(), groundBodies.end(), groundBody);
@@ -99,6 +100,11 @@ void GameLevel::destroyGround(b2Body* groundBody)
 float GameLevel::getWorldScale() const
 {
     return worldScale;
+}
+
+Joint& GameLevel::getJoint()
+{
+    return joint;
 }
 
 bool GameLevel::saveLevel(const QString& filename) const

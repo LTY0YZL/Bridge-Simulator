@@ -4,6 +4,7 @@
 #include <Box2D/Box2D.h>
 #include <vector>
 #include "Placeable.h"
+#include "joint.h"
 
 class GameLevel
 {
@@ -23,6 +24,8 @@ public:
 
     float getWorldScale() const;
 
+    Joint& getJoint();
+
     bool saveLevel(const QString& filename) const;
     bool loadLevel(const QString& filename);
 
@@ -39,6 +42,7 @@ private:
 
     float worldScale; // Scaling factor for Box2D world
     void clearLevel();
+    Joint joint;
 
     int hailLevel;
     int earthquakeLevel;

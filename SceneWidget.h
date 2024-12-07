@@ -8,6 +8,7 @@
 #include <QMouseEvent>
 #include <QColor>
 #include "GameLevel.h"
+#include "Joint.h"
 
 class SceneWidget : public QWidget
 {
@@ -48,13 +49,17 @@ private:
 
 
     void drawShape(QPainter &painter, const b2Body* body, const QColor &color);
+    void drawJoints(QPainter& painter, const std::vector<b2Joint*>& joints);
     QPointF screenToWorld(const QPointF& screenPos) const; // Helper to convert screen to Box2D world coordinates
     QPointF box2DWorldToScreen(const b2Vec2& worldPos) const;
     Placeable* findPlaceableAt(const QPointF& worldPos, std::vector<Placeable>& placeables);
     std::vector<Placeable>::iterator findPlaceableIteratorAt( const QPointF& worldPos, std::vector<Placeable>& placeables);
     void recordTwoWorldPoint(const QPointF& worldPos);
     void createGroundWithTwoPoints(const QPointF& worldPos);
+    void createJointWithTwoPoints(const QPointF& worldPos);
     void deleteGroundAt(const QPointF& worldPos);
+    void createAnchorAt(const QPointF& worldPos);
+    void deleteAnchorAt(const QPointF& worldPos);
     b2Body* findGroundAt(const QPointF& worldPos) const;
     void areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2);
     void linePreview(QPainter& painter, const QPointF& start, const QPointF& end);

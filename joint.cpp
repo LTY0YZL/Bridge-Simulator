@@ -3,19 +3,19 @@
 Joint::Joint(b2World* world) : world(world) {}
 
 // Method to connect two Placeable objects using a Box2D RevoluteJoint
-b2Joint* Joint::connectRevoluteJoint(Placeable& bodyA, Placeable& bodyB, const b2Vec2& anchorA, const b2Vec2& anchorB)
+b2Joint* Joint::connectRevoluteJoint(b2Body* bodyA, b2Body* bodyB, const b2Vec2& anchorA, const b2Vec2& anchorB)
 {
-    if (bodyA.getBody() == nullptr || bodyB.getBody() == nullptr)
+    if (!bodyA || !bodyB)
     {
         qDebug() << "One or both bodies are not initialized.";
         return nullptr;
     }
 
     b2RevoluteJointDef jointDef;
-    jointDef.bodyA = bodyA.getBody();
-    jointDef.bodyB = bodyB.getBody();
-    jointDef.localAnchorA = anchorA;
-    jointDef.localAnchorB = anchorB;
+    jointDef.bodyA = bodyA;
+    jointDef.bodyB = bodyB;
+    jointDef.localAnchorA = bodyA->GetLocalPoint(anchorA);
+    jointDef.localAnchorB = bodyB->GetLocalPoint(anchorB);
 
     b2Joint* joint = world->CreateJoint(&jointDef);
     joints.push_back({ joint, std::numeric_limits<float>::max() });
@@ -34,12 +34,9 @@ b2Joint* Joint::connectDistanceJoint(Placeable& bodyA, Placeable& bodyB, const b
     b2DistanceJointDef jointDef;
     jointDef.bodyA = bodyA.getBody();
     jointDef.bodyB = bodyB.getBody();
-    jointDef.localAnchorA = anchorA;
-    jointDef.localAnchorB = anchorB;
 
-    // b2Vec2 worldAnchorA = bodyA.getBody()->GetWorldPoint(anchorA);
-    // b2Vec2 worldAnchorB = bodyB.getBody()->GetWorldPoint(anchorB);
-    // jointDef.length = (worldAnchorB - worldAnchorA).Length();
+    jointDef.localAnchorA = bodyA.getBody()->GetLocalPoint(anchorA);
+    jointDef.localAnchorB = bodyB.getBody()->GetLocalPoint(anchorB);
 
     jointDef.length = (anchorA - anchorB).Length();
 
@@ -49,6 +46,39 @@ b2Joint* Joint::connectDistanceJoint(Placeable& bodyA, Placeable& bodyB, const b
     b2Joint* joint = world->CreateJoint(&jointDef);
     joints.push_back({ joint, maxForce });
     return joint;
+}
+
+// Method to get all joints for drawing or other purposes
+std::vector<b2Joint*>& Joint::getJoints()
+{
+    static std::vector<b2Joint*> jointList;
+    jointList.clear();
+
+    for (const auto& jointData : joints)
+    {
+        jointList.push_back(jointData.joint);
+    }
+
+    return jointList;
+}
+
+void Joint::deleteJointsForBody(b2Body* body)
+{
+    for (auto it = joints.begin(); it != joints.end();)
+    {
+        b2Joint* joint = it->joint;
+
+        if (joint->GetBodyA() == body || joint->GetBodyB() == body)
+        {
+            qDebug() << "Deleting joint connected to body at" << body;
+            world->DestroyJoint(joint);
+            it = joints.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
 }
 
 // Method to update joints and handle breaking logic
