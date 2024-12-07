@@ -54,6 +54,10 @@ private slots:
 
     void on_earthquakeButton_clicked();
 
+    void on_beamToolButton_clicked();
+
+    void on_frameToolButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance

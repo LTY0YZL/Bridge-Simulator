@@ -43,8 +43,13 @@ public:
     QPushButton *selectTool;
     QPushButton *deleteToolButton;
     QPushButton *boxToolButton;
+<<<<<<< HEAD
     QPushButton *stringToolButton;
     QPushButton *rebarToolButton;
+=======
+    QPushButton *beamToolButton;
+    QPushButton *frameToolButton;
+>>>>>>> c4273a2 (Placeable Preview)
     QSpacerItem *verticalSpacer_2;
     QLabel *label_2;
     QLabel *label_5;
@@ -133,6 +138,7 @@ public:
 
         toolArea_2->addWidget(boxToolButton);
 
+<<<<<<< HEAD
         stringToolButton = new QPushButton(scrollAreaWidgetContents_2);
         stringToolButton->setObjectName("stringToolButton");
 
@@ -142,6 +148,17 @@ public:
         rebarToolButton->setObjectName("rebarToolButton");
 
         toolArea_2->addWidget(rebarToolButton);
+=======
+        beamToolButton = new QPushButton(scrollAreaWidgetContents_2);
+        beamToolButton->setObjectName("beamToolButton");
+
+        toolArea_2->addWidget(beamToolButton);
+
+        frameToolButton = new QPushButton(scrollAreaWidgetContents_2);
+        frameToolButton->setObjectName("frameToolButton");
+
+        toolArea_2->addWidget(frameToolButton);
+>>>>>>> c4273a2 (Placeable Preview)
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -349,9 +366,15 @@ public:
         playButton->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
         selectTool->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
         deleteToolButton->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
+<<<<<<< HEAD
         boxToolButton->setText(QCoreApplication::translate("MainWindow", "box", nullptr));
         stringToolButton->setText(QCoreApplication::translate("MainWindow", "String", nullptr));
         rebarToolButton->setText(QCoreApplication::translate("MainWindow", "Rebar", nullptr));
+=======
+        boxToolButton->setText(QCoreApplication::translate("MainWindow", "Testbox", nullptr));
+        beamToolButton->setText(QCoreApplication::translate("MainWindow", "Beam", nullptr));
+        frameToolButton->setText(QCoreApplication::translate("MainWindow", "Frame", nullptr));
+>>>>>>> c4273a2 (Placeable Preview)
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Click To Use", nullptr));

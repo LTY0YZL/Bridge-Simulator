@@ -254,3 +254,13 @@ void MainWindow::on_earthquakeButton_clicked()
     qDebug() << "Earthquake level set to:" << eqLevel;
     QMessageBox::information(this, "Earthquake Level Set", QString("Earthquake level set to %1").arg(eqLevel));
 }
+
+void MainWindow::on_beamToolButton_clicked()
+{
+    sceneWidget->setCurrentTool(3);
+}
+
+
+void MainWindow::on_frameToolButton_clicked(){
+    sceneWidget->setCurrentTool(4);
+}

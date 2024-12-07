@@ -95,7 +95,21 @@
         <item>
          <widget class="QPushButton" name="boxToolButton">
           <property name="text">
-           <string>box</string>
+           <string>Testbox</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="beamToolButton">
+          <property name="text">
+           <string>Beam</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="frameToolButton">
+          <property name="text">
+           <string>Frame</string>
           </property>
          </widget>
         </item>

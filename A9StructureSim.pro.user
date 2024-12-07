@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Written by QtCreator 14.0.2, 2024-12-06T20:52:14. -->
 <qtcreator>
  <data>
@@ -8,6 +9,9 @@
   <value type="QByteArray">{76ee264e-9134-4cfc-91fa-498b8f3af490}</value>
 =======
 <!-- Written by QtCreator 14.0.2, 2024-12-06T14:34:03. -->
+=======
+<!-- Written by QtCreator 14.0.2, 2024-12-06T15:31:23. -->
+>>>>>>> c4273a2 (Placeable Preview)
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -108,12 +112,17 @@
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="int" key="EnableQmlDebugging">0</value>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">E:\Study\Utah\CS3505\A9\a9-edu-app-f24-4loop</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">E:/Study/Utah/CS3505/A9/a9-edu-app-f24-4loop</value>
 =======
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">D:\学期存档\Fall2024\CS3505\a9-edu-app-f24-4loop\build\Desktop_Qt_6_8_0_llvm_mingw_64_bit-Debug</value>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">D:/学期存档/Fall2024/CS3505/a9-edu-app-f24-4loop/build/Desktop_Qt_6_8_0_llvm_mingw_64_bit-Debug</value>
 >>>>>>> 8ee3171 (Udptae A bit UI)
+=======
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">D:\学期存档\Fall2024\CS3505\a9-edu-app-f24-4loop</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">D:/学期存档/Fall2024/CS3505/a9-edu-app-f24-4loop</value>
+>>>>>>> c4273a2 (Placeable Preview)
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -272,17 +281,26 @@
     <value type="QString" key="PerfRecordArgsId">-e cpu-cycles --call-graph &quot;dwarf,4096&quot; -F 250</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:E:/Study/Utah/CS3505/A9/a9-edu-app-f24-4loop/A9StructureSim.pro</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">E:/Study/Utah/CS3505/A9/a9-edu-app-f24-4loop/A9StructureSim.pro</value>
 =======
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.CustomExecutableRunConfiguration</value>
     <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey"></value>
 >>>>>>> 8ee3171 (Udptae A bit UI)
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/学期存档/Fall2024/CS3505/a9-edu-app-f24-4loop/A9StructureSim.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/学期存档/Fall2024/CS3505/a9-edu-app-f24-4loop/A9StructureSim.pro</value>
+>>>>>>> c4273a2 (Placeable Preview)
     <value type="bool" key="ProjectExplorer.RunConfiguration.Customized">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+<<<<<<< HEAD
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">E:/Study/Utah/CS3505/A9/a9-edu-app-f24-4loop</value>
+=======
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">D:/学期存档/Fall2024/CS3505/a9-edu-app-f24-4loop</value>
+>>>>>>> c4273a2 (Placeable Preview)
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

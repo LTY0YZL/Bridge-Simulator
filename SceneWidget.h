@@ -38,6 +38,7 @@ private:
     QTimer* simulationTimer;
     GameLevel* gameLevel;
     bool showPreview;
+    bool placeablePreview;
     QPointF firstPoint;
     QPointF secondPoint;
     QPointF currentMousePos; // Tracks the current mouse position for preview
@@ -46,6 +47,7 @@ private:
     float panOffsetX;       // Pan offset along the x-axis
     float panOffsetY;       // Pan offset along the y-axis
     bool isPanning;         // Whether the user is currently panning
+    Placeable currentBlock;
 
 
     void drawShape(QPainter &painter, const b2Body* body, const QColor &color);
@@ -63,6 +65,7 @@ private:
     b2Body* findGroundAt(const QPointF& worldPos) const;
     void areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2);
     void linePreview(QPainter& painter, const QPointF& start, const QPointF& end);
+    void drawPlaceablePreview(QPainter &painter);
 };
 
 #endif // SCENEWIDGET_H

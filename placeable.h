@@ -27,6 +27,8 @@ public:
     QString getName() const;
     QColor getColor() const;
     b2Body* getBody() const;
+    float getWidth() const;
+    float getHeight() const;
 
     // Mutators
     void setName(const QString& name);

@@ -167,3 +167,11 @@ QDateTime Placeable::getCreationTime() const
 {
     return creationTime;
 }
+float Placeable::getWidth() const
+{
+    return width;
+}
+float Placeable::getHeight() const
+{
+    return height;
+}

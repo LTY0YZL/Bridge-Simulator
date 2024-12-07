@@ -8,10 +8,12 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     simulationTimer(new QTimer(this)),
     gameLevel(level),
     showPreview(false),
+    placeablePreview(true),
     isFirstPointSet(false),
-    panOffsetX(0.0f),   // Initialize the pan offsets
+    panOffsetX(0.0f),
     panOffsetY(0.0f),
-    isPanning(false)
+    isPanning(false),
+    currentBlock(Placeable("Box", 50, Qt::blue, 2.0f, 2.0f,0.5,0.5,0.1))
 {
     setMouseTracking(true);
     connect(simulationTimer, &QTimer::timeout, [this]() {
@@ -154,6 +156,7 @@ void SceneWidget::paintEvent(QPaintEvent *)
             linePreview(painter, firstPoint, currentMousePos);
         }
     }
+    drawPlaceablePreview(painter);
 }
 
 void SceneWidget::setWorldScale(float scale) // World scale for zooming
@@ -259,6 +262,23 @@ QPointF SceneWidget::box2DWorldToScreen(const b2Vec2& worldPos) const
 void SceneWidget::setCurrentTool(int ID)
 {
     currentTool=ID;
+    placeablePreview = (ID == 0 || ID == 3 || ID == 4);
+    if (ID == 0)
+    {
+        Placeable("Box", 50, Qt::blue, 2.0f, 2.0f,0.5,0.5,0.1); // Normal Block
+    }
+    else if (ID == 3)
+    {
+        currentBlock= Placeable("Box", 200, Qt::gray, 2.0f, 10.0f, 20,0.5,0.1); // Beam
+    }
+    else if (ID == 4)
+    {
+        currentBlock= Placeable("Box", 100, Qt::darkGray, 10.0f, 1.0f,10,0.5,0.1); // frame
+    }
+    else
+    {
+        placeablePreview = false; // Disable preview
+    }
 }
 
 void SceneWidget::mousePressEvent(QMouseEvent* event)
@@ -298,10 +318,15 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
         }
 
         auto& placeables = gameLevel->getPlaceables();
-        if (currentTool == 0) // Left click Case
+        if (currentTool == 0 || currentTool == 3 || currentTool == 4) // Left click Case
         {
+<<<<<<< HEAD
             Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
             gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
+=======
+            gameLevel->createDynamicBody(currentBlock, worldPos.x(), worldPos.y());
+            update();
+>>>>>>> c4273a2 (Placeable Preview)
         }
         else if (currentTool == 1)
         {
@@ -354,14 +379,16 @@ void SceneWidget::mouseMoveEvent(QMouseEvent* event)
     {
         QPointF screenPos = event->pos();
         QPointF worldPos = screenToWorld(screenPos);
-
+        if (placeablePreview) {
+            currentMousePos = worldPos; // Update preview position
+            update();
+        }
         if (isFirstPointSet) // Update preview if the first point is set
         {
             currentMousePos = worldPos;
             showPreview = true;
             update(); // Repaint to show the preview
         }
-
         emit mouseMovedInWorld(worldPos.x(), worldPos.y()); // Emit the signal with world coordinates
     }
 }
@@ -597,3 +624,39 @@ void SceneWidget::linePreview(QPainter& painter, const QPointF& start, const QPo
     // Draw the line
     painter.drawLine(screenStart, screenEnd);
 }
+<<<<<<< HEAD
+=======
+
+void SceneWidget::drawPlaceablePreview(QPainter &painter)
+{
+    if (!placeablePreview) return;
+
+    // Get the current block's size and color
+    float width = currentBlock.getWidth();
+    float height = currentBlock.getHeight();
+    QColor previewColor = currentBlock.getColor();
+    previewColor.setAlpha(128);
+    // Convert world coordinates to screen coordinates
+    QPointF screenPos = box2DWorldToScreen(b2Vec2(currentMousePos.x(), currentMousePos.y()));
+
+    // Calculate the rectangle for the preview
+    QRectF previewRect(
+        screenPos.x() - (width * worldScale / 2.0f),
+        screenPos.y() - (height * worldScale / 2.0f),
+        width * worldScale,
+        height * worldScale
+        );
+
+    // Set the brush and pen for the preview
+    painter.setBrush(QBrush(previewColor, Qt::SolidPattern));
+    QPen dashedPen(Qt::DashLine);
+    dashedPen.setColor(previewColor.darker());
+    dashedPen.setWidth(2);
+    painter.setPen(dashedPen);
+
+    // Draw the preview
+    painter.drawRect(previewRect);
+}
+
+
+>>>>>>> c4273a2 (Placeable Preview)
