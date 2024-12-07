@@ -74,6 +74,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,    0, // classinfo
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       18,   14, // methods
 =======
       16,   14, // methods
@@ -81,6 +82,9 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
 =======
       17,   14, // methods
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+      21,   14, // methods
+>>>>>>> 81e6226 (Finish merge)
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -88,6 +92,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
        1,    2,  122,    2, 0x08,    1 /* Private */,
@@ -145,6 +150,29 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       19,    0,  135,    2, 0x08,   18 /* Private */,
       20,    0,  136,    2, 0x08,   19 /* Private */,
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+       1,    2,  140,    2, 0x08,    1 /* Private */,
+       5,    0,  145,    2, 0x08,    4 /* Private */,
+       6,    0,  146,    2, 0x08,    5 /* Private */,
+       7,    0,  147,    2, 0x08,    6 /* Private */,
+       8,    0,  148,    2, 0x08,    7 /* Private */,
+       9,    0,  149,    2, 0x08,    8 /* Private */,
+      10,    0,  150,    2, 0x08,    9 /* Private */,
+      11,    0,  151,    2, 0x08,   10 /* Private */,
+      12,    0,  152,    2, 0x08,   11 /* Private */,
+      13,    0,  153,    2, 0x08,   12 /* Private */,
+      14,    0,  154,    2, 0x08,   13 /* Private */,
+      15,    0,  155,    2, 0x08,   14 /* Private */,
+      16,    0,  156,    2, 0x08,   15 /* Private */,
+      17,    0,  157,    2, 0x08,   16 /* Private */,
+      18,    0,  158,    2, 0x08,   17 /* Private */,
+      19,    0,  159,    2, 0x08,   18 /* Private */,
+      20,    0,  160,    2, 0x08,   19 /* Private */,
+      21,    0,  161,    2, 0x08,   20 /* Private */,
+      22,    0,  162,    2, 0x08,   21 /* Private */,
+      23,    0,  163,    2, 0x08,   22 /* Private */,
+      24,    0,  164,    2, 0x08,   23 /* Private */,
+>>>>>>> 81e6226 (Finish merge)
 
  // slots: parameters
     QMetaType::Void, QMetaType::Float, QMetaType::Float,    3,    4,
@@ -167,11 +195,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
 <<<<<<< HEAD
     QMetaType::Void,
     QMetaType::Void,
+<<<<<<< HEAD
 =======
 >>>>>>> c4273a2 (Placeable Preview)
 =======
     QMetaType::Void,
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+>>>>>>> 81e6226 (Finish merge)
 
        0        // eod
 };
@@ -246,6 +280,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->on_boxToolButton_clicked(); break;
         case 5: _t->on_deleteToolButton_clicked(); break;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 81e6226 (Finish merge)
         case 6: _t->on_stringToolButton_clicked(); break;
         case 7: _t->on_rebarToolButton_clicked(); break;
         case 8: _t->on_drawGroundButton_clicked(); break;
@@ -258,6 +295,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 15: _t->on_goToLevelButton_clicked(); break;
         case 16: _t->on_hailButton_clicked(); break;
         case 17: _t->on_earthquakeButton_clicked(); break;
+<<<<<<< HEAD
 =======
         case 6: _t->on_drawGroundButton_clicked(); break;
         case 7: _t->on_deleteGroundButton_clicked(); break;
@@ -274,6 +312,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 =======
         case 16: _t->on_restartButton_clicked(); break;
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+        case 18: _t->on_beamToolButton_clicked(); break;
+        case 19: _t->on_frameToolButton_clicked(); break;
+        case 20: _t->on_restartButton_clicked(); break;
+>>>>>>> 81e6226 (Finish merge)
         default: ;
         }
     }
@@ -300,6 +343,7 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (_id < 18)
             qt_static_metacall(this, _c, _id, _a);
         _id -= 18;
@@ -312,17 +356,24 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 =======
         if (_id < 17)
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+        if (_id < 21)
+>>>>>>> 81e6226 (Finish merge)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 17;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 17)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+<<<<<<< HEAD
 <<<<<<< HEAD
         _id -= 16;
 >>>>>>> c4273a2 (Placeable Preview)
 =======
         _id -= 17;
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+        _id -= 21;
+>>>>>>> 81e6226 (Finish merge)
     }
     return _id;
 }

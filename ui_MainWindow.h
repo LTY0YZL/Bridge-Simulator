@@ -49,7 +49,12 @@ public:
 =======
     QPushButton *beamToolButton;
     QPushButton *frameToolButton;
+<<<<<<< HEAD
 >>>>>>> c4273a2 (Placeable Preview)
+=======
+    QPushButton *stringToolButton;
+    QPushButton *rebarToolButton;
+>>>>>>> 81e6226 (Finish merge)
     QSpacerItem *verticalSpacer_2;
     QLabel *label_2;
     QLabel *label_5;
@@ -119,7 +124,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 117, 242));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 109, 259));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setObjectName("gridLayout_2");
         toolArea_2 = new QVBoxLayout();
@@ -160,6 +165,16 @@ public:
 
         toolArea_2->addWidget(frameToolButton);
 >>>>>>> c4273a2 (Placeable Preview)
+
+        stringToolButton = new QPushButton(scrollAreaWidgetContents_2);
+        stringToolButton->setObjectName("stringToolButton");
+
+        toolArea_2->addWidget(stringToolButton);
+
+        rebarToolButton = new QPushButton(scrollAreaWidgetContents_2);
+        rebarToolButton->setObjectName("rebarToolButton");
+
+        toolArea_2->addWidget(rebarToolButton);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -250,6 +265,7 @@ public:
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         scrollAreaWidgetContents->setGeometry(QRect(0, -13, 183, 165));
 =======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 123));
@@ -257,6 +273,9 @@ public:
 =======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 180, 132));
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 183, 165));
+>>>>>>> 81e6226 (Finish merge)
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -352,7 +371,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 912, 26));
+        menubar->setGeometry(QRect(0, 0, 912, 20));
         menuSelectLevel_todo = new QMenu(menubar);
         menuSelectLevel_todo->setObjectName("menuSelectLevel_todo");
         MainWindow->setMenuBar(menubar);
@@ -382,7 +401,12 @@ public:
         boxToolButton->setText(QCoreApplication::translate("MainWindow", "Testbox", nullptr));
         beamToolButton->setText(QCoreApplication::translate("MainWindow", "Beam", nullptr));
         frameToolButton->setText(QCoreApplication::translate("MainWindow", "Frame", nullptr));
+<<<<<<< HEAD
 >>>>>>> c4273a2 (Placeable Preview)
+=======
+        stringToolButton->setText(QCoreApplication::translate("MainWindow", "String", nullptr));
+        rebarToolButton->setText(QCoreApplication::translate("MainWindow", "Rebar", nullptr));
+>>>>>>> 81e6226 (Finish merge)
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Click To Use", nullptr));

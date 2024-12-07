@@ -129,6 +129,10 @@ void SceneWidget::paintEvent(QPaintEvent *)
         drawShape(painter, groundBody, Qt::green);
     }
 
+    // Draw all joints
+    const auto& joints = gameLevel->getJoint().getJoints();
+    drawJoints(painter, joints);
+
     // Draw all dynamic bodies
     const auto& placeables = gameLevel->getPlaceables();
     for (const auto& placeable : placeables)
@@ -151,11 +155,16 @@ void SceneWidget::paintEvent(QPaintEvent *)
             areaPreview(painter, firstPoint, currentMousePos);
             linePreview(painter, firstPoint, currentMousePos);
         }
+<<<<<<< HEAD
         else if (currentTool == 3 || currentTool == 4)
+=======
+        else if (currentTool == 5 || currentTool == 6)
+>>>>>>> 81e6226 (Finish merge)
         {
             linePreview(painter, firstPoint, currentMousePos);
         }
     }
+
     drawPlaceablePreview(painter);
 }
 
@@ -295,7 +304,11 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
 
         if (event->button() == Qt::RightButton)
         {
+<<<<<<< HEAD
             if (currentTool == -1) //Tool to create ground objects
+=======
+            if (currentTool == -1) // Tool to create ground objects
+>>>>>>> 81e6226 (Finish merge)
             {
                 createGroundWithTwoPoints(worldPos);
                 return;
@@ -349,10 +362,17 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
                 placeables.erase(it);
             }
         }
+<<<<<<< HEAD
         else if (currentTool == 3 || currentTool == 4) // Select two placeables to create a joint
         {
             createJointWithTwoPoints(worldPos);
             return;
+=======
+        else if (currentTool == 5 || currentTool == 6) // Select two placeables to create a joint
+        {
+            createJointWithTwoPoints(worldPos);
+            update();
+>>>>>>> 81e6226 (Finish merge)
         }
     }
     update();
@@ -496,11 +516,19 @@ void SceneWidget::createJointWithTwoPoints(const QPointF& worldPos)
             b2Vec2 anchorA(firstPoint.x(), firstPoint.y());
             b2Vec2 anchorB(secondPoint.x(), secondPoint.y());
 
+<<<<<<< HEAD
             if (currentTool == 3) // Create a more elastic joint
             {
                 gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
             }
             else if (currentTool == 4) // Create a less elastic joint
+=======
+            if (currentTool == 5) // Create a more elastic joint
+            {
+                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
+            }
+            else if (currentTool == 6) // Create a less elastic joint
+>>>>>>> 81e6226 (Finish merge)
             {
                 gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 1.0f, 0.8f, 30.0f);
             }

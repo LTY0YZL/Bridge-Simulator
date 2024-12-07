@@ -90,14 +90,24 @@ void MainWindow::on_deleteToolButton_clicked()
     sceneWidget->setCurrentTool(2);
 }
 
-void MainWindow::on_stringToolButton_clicked()
+void MainWindow::on_beamToolButton_clicked()
 {
     sceneWidget->setCurrentTool(3);
 }
 
+
+void MainWindow::on_frameToolButton_clicked(){
+    sceneWidget->setCurrentTool(4);
+}
+
+void MainWindow::on_stringToolButton_clicked()
+{
+    sceneWidget->setCurrentTool(5);
+}
+
 void MainWindow::on_rebarToolButton_clicked()
 {
-    sceneWidget->setCurrentTool(4);
+    sceneWidget->setCurrentTool(6);
 }
 
 void MainWindow::on_drawGroundButton_clicked()
@@ -253,16 +263,6 @@ void MainWindow::on_earthquakeButton_clicked()
     gameLevel->setEarthquakeLevel(eqLevel);
     qDebug() << "Earthquake level set to:" << eqLevel;
     QMessageBox::information(this, "Earthquake Level Set", QString("Earthquake level set to %1").arg(eqLevel));
-}
-
-void MainWindow::on_beamToolButton_clicked()
-{
-    sceneWidget->setCurrentTool(3);
-}
-
-
-void MainWindow::on_frameToolButton_clicked(){
-    sceneWidget->setCurrentTool(4);
 }
 
 void MainWindow::on_restartButton_clicked()
