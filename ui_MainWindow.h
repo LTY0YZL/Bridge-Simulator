@@ -88,6 +88,7 @@ public:
     QSpinBox *earthquakeSpinBox;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_4;
+    QPushButton *restartButton;
     QMenuBar *menubar;
     QMenu *menuSelectLevel_todo;
     QStatusBar *statusbar;
@@ -111,14 +112,14 @@ public:
         mouseLocation->setFrameShape(QFrame::Shape::Box);
         playButton = new QPushButton(centralwidget);
         playButton->setObjectName("playButton");
-        playButton->setGeometry(QRect(150, 520, 511, 31));
+        playButton->setGeometry(QRect(150, 510, 511, 31));
         scrollArea_2 = new QScrollArea(centralwidget);
         scrollArea_2->setObjectName("scrollArea_2");
         scrollArea_2->setGeometry(QRect(10, 90, 111, 261));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 109, 259));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 117, 242));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setObjectName("gridLayout_2");
         toolArea_2 = new QVBoxLayout();
@@ -248,10 +249,14 @@ public:
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
 <<<<<<< HEAD
+<<<<<<< HEAD
         scrollAreaWidgetContents->setGeometry(QRect(0, -13, 183, 165));
 =======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 123));
 >>>>>>> 8ee3171 (Udptae A bit UI)
+=======
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 180, 132));
+>>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -341,10 +346,13 @@ public:
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(670, 0, 111, 16));
+        restartButton = new QPushButton(centralwidget);
+        restartButton->setObjectName("restartButton");
+        restartButton->setGeometry(QRect(150, 550, 511, 31));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 912, 20));
+        menubar->setGeometry(QRect(0, 0, 912, 26));
         menuSelectLevel_todo = new QMenu(menubar);
         menuSelectLevel_todo->setObjectName("menuSelectLevel_todo");
         MainWindow->setMenuBar(menubar);
@@ -395,6 +403,7 @@ public:
         hailButton->setText(QCoreApplication::translate("MainWindow", "Hail", nullptr));
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Weather System:", nullptr));
+        restartButton->setText(QCoreApplication::translate("MainWindow", "Restart", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "Structural Simulation V0.1", nullptr));
     } // retranslateUi
 

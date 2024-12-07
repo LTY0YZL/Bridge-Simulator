@@ -264,3 +264,21 @@ void MainWindow::on_beamToolButton_clicked()
 void MainWindow::on_frameToolButton_clicked(){
     sceneWidget->setCurrentTool(4);
 }
+
+void MainWindow::on_restartButton_clicked()
+{
+    QString filename = QString("%1/level%2.json").arg(levelsDirectory).arg(currentLevelNumber);
+    sceneWidget->stopSimulation();
+
+    if (gameLevel->loadLevel(filename))
+    {
+        sceneWidget->update();
+        ui->playButton->setEnabled(true);
+        QMessageBox::information(this, "Restart Level", QString("Level %1 restarted successfully.").arg(currentLevelNumber));
+        qDebug() << "Level" << currentLevelNumber << "restarted successfully.";
+    }
+    else
+    {
+        QMessageBox::warning(this, "Restart Level", "Failed to restart the level.");
+    }
+}

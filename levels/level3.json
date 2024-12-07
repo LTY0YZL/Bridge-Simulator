@@ -1,4 +1,5 @@
 {
+    "earthquakeLevel": 0,
     "grounds": [
         {
             "height": 2,
@@ -13,6 +14,7 @@
             "width": 1
         }
     ],
+    "hailLevel": 0,
     "placeables": [
         {
             "color": "#0000ff",
@@ -20,6 +22,7 @@
             "density": 1,
             "friction": 0.30000001192092896,
             "height": 2,
+            "isHail": false,
             "name": "Box1",
             "posX": -10,
             "posY": 20,
@@ -32,6 +35,7 @@
             "density": 1,
             "friction": 0.30000001192092896,
             "height": 1.5,
+            "isHail": false,
             "name": "Box2",
             "posX": 5,
             "posY": 15,
@@ -44,6 +48,7 @@
             "density": 1,
             "friction": 0.5,
             "height": 1,
+            "isHail": false,
             "name": "Box3",
             "posX": 0,
             "posY": 10,
@@ -56,6 +61,7 @@
             "density": 0.5,
             "friction": 0.5,
             "height": 2,
+            "isHail": false,
             "name": "Box",
             "posX": 5.400000095367432,
             "posY": 10.350000381469727,
@@ -68,6 +74,7 @@
             "density": 0.5,
             "friction": 0.5,
             "height": 2,
+            "isHail": false,
             "name": "Box",
             "posX": -4.300000190734863,
             "posY": 11.199999809265137,
@@ -75,64 +82,43 @@
             "width": 2
         },
         {
-            "color": "#0000ff",
+            "color": "#a0a0a4",
             "cost": 0,
-            "density": 0.5,
+            "density": 20,
             "friction": 0.5,
-            "height": 2,
+            "height": 10,
+            "isHail": false,
             "name": "Box",
-            "posX": 1.25,
-            "posY": 7.699999809265137,
-            "restitution": 0.5,
+            "posX": -7.349999904632568,
+            "posY": 11.199999809265137,
+            "restitution": 0.10000000149011612,
             "width": 2
         },
         {
-            "color": "#0000ff",
+            "color": "#a0a0a4",
             "cost": 0,
-            "density": 0.5,
+            "density": 20,
             "friction": 0.5,
-            "height": 2,
+            "height": 10,
+            "isHail": false,
             "name": "Box",
-            "posX": -5.599999904632568,
-            "posY": 8.050000190734863,
-            "restitution": 0.5,
+            "posX": -1.899999976158142,
+            "posY": 11.25,
+            "restitution": 0.10000000149011612,
             "width": 2
         },
         {
-            "color": "#0000ff",
-            "cost": 0,
-            "density": 0.5,
+            "color": "#808080",
+            "cost": 64,
+            "density": 10,
             "friction": 0.5,
-            "height": 2,
+            "height": 1,
+            "isHail": false,
             "name": "Box",
-            "posX": -6.400000095367432,
-            "posY": 15.75,
-            "restitution": 0.5,
-            "width": 2
-        },
-        {
-            "color": "#0000ff",
-            "cost": 189775656,
-            "density": 0.5,
-            "friction": 0.5,
-            "height": 2,
-            "name": "Box",
-            "posX": 3.5,
-            "posY": 11.149999618530273,
-            "restitution": 0.5,
-            "width": 2
-        },
-        {
-            "color": "#0000ff",
-            "cost": 189775656,
-            "density": 0.5,
-            "friction": 0.5,
-            "height": 2,
-            "name": "Box",
-            "posX": -0.10000000149011612,
-            "posY": 13.649999618530273,
-            "restitution": 0.5,
-            "width": 2
+            "posX": -5.099999904632568,
+            "posY": 16.950000762939453,
+            "restitution": 0.10000000149011612,
+            "width": 10
         }
     ]
 }

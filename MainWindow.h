@@ -58,6 +58,8 @@ private slots:
 
     void on_frameToolButton_clicked();
 
+    void on_restartButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance

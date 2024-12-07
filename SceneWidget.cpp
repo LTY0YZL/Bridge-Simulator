@@ -44,7 +44,7 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
         int eqLevel = gameLevel->getEarthquakeLevel();
         if (eqLevel > 0)
         {
-            float shakeIntensity = (float)eqLevel * 0.5f;
+            float shakeIntensity = (float)eqLevel * 0.2f;
             float shakeX = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
             float shakeY = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
 
