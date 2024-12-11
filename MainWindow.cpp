@@ -283,3 +283,13 @@ void MainWindow::on_restartButton_clicked()
         QMessageBox::warning(this, "Restart Level", "Failed to restart the level.");
     }
 }
+
+void MainWindow::on_helpButton_clicked()
+{
+    QUrl helpUrl("https://docs.google.com/document/d/1uLB2VtSkPZH3JmeTMuocncqlBDtEi_mnIQOjkWmUlU8/edit?usp=sharing");
+
+    if (!QDesktopServices::openUrl(helpUrl)) {
+        qDebug() << "Failed to open URL:" << helpUrl.toString();
+    }
+}
+

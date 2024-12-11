@@ -59,7 +59,7 @@ public:
     QLabel *label_2;
     QLabel *label_5;
     QLabel *label_6;
-    QPushButton *pushButton_2;
+    QPushButton *helpButton;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_2;
@@ -80,7 +80,6 @@ public:
     QPushButton *deleteGroundButton;
     QPushButton *createAnchorButton;
     QPushButton *deleteAnchorButton;
-    QPushButton *pushButton_7;
     QSpacerItem *verticalSpacer;
     QScrollArea *scrollArea_3;
     QWidget *scrollAreaWidgetContents_3;
@@ -198,9 +197,9 @@ public:
         label_6->setObjectName("label_6");
         label_6->setGeometry(QRect(10, 60, 111, 19));
         label_6->setFont(font);
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(10, 360, 111, 51));
+        helpButton = new QPushButton(centralwidget);
+        helpButton->setObjectName("helpButton");
+        helpButton->setGeometry(QRect(10, 390, 111, 51));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(670, 230, 201, 343));
@@ -266,6 +265,7 @@ public:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         scrollAreaWidgetContents->setGeometry(QRect(0, -13, 183, 165));
 =======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 123));
@@ -276,6 +276,9 @@ public:
 =======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 183, 165));
 >>>>>>> 81e6226 (Finish merge)
+=======
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 183, 136));
+>>>>>>> 286b58d (Add helpInfo page)
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -299,11 +302,6 @@ public:
         deleteAnchorButton->setObjectName("deleteAnchorButton");
 
         toolArea->addWidget(deleteAnchorButton);
-
-        pushButton_7 = new QPushButton(scrollAreaWidgetContents);
-        pushButton_7->setObjectName("pushButton_7");
-
-        toolArea->addWidget(pushButton_7);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -410,7 +408,7 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Click To Use", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Help Info (TODO)", nullptr));
+        helpButton->setText(QCoreApplication::translate("MainWindow", "Help Info ", nullptr));
         nextLevelButton->setText(QCoreApplication::translate("MainWindow", "Play Next Level", nullptr));
         levelNumberLabel->setText(QCoreApplication::translate("MainWindow", "level", nullptr));
         goToLevelButton->setText(QCoreApplication::translate("MainWindow", "Go to Level", nullptr));
@@ -423,7 +421,6 @@ public:
         deleteGroundButton->setText(QCoreApplication::translate("MainWindow", "DeleteGround", nullptr));
         createAnchorButton->setText(QCoreApplication::translate("MainWindow", "Create Anchor", nullptr));
         deleteAnchorButton->setText(QCoreApplication::translate("MainWindow", "Delete Anchor", nullptr));
-        pushButton_7->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         hailButton->setText(QCoreApplication::translate("MainWindow", "Hail", nullptr));
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Weather System:", nullptr));

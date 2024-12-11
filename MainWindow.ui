@@ -196,17 +196,17 @@
      <string>Click To Use</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="helpButton">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>390</y>
       <width>111</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Help Info (TODO)</string>
+     <string>Help Info </string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -305,6 +305,7 @@
           <y>0</y>
 >>>>>>> 81e6226 (Finish merge)
           <width>183</width>
+<<<<<<< HEAD
           <height>165</height>
 =======
           <y>0</y>
@@ -316,6 +317,9 @@
           <width>180</width>
           <height>132</height>
 >>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
+=======
+          <height>136</height>
+>>>>>>> 286b58d (Add helpInfo page)
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
@@ -346,13 +350,6 @@
             <widget class="QPushButton" name="deleteAnchorButton">
              <property name="text">
               <string>Delete Anchor</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton_7">
-             <property name="text">
-              <string>PushButton</string>
              </property>
             </widget>
            </item>

@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDesktopServices>
+#include <QUrl>
 #include "GameLevel.h"
 #include "SceneWidget.h"
 
@@ -59,6 +61,8 @@ private slots:
     void on_frameToolButton_clicked();
 
     void on_restartButton_clicked();
+
+    void on_helpButton_clicked();
 
 private:
     Ui::MainWindow *ui;
