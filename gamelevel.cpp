@@ -157,8 +157,8 @@ bool GameLevel::saveLevel(const QString& filename) const
             jointObj["anchorAy"] = anchorA.y;
             jointObj["anchorBx"] = anchorB.x;
             jointObj["anchorBy"] = anchorB.y;
-            jointObj["frequencyHz"] = 0.0; // Not used for revolute
-            jointObj["dampingRatio"] = 0.0; // Not used for revolute
+            jointObj["frequencyHz"] = 0.0;
+            jointObj["dampingRatio"] = 0.0;
             jointObj["maxForce"] = std::numeric_limits<float>::max();
         }
         else if (j->GetType() == e_distanceJoint)
@@ -173,6 +173,8 @@ bool GameLevel::saveLevel(const QString& filename) const
             jointObj["anchorBy"] = anchorB.y;
             jointObj["frequencyHz"] = distJoint->GetFrequency();
             jointObj["dampingRatio"] = distJoint->GetDampingRatio();
+            float maxForce = joint.getMaxForceForJoint(j);
+            jointObj["maxForce"] = maxForce;
         }
 
         int idA = getPlaceableIDForBody(j->GetBodyA());

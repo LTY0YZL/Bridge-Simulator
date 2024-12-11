@@ -27,6 +27,8 @@ public:
 
     void deleteAllJoints();
 
+    float getMaxForceForJoint(b2Joint* j) const;
+
 private:
     b2World* world;
     struct JointData {

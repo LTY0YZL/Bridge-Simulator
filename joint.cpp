@@ -112,3 +112,10 @@ void Joint::deleteAllJoints() {
     }
     joints.clear();
 }
+
+float Joint::getMaxForceForJoint(b2Joint* j) const {
+    for (auto &jd : joints) {
+        if (jd.joint == j) return jd.maxForce;
+    }
+    return std::numeric_limits<float>::max();
+}
