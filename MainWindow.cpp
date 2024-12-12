@@ -68,7 +68,17 @@ void MainWindow::updateMouseLocation(float x, float y)
 
 void MainWindow::on_playButton_clicked()
 {
+    QString defaultFilePath = QDir::currentPath() + "/temp.json";
+    if (gameLevel->saveLevel(defaultFilePath))
+    {
+        qDebug() << "Level successfully saved to" << defaultFilePath;
+    }
+    else
+    {
+        qDebug() << "Failed to save level to" << defaultFilePath;
+    }
     sceneWidget->startSimulation();
+    ui->playButton->setEnabled(false);
     //EditMode(false);
     sceneWidget->setCurrentTool(0);
 }
@@ -283,21 +293,42 @@ void MainWindow::on_earthquakeButton_clicked()
 
 void MainWindow::on_restartButton_clicked()
 {
-    QString filename = QString("%1/level%2.json").arg(levelsDirectory).arg(currentLevelNumber);
+    // Path to the default temporary save file
+    QString tempFilePath = QDir::currentPath() + "/temp.json";
+
+    // Fallback to level1.json if temp.json doesn't exist
+    QString fallbackFilePath = QString("%1/level1.json").arg(levelsDirectory);
+
+    QString fileToLoad;
+    if (QFile::exists(tempFilePath))
+    {
+        fileToLoad = tempFilePath;
+        qDebug() << "Loading from temporary save file:" << tempFilePath;
+    }
+    else
+    {
+        fileToLoad = fallbackFilePath;
+        qDebug() << "Temporary save file not found. Falling back to:" << fallbackFilePath;
+    }
+
+    // Stop simulation before loading the level
     sceneWidget->stopSimulation();
 
-    if (gameLevel->loadLevel(filename))
+    // Load the level from the determined file path
+    if (gameLevel->loadLevel(fileToLoad))
     {
         sceneWidget->update();
         ui->playButton->setEnabled(true);
-        QMessageBox::information(this, "Restart Level", QString("Level %1 restarted successfully.").arg(currentLevelNumber));
-        qDebug() << "Level" << currentLevelNumber << "restarted successfully.";
+        QMessageBox::information(this, "Restart Level", QString("Level loaded successfully from %1.").arg(fileToLoad));
+        qDebug() << "Level loaded successfully from" << fileToLoad;
     }
     else
     {
         QMessageBox::warning(this, "Restart Level", "Failed to restart the level.");
+        qDebug() << "Failed to load level from" << fileToLoad;
     }
 }
+
 
 void MainWindow::on_helpButton_clicked()
 {
