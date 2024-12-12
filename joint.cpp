@@ -99,7 +99,7 @@ void Joint::update()
         if (b2DistanceJoint* distanceJoint = dynamic_cast<b2DistanceJoint*>(joint))
         {
             // Check the reaction force of the joint
-            float forceMagnitude = distanceJoint->GetReactionForce(1.0f).Length();
+            float forceMagnitude = distanceJoint->GetReactionForce(0.5f).Length();
             if (forceMagnitude > maxForce)
             {
                 // Destroy the joint if the force exceeds the threshold

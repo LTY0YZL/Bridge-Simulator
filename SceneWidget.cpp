@@ -13,7 +13,7 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     panOffsetX(0.0f),
     panOffsetY(0.0f),
     isPanning(false),
-    currentBlock(Placeable("Box", 50, Qt::blue, 2.0f, 2.0f,0.5,0.5,0.1))
+    currentBlock(Placeable("Box", 50, Qt::blue, 2.0f, 2.0f, 2,0.5,0.1))
 {
     setMouseTracking(true);
     connect(simulationTimer, &QTimer::timeout, [this]() {
@@ -197,7 +197,7 @@ void SceneWidget::setCurrentTool(int ID)
     placeablePreview = (ID == 0 || ID == 3 || ID == 4);
     if (ID == 0)
     {
-        currentBlock= Placeable("Box", 50, Qt::blue, 2.0f, 2.0f,0.5,0.5,0.1);
+        currentBlock= Placeable("Box", 50, Qt::blue, 2.0f, 2.0f, 2,0.5,0.1);
     }
     else if (ID == 3)
     {
@@ -477,6 +477,7 @@ void SceneWidget::createJointWithTwoPoints(const QPointF& worldPos)
             b2Vec2 anchorB(secondPoint.x(), secondPoint.y());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (currentTool == 3) // Create a more elastic joint
             {
                 gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
@@ -489,6 +490,13 @@ void SceneWidget::createJointWithTwoPoints(const QPointF& worldPos)
             }
             else if (currentTool == 6) // Create a less elastic joint
 >>>>>>> 81e6226 (Finish merge)
+=======
+            if (currentTool == 6) // Create a more elastic joint
+            {
+                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
+            }
+            else if (currentTool == 5) // Create a less elastic joint
+>>>>>>> f55cda1 (adjust joint force)
             {
                 gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 1.0f, 0.8f, 30.0f);
             }
