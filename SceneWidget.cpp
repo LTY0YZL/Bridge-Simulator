@@ -605,6 +605,7 @@ void SceneWidget::deleteGroundAt(const QPointF& worldPos)
     b2Body* groundBody = findGroundAt(worldPos);
     if (groundBody)
     {
+        gameLevel->getJoint().deleteJointsForBody(groundBody);
         gameLevel->destroyGround(groundBody); // Call GameLevel to remove it
         update();
     }
