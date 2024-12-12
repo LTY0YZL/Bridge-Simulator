@@ -35,7 +35,6 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *mouseLocation;
-    QPushButton *playButton;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
     QGridLayout *gridLayout_2;
@@ -92,9 +91,12 @@ public:
     QSpinBox *earthquakeSpinBox;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_4;
-    QPushButton *restartButton;
     QLabel *label_7;
     QLabel *label_8;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_3;
+    QPushButton *playButton;
+    QPushButton *restartButton;
     QMenuBar *menubar;
     QMenu *menuSelectLevel_todo;
     QStatusBar *statusbar;
@@ -116,9 +118,6 @@ public:
         mouseLocation->setObjectName("mouseLocation");
         mouseLocation->setGeometry(QRect(470, 20, 141, 16));
         mouseLocation->setFrameShape(QFrame::Shape::Box);
-        playButton = new QPushButton(centralwidget);
-        playButton->setObjectName("playButton");
-        playButton->setGeometry(QRect(150, 510, 511, 31));
         scrollArea_2 = new QScrollArea(centralwidget);
         scrollArea_2->setObjectName("scrollArea_2");
         scrollArea_2->setGeometry(QRect(10, 90, 111, 261));
@@ -365,9 +364,6 @@ public:
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(670, 0, 111, 16));
-        restartButton = new QPushButton(centralwidget);
-        restartButton->setObjectName("restartButton");
-        restartButton->setGeometry(QRect(150, 550, 511, 31));
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName("label_7");
         label_7->setGeometry(QRect(150, 0, 81, 16));
@@ -378,6 +374,22 @@ public:
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName("label_8");
         label_8->setGeometry(QRect(230, 0, 53, 15));
+        widget = new QWidget(centralwidget);
+        widget->setObjectName("widget");
+        widget->setGeometry(QRect(150, 520, 511, 61));
+        verticalLayout_3 = new QVBoxLayout(widget);
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        playButton = new QPushButton(widget);
+        playButton->setObjectName("playButton");
+
+        verticalLayout_3->addWidget(playButton);
+
+        restartButton = new QPushButton(widget);
+        restartButton->setObjectName("restartButton");
+
+        verticalLayout_3->addWidget(restartButton);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -400,7 +412,6 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         mouseLocation->setText(QCoreApplication::translate("MainWindow", "Mouse World Location", nullptr));
-        playButton->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
         selectTool->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
         deleteToolButton->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
 <<<<<<< HEAD
@@ -440,9 +451,10 @@ public:
         hailButton->setText(QCoreApplication::translate("MainWindow", "Hail", nullptr));
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Weather System:", nullptr));
-        restartButton->setText(QCoreApplication::translate("MainWindow", "Restart", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "HELP INFO:", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        playButton->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
+        restartButton->setText(QCoreApplication::translate("MainWindow", "Restart", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "Structural Simulation V0.1", nullptr));
     } // retranslateUi
 

@@ -24,8 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->beamToolButton,
         ui->stringToolButton,
         ui->deleteAnchorButton,
-        ui->createAnchorButton,
-        ui->playButton,
+        ui->createAnchorButton
 
     };
 
@@ -199,6 +198,7 @@ void MainWindow::on_loadButton_clicked()
             QMessageBox::warning(this, "Load Level", "Failed to load the level.");
         }
     }
+    EditMode(true);
 }
 
 void MainWindow::on_nextLevelButton_clicked()
@@ -232,6 +232,7 @@ void MainWindow::on_nextLevelButton_clicked()
         QMessageBox::warning(this, "Next Level", "Failed to load the next level.");
         currentLevelNumber--;
     }
+    EditMode(true);
 }
 
 void MainWindow::on_goToLevelButton_clicked()
@@ -273,6 +274,7 @@ void MainWindow::on_goToLevelButton_clicked()
     {
         QMessageBox::warning(this, "Load Failed", QString("Failed to load Level %1.").arg(levelNumber));
     }
+    EditMode(true);
 }
 
 void MainWindow::on_hailButton_clicked()
@@ -327,6 +329,7 @@ void MainWindow::on_restartButton_clicked()
         QMessageBox::warning(this, "Restart Level", "Failed to restart the level.");
         qDebug() << "Failed to load level from" << fileToLoad;
     }
+    EditMode(true);
 }
 
 
@@ -348,7 +351,7 @@ void MainWindow::EditMode(bool enabled)
             button->setVisible(enabled);
         }
     }
-    ui->playButton->setEnabled(!enabled);
+    ui->playButton->setEnabled(enabled);
     ui->boxToolButton->setEnabled(true);
 }
 
