@@ -19,91 +19,8 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     connect(simulationTimer, &QTimer::timeout, [this]() {
         gameLevel->stepWorld(1.0f / 60.0f, 6, 2);
 
-        // Hail
-        int hLevel = gameLevel->getHailLevel();
-        if (hLevel > 0 && !hailSpawnPaused)
-        {
-            static int hailCounter = 0;
-            hailCounter++;
-            int spawnInterval = std::max(1, 60 / hLevel);
-            if (hailCounter % spawnInterval == 0)
-            {
-                float hailSize = 0.2f + 0.2f * hLevel;
-                float randomX = ((rand() % 20) - 10.0f);
-                float spawnY = 40.0f;
-
-                Placeable hailStone("Hail", 0, Qt::white, hailSize, hailSize, 0.1f, 0.3f, 0.1f);
-                hailStone.setAsHail(true);
-                hailStone.setCreationTime(QDateTime::currentDateTime());
-
-                gameLevel->createDynamicBody(hailStone, randomX, spawnY);
-            }
-        }
-
-        // Earthquake
-        int eqLevel = gameLevel->getEarthquakeLevel();
-        if (eqLevel > 0)
-        {
-            float shakeIntensity = (float)eqLevel * 0.2f;
-            float shakeX = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
-            float shakeY = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
-
-            panOffsetX = shakeX * worldScale;
-            panOffsetY = shakeY * worldScale;
-
-            auto& placeables = gameLevel->getPlaceables();
-
-            float nearGroundThreshold = 2.0f;
-            float velocityThreshold = 0.1f;
-
-            for (auto &p : placeables)
-            {
-                b2Body* body = p.getBody();
-                if (!body) continue;
-
-                if (p.getName() == "Hail")
-                {
-                    b2Vec2 pos = body->GetPosition();
-                    b2Vec2 vel = body->GetLinearVelocity();
-
-                    if (pos.y <= nearGroundThreshold && fabs(vel.y) < velocityThreshold)
-                    {
-                        float impulse = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * 0.5f);
-                        body->ApplyLinearImpulse(b2Vec2(impulse, 0), body->GetWorldCenter(), true);
-                    }
-                }
-                else
-                {
-                    float impulse = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * 0.5f);
-                    body->ApplyLinearImpulse(b2Vec2(impulse, 0), body->GetWorldCenter(), true);
-                }
-            }
-        }
-        else
-        {
-            panOffsetX = 0;
-            panOffsetY = 0;
-        }
-
-        // Remove hail older than 10 seconds
-        {
-            auto& placeables = gameLevel->getPlaceables();
-            QDateTime now = QDateTime::currentDateTime();
-
-            placeables.erase(std::remove_if(placeables.begin(), placeables.end(),
-                                            [this, &now](const Placeable& p) {
-                                                if (p.isHailStone()) {
-                                                    qint64 elapsedMs = p.getCreationTime().msecsTo(now);
-                                                    if (elapsedMs > 15000) {
-                                                        if (b2Body* body = p.getBody()) {
-                                                            gameLevel->destroyBody(body);
-                                                        }
-                                                        return true;
-                                                    }
-                                                }
-                                                return false;
-                                            }), placeables.end());
-        }
+        handleHail();        // Handle hail functionality
+        handleEarthquake();  // Handle earthquake functionality
 
         update();
     });
@@ -471,12 +388,12 @@ void SceneWidget::wheelEvent(QWheelEvent* event)
         }
     }
     else
-    if (event->angleDelta().y() > 0) {
-        // Zoom in by increasing worldScale by 5%
-        worldScale *= 1.05;
-    } else {
-        worldScale /= 1.05;
-    }
+        if (event->angleDelta().y() > 0) {
+            // Zoom in by increasing worldScale by 5%
+            worldScale *= 1.05;
+        } else {
+            worldScale /= 1.05;
+        }
 
     // Clamp worldScale to avoid invalid values
     if (worldScale < 0.5f) {
@@ -744,6 +661,92 @@ void SceneWidget::syncSelectedPlaceable()
         }
     }
 }
+void SceneWidget::handleHail()
+{
+    int hLevel = gameLevel->getHailLevel();
+    if (hLevel > 0 && !hailSpawnPaused)
+    {
+        static int hailCounter = 0;
+        hailCounter++;
+        int spawnInterval = std::max(1, 5); // Spawn frequency
+        if (hailCounter % spawnInterval == 0)
+        {
+            int hailAmount = 5; // Number of hailstones to spawn per interval
+            float hailSize = 0.2f + 0.2f * hLevel;
+
+            for (int i = 0; i < hailAmount; ++i)
+            {
+                float randomX = ((rand() % 40) - 20.0f) + static_cast<float>(rand() % 10) / 10.0f;// Wider range: -20.0 to 20.0
+                float spawnY = 60.0f;                   // Spawn height
+
+                Placeable hailStone("Hail", 0, Qt::white, hailSize, hailSize, 3.0f, 0.3f, 0.1f);
+                hailStone.setAsHail(true);
+                hailStone.setCreationTime(QDateTime::currentDateTime());
+
+                gameLevel->createDynamicBody(hailStone, randomX, spawnY);
+            }
+        }
+    }
+
+    // Remove hailstones older than 15 seconds
+    auto& placeables = gameLevel->getPlaceables();
+    QDateTime now = QDateTime::currentDateTime();
+
+    placeables.erase(std::remove_if(placeables.begin(), placeables.end(),
+                                    [this, &now](const Placeable& p) {
+                                        if (p.isHailStone()) {
+                                            qint64 elapsedMs = p.getCreationTime().msecsTo(now);
+                                            if (elapsedMs > 15000) {
+                                                if (b2Body* body = p.getBody()) {
+                                                    gameLevel->destroyBody(body);
+                                                }
+                                                return true;
+                                            }
+                                        }
+                                        return false;
+                                    }), placeables.end());
+}
 
 
+<<<<<<< HEAD
 >>>>>>> c4273a2 (Placeable Preview)
+=======
+void SceneWidget::handleEarthquake()
+{
+    int eqLevel = gameLevel->getEarthquakeLevel();
+    if (eqLevel > 0)
+    {
+        float forceFactor = 5.0f; // Adjust this value to control the impulse intensity
+        float shakeIntensity = (float)eqLevel * 2.0f; // Adjust Earthquake intensity based on level
+        float shakeX = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
+        float shakeY = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
+
+        float displayShakeFactor = 0.1f; // Manage display shaking
+        panOffsetX = shakeX * worldScale * displayShakeFactor;
+        panOffsetY = shakeY * worldScale * displayShakeFactor;
+
+        auto& placeables = gameLevel->getPlaceables();
+        for (auto &p : placeables)
+        {
+            b2Body* body = p.getBody();
+            if (!body) continue;
+
+            // Calculate object size factor based on width and height
+            float sizeFactor = p.getWidth() * p.getHeight();
+
+            // Calculate impulse proportionally to the size
+            float impulseX = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * forceFactor * sizeFactor);
+            float impulseY = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * forceFactor * sizeFactor);
+
+            // Apply the impulse to the body
+            body->ApplyLinearImpulse(b2Vec2(impulseX, impulseY), body->GetWorldCenter(), true);
+        }
+    }
+    else
+    {
+        panOffsetX = 0;
+        panOffsetY = 0;
+    }
+}
+
+>>>>>>> 2f6f446 (Update Weather System)

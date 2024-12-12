@@ -68,6 +68,8 @@ private:
     void linePreview(QPainter& painter, const QPointF& start, const QPointF& end);
     void drawPlaceablePreview(QPainter &painter);
     void syncSelectedPlaceable();
+    void handleHail();
+    void handleEarthquake();
 };
 
 #endif // SCENEWIDGET_H
