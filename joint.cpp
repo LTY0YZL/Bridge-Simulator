@@ -45,6 +45,7 @@ b2Joint* Joint::connectDistanceJoint(Placeable& bodyA, Placeable& bodyB, const b
 
     b2Joint* joint = world->CreateJoint(&jointDef);
     joints.push_back({ joint, maxForce });
+    qDebug()<<"connect";
     return joint;
 }
 
@@ -61,6 +62,12 @@ std::vector<b2Joint*>& Joint::getJoints() const
 
     return jointList;
 }
+
+const std::vector<Joint::JointData>& Joint::getJointsData() const
+{
+    return joints;
+}
+
 
 void Joint::deleteJointsForBody(b2Body* body)
 {
@@ -111,11 +118,4 @@ void Joint::deleteAllJoints() {
         world->DestroyJoint(jd.joint);
     }
     joints.clear();
-}
-
-float Joint::getMaxForceForJoint(b2Joint* j) const {
-    for (auto &jd : joints) {
-        if (jd.joint == j) return jd.maxForce;
-    }
-    return std::numeric_limits<float>::max();
 }

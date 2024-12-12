@@ -35,7 +35,7 @@ public:
     void setName(const QString& name);
     void setDisplayColor(QColor color);
     void setPosition(float x, float y);
-
+    void setRotation(float angle);
     // Assign Box2D body to Placeable
     void assignBody(b2Body* body);
 

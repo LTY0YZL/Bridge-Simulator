@@ -67,6 +67,7 @@ private:
     void areaPreview(QPainter& painter, const QPointF& point1, const QPointF& point2);
     void linePreview(QPainter& painter, const QPointF& start, const QPointF& end);
     void drawPlaceablePreview(QPainter &painter);
+    void syncSelectedPlaceable();
 };
 
 #endif // SCENEWIDGET_H

@@ -14,6 +14,20 @@ MainWindow::MainWindow(QWidget *parent)
     levelsDirectory("levels")
 {
     ui->setupUi(this);
+    controllableButtons = {
+        ui->selectTool,
+        ui->rebarToolButton,
+        ui->frameToolButton,
+        ui->deleteToolButton,
+        ui->drawGroundButton,
+        ui->deleteGroundButton,
+        ui->beamToolButton,
+        ui->stringToolButton,
+        ui->deleteAnchorButton,
+        ui->createAnchorButton,
+        ui->playButton,
+
+    };
 
     // Initialize the game level
     QString initialLevelFile = QString("%1/level%2.json").arg(levelsDirectory).arg(currentLevelNumber);
@@ -55,7 +69,8 @@ void MainWindow::updateMouseLocation(float x, float y)
 void MainWindow::on_playButton_clicked()
 {
     sceneWidget->startSimulation();
-    ui->playButton->setEnabled(false);
+    //EditMode(false);
+    sceneWidget->setCurrentTool(0);
 }
 
 
@@ -292,4 +307,18 @@ void MainWindow::on_helpButton_clicked()
         qDebug() << "Failed to open URL:" << helpUrl.toString();
     }
 }
+void MainWindow::EditMode(bool enabled)
+{
+    QList<QWidget*> buttons = findChildren<QWidget*>();
+
+    for (auto& button : controllableButtons)
+    {
+        if (button != ui->boxToolButton) {
+            button->setVisible(enabled);
+        }
+    }
+    ui->playButton->setEnabled(!enabled);
+    ui->boxToolButton->setEnabled(true);
+}
+
 

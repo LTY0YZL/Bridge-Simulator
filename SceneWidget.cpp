@@ -421,6 +421,7 @@ void SceneWidget::mouseMoveEvent(QMouseEvent* event)
         if (body)
         {
             body->SetTransform(b2Vec2(worldPos.x(), worldPos.y()), body->GetAngle());
+            syncSelectedPlaceable();
             update();
         }
     }
@@ -465,6 +466,7 @@ void SceneWidget::wheelEvent(QWheelEvent* event)
             {
                 body->SetTransform(body->GetPosition(), currentAngle + rotationStep);
             }
+            syncSelectedPlaceable();
             update();
         }
     }
@@ -726,6 +728,21 @@ void SceneWidget::drawPlaceablePreview(QPainter &painter)
 
     // Draw the preview
     painter.drawRect(previewRect);
+}
+void SceneWidget::syncSelectedPlaceable()
+{
+    if (selectedPlaceable)
+    {
+        b2Body* body = selectedPlaceable->getBody();
+        if (body)
+        {
+            b2Vec2 pos = body->GetPosition();
+            float angle = body->GetAngle();
+
+            selectedPlaceable->setPosition(pos.x, pos.y);
+            selectedPlaceable->setRotation(angle);
+        }
+    }
 }
 
 

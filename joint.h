@@ -8,7 +8,13 @@
 
 class Joint
 {
+
 public:
+    struct JointData {
+        b2Joint* joint;
+        float maxForce; // The maximum force that this joint can handle before breaking
+    };
+
     Joint(b2World* world);
 
     // Method to connect two Placeable objects using a Box2D RevoluteJoint
@@ -20,6 +26,8 @@ public:
     // Method to get all joints
     std::vector<b2Joint*>& getJoints() const;
 
+    const std::vector<JointData>& getJointsData() const;
+
     void deleteJointsForBody(b2Body* body);
 
     // Method to update joints and handle breaking logic
@@ -27,14 +35,8 @@ public:
 
     void deleteAllJoints();
 
-    float getMaxForceForJoint(b2Joint* j) const;
-
 private:
     b2World* world;
-    struct JointData {
-        b2Joint* joint;
-        float maxForce; // The maximum force that this joint can handle before breaking
-    };
     std::vector<JointData> joints;
 };
 

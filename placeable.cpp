@@ -146,6 +146,13 @@ void Placeable::setPosition(float x, float y)
     posX = x;
     posY = y;
 }
+void Placeable::setRotation(float angle)
+{
+    if (body)
+    {
+        body->SetTransform(body->GetPosition(), angle);
+    }
+}
 
 float Placeable::getPosX() const
 {

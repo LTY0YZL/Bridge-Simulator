@@ -4,8 +4,10 @@
 #include <QMainWindow>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QPushbutton>
 #include "GameLevel.h"
 #include "SceneWidget.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -63,12 +65,15 @@ private slots:
     void on_restartButton_clicked();
 
     void on_helpButton_clicked();
+    void EditMode(bool enabled);
+
+    void on_selectToolButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     GameLevel* gameLevel; // Pointer to the GameLevel instance
     SceneWidget* sceneWidget;
-
+    QList<QPushButton*> controllableButtons;
     int currentLevelNumber;
     QString levelsDirectory;
 };

@@ -35,7 +35,7 @@ void GameLevel::initialize()
     createDynamicBody(box3, 0.0f, 10.0f); // Box3 at (0, 10)
 }
 
-void GameLevel::createGround(float posX, float posY, float width, float height)
+b2Body* GameLevel::createGround(float posX, float posY, float width, float height)
 {
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(posX, posY);
@@ -49,6 +49,8 @@ void GameLevel::createGround(float posX, float posY, float width, float height)
 
     // Add the ground body to the vector
     groundBodies.push_back(newGroundBody);
+
+    return newGroundBody;
 }
 
 b2Body* GameLevel::createDynamicBody(Placeable placeable, float posX, float posY)
@@ -111,13 +113,8 @@ Joint& GameLevel::getJoint()
 bool GameLevel::saveLevel(const QString& filename) const
 {
     QJsonObject levelObject;
-
-    QJsonArray placeablesArray;
-    for (const auto& placeable : placeables)
-    {
-        placeablesArray.append(placeable.toJson());
-    }
-    levelObject["placeables"] = placeablesArray;
+    QMap<b2Body*, int> bodyToIDMap;
+    int nextID = 0;
 
     QJsonArray groundsArray;
     for (const b2Body* groundBody : groundBodies)
@@ -135,52 +132,51 @@ bool GameLevel::saveLevel(const QString& filename) const
         groundObj["height"] = height;
 
         groundsArray.append(groundObj);
+        bodyToIDMap[const_cast<b2Body*>(groundBody)] = nextID++;
     }
+
+    QJsonArray placeablesArray;
+    for (const auto& placeable : placeables)
+    {
+        placeablesArray.append(placeable.toJson());
+        bodyToIDMap[placeable.getBody()] = nextID++;
+    }
+    levelObject["placeables"] = placeablesArray;
+
     levelObject["grounds"] = groundsArray;
     levelObject["hailLevel"] = hailLevel;
     levelObject["earthquakeLevel"] = earthquakeLevel;
 
     // Save joints
     QJsonArray jointsArray;
-    const std::vector<b2Joint*>& allJoints = joint.getJoints();
-    for (b2Joint* j : allJoints)
+    for (const Joint::JointData& jd : joint.getJointsData())
     {
         QJsonObject jointObj;
+        b2Joint* joint = jd.joint;
 
-        if (j->GetType() == e_revoluteJoint)
-        {
-            jointObj["type"] = "revolute";
-            b2RevoluteJoint* revJoint = (b2RevoluteJoint*)j;
-            b2Vec2 anchorA = j->GetBodyA()->GetWorldPoint(revJoint->GetLocalAnchorA());
-            b2Vec2 anchorB = j->GetBodyB()->GetWorldPoint(revJoint->GetLocalAnchorB());
-            jointObj["anchorAx"] = anchorA.x;
-            jointObj["anchorAy"] = anchorA.y;
-            jointObj["anchorBx"] = anchorB.x;
-            jointObj["anchorBy"] = anchorB.y;
-            jointObj["frequencyHz"] = 0.0;
-            jointObj["dampingRatio"] = 0.0;
-            jointObj["maxForce"] = std::numeric_limits<float>::max();
-        }
-        else if (j->GetType() == e_distanceJoint)
-        {
-            jointObj["type"] = "distance";
-            b2DistanceJoint* distJoint = (b2DistanceJoint*)j;
-            b2Vec2 anchorA = j->GetBodyA()->GetWorldPoint(distJoint->GetLocalAnchorA());
-            b2Vec2 anchorB = j->GetBodyB()->GetWorldPoint(distJoint->GetLocalAnchorB());
-            jointObj["anchorAx"] = anchorA.x;
-            jointObj["anchorAy"] = anchorA.y;
-            jointObj["anchorBx"] = anchorB.x;
-            jointObj["anchorBy"] = anchorB.y;
-            jointObj["frequencyHz"] = distJoint->GetFrequency();
-            jointObj["dampingRatio"] = distJoint->GetDampingRatio();
-            float maxForce = joint.getMaxForceForJoint(j);
-            jointObj["maxForce"] = maxForce;
-        }
+        b2Body* bodyA = joint->GetBodyA();
+        b2Body* bodyB = joint->GetBodyB();
 
-        int idA = getPlaceableIDForBody(j->GetBodyA());
-        int idB = getPlaceableIDForBody(j->GetBodyB());
-        jointObj["bodyA_id"] = idA;
-        jointObj["bodyB_id"] = idB;
+        jointObj["bodyA_id"] = bodyToIDMap.value(bodyA, -1);
+        jointObj["bodyB_id"] = bodyToIDMap.value(bodyB, -1);
+
+        jointObj["type"] = static_cast<int>(joint->GetType());
+        jointObj["maxForce"] = jd.maxForce;
+
+        b2Vec2 anchorA = joint->GetAnchorA();
+        b2Vec2 anchorB = joint->GetAnchorB();
+        jointObj["anchorAX"] = anchorA.x;
+        jointObj["anchorAY"] = anchorA.y;
+        jointObj["anchorBX"] = anchorB.x;
+        jointObj["anchorBY"] = anchorB.y;
+
+        if (joint->GetType() == e_distanceJoint)
+        {
+            const b2DistanceJoint* distanceJoint = static_cast<const b2DistanceJoint*>(joint);
+            jointObj["length"] = distanceJoint->GetLength();
+            jointObj["frequencyHz"] = distanceJoint->GetFrequency();
+            jointObj["dampingRatio"] = distanceJoint->GetDampingRatio();
+        }
 
         jointsArray.append(jointObj);
     }
@@ -218,6 +214,8 @@ bool GameLevel::loadLevel(const QString& filename)
         return false;
     }
     QJsonObject levelObject = doc.object();
+    QMap<int, b2Body*> bodyMap;
+    int groundID = bodyMap.size();
 
     QJsonArray groundsArray = levelObject["grounds"].toArray();
     for (const QJsonValue& value : groundsArray)
@@ -227,18 +225,22 @@ bool GameLevel::loadLevel(const QString& filename)
         float posY = groundObj["posY"].toDouble();
         float width = groundObj["width"].toDouble();
         float height = groundObj["height"].toDouble();
-        createGround(posX, posY, width, height);
+        b2Body* groundBody = createGround(posX, posY, width, height);
+
+        bodyMap[groundID] = groundBody;
+        groundID++;
     }
 
     QJsonArray placeablesArray = levelObject["placeables"].toArray();
     placeables.clear();
-    nextPlaceableID = 1;
+    nextPlaceableID = bodyMap.size();
     for (const QJsonValue& value : placeablesArray)
     {
         QJsonObject placeableObj = value.toObject();
         Placeable placeable = Placeable::fromJson(placeableObj);
 
-        createDynamicBody(placeable, placeable.getPosX(), placeable.getPosY());
+        b2Body* dynamicBody = createDynamicBody(placeable, placeable.getPosX(), placeable.getPosY());
+        bodyMap[placeable.getID()] = dynamicBody;
     }
 
     if (levelObject.contains("hailLevel"))
@@ -251,37 +253,41 @@ bool GameLevel::loadLevel(const QString& filename)
     else
         earthquakeLevel = 0;
 
-    QMap<int, b2Body*> bodyMap;
     for (auto& p : placeables) {
         bodyMap.insert(p.getID(), p.getBody());
     }
 
     if (levelObject.contains("joints"))
     {
+        qDebug()<<"try connect";
         QJsonArray jointsArray = levelObject["joints"].toArray();
         for (const QJsonValue& val : jointsArray)
         {
             QJsonObject jointObj = val.toObject();
-            QString type = jointObj["type"].toString();
 
             int idA = jointObj["bodyA_id"].toInt();
             int idB = jointObj["bodyB_id"].toInt();
-            b2Body* bodyA = bodyMap.value(idA, nullptr);
-            b2Body* bodyB = bodyMap.value(idB, nullptr);
+            b2Body* bodyA = bodyMap.value(idA,nullptr);
+            b2Body* bodyB = bodyMap.value(idB,nullptr);
             if (!bodyA || !bodyB || bodyA == bodyB) continue;
 
-            float ax = (float)jointObj["anchorAx"].toDouble();
-            float ay = (float)jointObj["anchorAy"].toDouble();
-            float bx = (float)jointObj["anchorBx"].toDouble();
-            float by = (float)jointObj["anchorBy"].toDouble();
-            b2Vec2 anchorA(ax, ay);
-            b2Vec2 anchorB(bx, by);
+            b2Vec2 anchorA(
+                (float)jointObj["anchorAX"].toDouble(),
+                (float)jointObj["anchorAY"].toDouble()
+                );
+            b2Vec2 anchorB(
+                (float)jointObj["anchorBX"].toDouble(),
+                (float)jointObj["anchorBY"].toDouble()
+                );
 
-            if (type == "revolute")
+            int typeInt = jointObj["type"].toInt();
+            b2JointType type = static_cast<b2JointType>(typeInt);
+            if (type == e_revoluteJoint)
             {
+                qDebug()<<"try connect revolute joint";
                 joint.connectRevoluteJoint(bodyA, bodyB, anchorA, anchorB);
             }
-            else if (type == "distance")
+            else if (type == e_distanceJoint)
             {
                 float frequencyHz = (float)jointObj["frequencyHz"].toDouble();
                 float dampingRatio = (float)jointObj["dampingRatio"].toDouble();
@@ -294,8 +300,13 @@ bool GameLevel::loadLevel(const QString& filename)
                     if (p.getBody() == bodyB) pB = &p;
                 }
                 if (pA && pB) {
+                    qDebug()<<"try connect distance joint";
                     joint.connectDistanceJoint(*pA, *pB, anchorA, anchorB, frequencyHz, dampingRatio, maxForce);
                 }
+            }
+            else
+            {
+                qDebug() << "Unknown joint type:" << typeInt;
             }
         }
     }
@@ -330,25 +341,8 @@ void GameLevel::setEarthquakeLevel(int level)
 {
     earthquakeLevel = level;
 }
+
 int GameLevel::getEarthquakeLevel() const
 {
     return earthquakeLevel;
-}
-
-int GameLevel::getPlaceableIDForBody(b2Body* body) const
-{
-    for (const auto& p : placeables) {
-        if (p.getBody() == body)
-            return p.getID();
-    }
-    return -1;
-}
-
-b2Body* GameLevel::getBodyForPlaceableID(int id) const
-{
-    for (const auto& p : placeables) {
-        if (p.getID() == id)
-            return p.getBody();
-    }
-    return nullptr;
 }
