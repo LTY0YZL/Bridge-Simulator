@@ -93,6 +93,8 @@ public:
     QSpacerItem *verticalSpacer_3;
     QLabel *label_4;
     QPushButton *restartButton;
+    QLabel *label_7;
+    QLabel *label_8;
     QMenuBar *menubar;
     QMenu *menuSelectLevel_todo;
     QStatusBar *statusbar;
@@ -199,7 +201,7 @@ public:
         label_6->setFont(font);
         helpButton = new QPushButton(centralwidget);
         helpButton->setObjectName("helpButton");
-        helpButton->setGeometry(QRect(10, 390, 111, 51));
+        helpButton->setGeometry(QRect(10, 360, 111, 51));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
         layoutWidget->setGeometry(QRect(670, 230, 201, 343));
@@ -366,6 +368,16 @@ public:
         restartButton = new QPushButton(centralwidget);
         restartButton->setObjectName("restartButton");
         restartButton->setGeometry(QRect(150, 550, 511, 31));
+        label_7 = new QLabel(centralwidget);
+        label_7->setObjectName("label_7");
+        label_7->setGeometry(QRect(150, 0, 81, 16));
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setBold(true);
+        label_7->setFont(font1);
+        label_8 = new QLabel(centralwidget);
+        label_8->setObjectName("label_8");
+        label_8->setGeometry(QRect(230, 0, 53, 15));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -392,11 +404,15 @@ public:
         selectTool->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
         deleteToolButton->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
 <<<<<<< HEAD
+<<<<<<< HEAD
         boxToolButton->setText(QCoreApplication::translate("MainWindow", "box", nullptr));
         stringToolButton->setText(QCoreApplication::translate("MainWindow", "String", nullptr));
         rebarToolButton->setText(QCoreApplication::translate("MainWindow", "Rebar", nullptr));
 =======
         boxToolButton->setText(QCoreApplication::translate("MainWindow", "Testbox", nullptr));
+=======
+        boxToolButton->setText(QCoreApplication::translate("MainWindow", "Weight", nullptr));
+>>>>>>> f917bc5 (Select Drag Rotate Done)
         beamToolButton->setText(QCoreApplication::translate("MainWindow", "Beam", nullptr));
         frameToolButton->setText(QCoreApplication::translate("MainWindow", "Frame", nullptr));
 <<<<<<< HEAD
@@ -408,7 +424,7 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
         label_6->setText(QCoreApplication::translate("MainWindow", "Click To Use", nullptr));
-        helpButton->setText(QCoreApplication::translate("MainWindow", "Help Info ", nullptr));
+        helpButton->setText(QCoreApplication::translate("MainWindow", "Help Page", nullptr));
         nextLevelButton->setText(QCoreApplication::translate("MainWindow", "Play Next Level", nullptr));
         levelNumberLabel->setText(QCoreApplication::translate("MainWindow", "level", nullptr));
         goToLevelButton->setText(QCoreApplication::translate("MainWindow", "Go to Level", nullptr));
@@ -425,6 +441,8 @@ public:
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Weather System:", nullptr));
         restartButton->setText(QCoreApplication::translate("MainWindow", "Restart", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "HELP INFO:", nullptr));
+        label_8->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "Structural Simulation V0.1", nullptr));
     } // retranslateUi
 

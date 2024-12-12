@@ -48,6 +48,7 @@ private:
     float panOffsetY;       // Pan offset along the y-axis
     bool isPanning;         // Whether the user is currently panning
     Placeable currentBlock;
+    Placeable* selectedPlaceable;
 
 
     void drawShape(QPainter &painter, const b2Body* body, const QColor &color);

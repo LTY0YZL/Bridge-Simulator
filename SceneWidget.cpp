@@ -270,6 +270,12 @@ QPointF SceneWidget::box2DWorldToScreen(const b2Vec2& worldPos) const
 
 void SceneWidget::setCurrentTool(int ID)
 {
+    if (selectedPlaceable)
+    {
+        // Reset the color of the previously selected object
+        selectedPlaceable->setDisplayColor(selectedPlaceable->getOriginalColor());
+        selectedPlaceable = nullptr; // Clear the selection
+    }
     currentTool=ID;
     placeablePreview = (ID == 0 || ID == 3 || ID == 4);
     if (ID == 0)
@@ -341,12 +347,23 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
             update();
 >>>>>>> c4273a2 (Placeable Preview)
         }
-        else if (currentTool == 1)
+        else if (currentTool == 1) // Select tool
         {
             Placeable* placeable = findPlaceableAt(worldPos, placeables);
             if (placeable)
             {
+<<<<<<< HEAD
                 placeable->setDisplayColor(QColor("forestgreen"));
+=======
+                if (selectedPlaceable){
+                    // Reset the color
+                    selectedPlaceable->setDisplayColor(selectedPlaceable->getOriginalColor());
+                }
+                // Update the selected placeable
+                selectedPlaceable = placeable;
+                selectedPlaceable->setDisplayColor(QColor("forestgreen"));
+                update();
+>>>>>>> f917bc5 (Select Drag Rotate Done)
             }
         }
         else if (currentTool == 2)
@@ -380,6 +397,8 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
 
 void SceneWidget::mouseMoveEvent(QMouseEvent* event)
 {
+    QPointF screenPos = event->pos();
+    QPointF worldPos = screenToWorld(screenPos);
     if (isPanning)
     {
         // Calculate the difference between the current and last mouse position
@@ -395,10 +414,18 @@ void SceneWidget::mouseMoveEvent(QMouseEvent* event)
         // Trigger repaint to reflect the panning
         update();
     }
+    else if (selectedPlaceable && event->buttons() & Qt::LeftButton)
+    {
+        // Move the selected placeable
+        b2Body* body = selectedPlaceable->getBody();
+        if (body)
+        {
+            body->SetTransform(b2Vec2(worldPos.x(), worldPos.y()), body->GetAngle());
+            update();
+        }
+    }
     else
     {
-        QPointF screenPos = event->pos();
-        QPointF worldPos = screenToWorld(screenPos);
         if (placeablePreview) {
             currentMousePos = worldPos; // Update preview position
             update();
@@ -423,11 +450,29 @@ void SceneWidget::mouseReleaseEvent(QMouseEvent* event)
 
 void SceneWidget::wheelEvent(QWheelEvent* event)
 {
+    if (selectedPlaceable)
+    {
+        b2Body* body = selectedPlaceable->getBody();
+        if (body)
+        {
+            float currentAngle = body->GetAngle();
+            float rotationStep = 15.0f * (b2_pi / 180.0f); // 15 degrees in radians
+            if (event->angleDelta().y() > 0)
+            {
+                body->SetTransform(body->GetPosition(), currentAngle - rotationStep);
+            }
+            else
+            {
+                body->SetTransform(body->GetPosition(), currentAngle + rotationStep);
+            }
+            update();
+        }
+    }
+    else
     if (event->angleDelta().y() > 0) {
         // Zoom in by increasing worldScale by 5%
         worldScale *= 1.05;
     } else {
-        // Zoom out by decreasing worldScale by 5%
         worldScale /= 1.05;
     }
 
@@ -438,10 +483,6 @@ void SceneWidget::wheelEvent(QWheelEvent* event)
     else if (worldScale > 200.0f) {
         worldScale = 200.0f; // Minimum zoom level
     }
-
-    qDebug() << "Zoomed to worldScale:" << worldScale;
-
-    // Trigger a repaint with the updated scale
     update();
 }
 

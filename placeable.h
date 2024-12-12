@@ -26,6 +26,7 @@ public:
     int getCost() const;
     QString getName() const;
     QColor getColor() const;
+    QColor getOriginalColor() const;
     b2Body* getBody() const;
     float getWidth() const;
     float getHeight() const;

@@ -95,7 +95,7 @@
         <item>
          <widget class="QPushButton" name="boxToolButton">
           <property name="text">
-           <string>Testbox</string>
+           <string>Weight</string>
           </property>
          </widget>
         </item>
@@ -200,13 +200,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>390</y>
+      <y>360</y>
       <width>111</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Help Info </string>
+     <string>Help Page</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -472,6 +472,38 @@
     </property>
     <property name="text">
      <string>Restart</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>0</y>
+      <width>81</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>HELP INFO:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>0</y>
+      <width>53</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>

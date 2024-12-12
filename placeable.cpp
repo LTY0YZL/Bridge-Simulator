@@ -33,6 +33,10 @@ QColor Placeable::getColor() const
 {
     return displayColor;
 }
+QColor Placeable::getOriginalColor() const
+{
+    return color;
+}
 
 void Placeable::setName(const QString& name)
 {
