@@ -716,7 +716,7 @@ void SceneWidget::handleEarthquake()
     int eqLevel = gameLevel->getEarthquakeLevel();
     if (eqLevel > 0)
     {
-        float forceFactor = 5.0f; // Adjust this value to control the impulse intensity
+        float forceFactor = 0.1f; // Adjust this value to control the impulse intensity
         float shakeIntensity = (float)eqLevel * 2.0f; // Adjust Earthquake intensity based on level
         float shakeX = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
         float shakeY = ((float)(rand() % 100) / 100.0f - 0.5f) * shakeIntensity;
@@ -734,12 +734,9 @@ void SceneWidget::handleEarthquake()
             // Calculate object size factor based on width and height
             float sizeFactor = p.getWidth() * p.getHeight();
 
-            // Calculate impulse proportionally to the size
-            float impulseX = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * forceFactor * sizeFactor);
-            float impulseY = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * forceFactor * sizeFactor);
+            float impulseX = ((float)(rand() % 100) / 100.0f - 0.5f) * (eqLevel * forceFactor * sizeFactor * sizeFactor);
 
-            // Apply the impulse to the body
-            body->ApplyLinearImpulse(b2Vec2(impulseX, impulseY), body->GetWorldCenter(), true);
+            body->ApplyLinearImpulse(b2Vec2(impulseX, 0), body->GetWorldCenter(), true);
         }
     }
     else
