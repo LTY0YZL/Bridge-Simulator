@@ -1,9 +1,15 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file implements the GameLevel class methods, providing functionality
+ * to manage the simulation environment, including object creation, destruction,
+ * and step updates for the physics world.
+ */
+
 #include "GameLevel.h"
-#include <QDebug>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QFile>
-#include <QIODevice>
+
 
 GameLevel::GameLevel()
     : world(b2Vec2(0.0f, -10.0f)),

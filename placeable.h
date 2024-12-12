@@ -1,3 +1,12 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file defines the Placeable class, which encapsulates properties
+ * and behaviors of objects that can be manipulated within the simulation,
+ * including their physics attributes and serialization.
+ */
 #ifndef PLACEABLE_H
 #define PLACEABLE_H
 

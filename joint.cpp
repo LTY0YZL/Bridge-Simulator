@@ -1,3 +1,13 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file implements the Joint class methods, providing functionality
+ * for creating and managing revolute and distance joints, updating joint states,
+ * and handling joint breaking conditions in the simulation.
+ */
+
 #include "Joint.h"
 
 Joint::Joint(b2World* world) : world(world) {}

@@ -1,6 +1,19 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file defines the GameLevel class, which manages the simulation
+ * environment, including the physical world, ground objects, dynamic objects,
+ * and joint connections.
+ */
 #ifndef GAMELEVEL_H
 #define GAMELEVEL_H
-
+#include <QDebug>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QFile>
+#include <QIODevice>
 #include <Box2D/Box2D.h>
 #include <vector>
 #include "Placeable.h"

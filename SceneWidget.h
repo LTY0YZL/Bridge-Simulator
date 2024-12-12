@@ -1,4 +1,12 @@
-
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title:  A9 Structure Simulator
+ *
+ * Summary: This file defines the SceneWidget class, which handles rendering
+ * and user interaction for the application's canvas, supporting drawing,
+ * panning, zooming, and editing structures in the simulation.
+ */
 #ifndef SCENEWIDGET_H
 #define SCENEWIDGET_H
 

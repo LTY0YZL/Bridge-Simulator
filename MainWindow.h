@@ -1,3 +1,12 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file defines the MainWindow class, which serves as the central
+ * control point for the application's UI and interactions, including handling
+ * user input and managing levels.
+ */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -5,7 +14,10 @@
 #include <QDesktopServices>
 #include <QUrl>
 #include <QPushButton>
-
+#include <QFileDialog>
+#include <QMessageBox>
+#include "ui_MainWindow.h"
+#include "SceneWidget.h"
 #include "GameLevel.h"
 #include "SceneWidget.h"
 

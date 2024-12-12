@@ -1,5 +1,14 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file implements the Placeable class methods, managing the
+ * properties, physics attributes, and serialization of simulation objects.
+ */
+
 #include "Placeable.h"
-#include <QDateTime>
+
 
 Placeable::Placeable(const QString& name, const int,
                      const QColor& color,

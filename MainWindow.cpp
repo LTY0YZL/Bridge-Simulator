@@ -1,9 +1,15 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file implements the MainWindow class methods, handling user
+ * interactions, managing levels, and providing the main UI functionalities for
+ * the application.
+ */
+
 #include "MainWindow.h"
-#include "ui_MainWindow.h"
-#include "SceneWidget.h"
-#include "GameLevel.h"
-#include <QFileDialog>
-#include <QMessageBox>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),

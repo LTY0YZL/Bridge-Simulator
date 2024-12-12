@@ -1,18 +1,28 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file implements the SceneWidget class methods, responsible for
+ * rendering, handling input, and managing interactions with the canvas in the
+ * simulation.
+ */
+
 #include "SceneWidget.h"
 #include <algorithm>
 
 SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
     : QWidget(parent),
+    gameLevel(level),
+    simulationTimer(new QTimer(this)),
     currentTool(0),
     worldScale(20.0f),
-    simulationTimer(new QTimer(this)),
-    gameLevel(level),
     showPreview(false),
     placeablePreview(true),
     isFirstPointSet(false),
+    isPanning(false),
     panOffsetX(0.0f),
     panOffsetY(0.0f),
-    isPanning(false),
     currentBlock(Placeable("Box", 50, Qt::blue, 2.0f, 2.0f, 2, 0.5, 0.1))
 {
     setMouseTracking(true);

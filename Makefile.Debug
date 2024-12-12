@@ -700,7 +700,79 @@ debug\moc_MainWindow.cpp: MainWindow.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QPushButton \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qpushbutton.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdir.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdirlisting.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfileinfo.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimezone.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialog.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMessageBox \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmessagebox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialogbuttonbox.h \
+		ui_MainWindow.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QVariant \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QAction \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QApplication \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QGridLayout \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLabel \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlabel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qframe.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpicture.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextdocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLineEdit \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlineedit.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextcursor.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextformat.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpen.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextoption.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenu \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QScrollArea \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qscrollarea.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpacerItem \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpinBox \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qspinbox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qvalidator.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QWidget \
+		SceneWidget.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QMouseEvent \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QTimer \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
 		GameLevel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice \
 		Box2D\Box2D.h \
 		Box2D\Common\b2Settings.h \
 		Box2D\Common\b2Draw.h \
@@ -740,30 +812,10 @@ debug\moc_MainWindow.cpp: MainWindow.h \
 		Box2D\Dynamics\Joints\b2WheelJoint.h \
 		Placeable.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDateTime \
 		joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextoption.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpen.h \
-		SceneWidget.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QWidget \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QMouseEvent \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QTimer \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
 		Joint.h \
 		debug\moc_predefs.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\bin\moc.exe
@@ -970,6 +1022,22 @@ debug\moc_SceneWidget.cpp: SceneWidget.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
 		GameLevel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice \
 		Box2D\Box2D.h \
 		Box2D\Common\b2Settings.h \
 		Box2D\Common\b2Draw.h \
@@ -1011,16 +1079,8 @@ debug\moc_SceneWidget.cpp: SceneWidget.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDateTime \
 		joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
 		Joint.h \
 		debug\moc_predefs.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\bin\moc.exe
@@ -1744,6 +1804,22 @@ debug\SceneWidget.obj: SceneWidget.cpp SceneWidget.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
 		GameLevel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice \
 		Box2D\Box2D.h \
 		Box2D\Common\b2Settings.h \
 		Box2D\Common\b2Draw.h \
@@ -1785,80 +1861,35 @@ debug\SceneWidget.obj: SceneWidget.cpp SceneWidget.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDateTime \
 		joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
 		Joint.h
 
 debug\gamelevel.obj: gamelevel.cpp GameLevel.h \
-		Box2D\Box2D.h \
-		Box2D\Common\b2Settings.h \
-		Box2D\Common\b2Draw.h \
-		Box2D\Common\b2Math.h \
-		Box2D\Common\b2Timer.h \
-		Box2D\Collision\Shapes\b2CircleShape.h \
-		Box2D\Collision\Shapes\b2Shape.h \
-		Box2D\Common\b2BlockAllocator.h \
-		Box2D\Collision\b2Collision.h \
-		Box2D\Collision\Shapes\b2EdgeShape.h \
-		Box2D\Collision\Shapes\b2ChainShape.h \
-		Box2D\Collision\Shapes\b2PolygonShape.h \
-		Box2D\Collision\b2BroadPhase.h \
-		Box2D\Collision\b2DynamicTree.h \
-		Box2D\Common\b2GrowableStack.h \
-		Box2D\Collision\b2Distance.h \
-		Box2D\Collision\b2TimeOfImpact.h \
-		Box2D\Dynamics\b2Body.h \
-		Box2D\Dynamics\b2Fixture.h \
-		Box2D\Dynamics\b2WorldCallbacks.h \
-		Box2D\Dynamics\b2TimeStep.h \
-		Box2D\Dynamics\b2World.h \
-		Box2D\Common\b2StackAllocator.h \
-		Box2D\Dynamics\b2ContactManager.h \
-		Box2D\Dynamics\Contacts\b2Contact.h \
-		Box2D\Dynamics\Joints\b2DistanceJoint.h \
-		Box2D\Dynamics\Joints\b2Joint.h \
-		Box2D\Dynamics\Joints\b2FrictionJoint.h \
-		Box2D\Dynamics\Joints\b2GearJoint.h \
-		Box2D\Dynamics\Joints\b2MotorJoint.h \
-		Box2D\Dynamics\Joints\b2MouseJoint.h \
-		Box2D\Dynamics\Joints\b2PrismaticJoint.h \
-		Box2D\Dynamics\Joints\b2PulleyJoint.h \
-		Box2D\Dynamics\Joints\b2RevoluteJoint.h \
-		Box2D\Dynamics\Joints\b2RopeJoint.h \
-		Box2D\Dynamics\Joints\b2WeldJoint.h \
-		Box2D\Dynamics\Joints\b2WheelJoint.h \
-		Placeable.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstring.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qchar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qglobal.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtversionchecks.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdebug.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtconfiginclude.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qconfig.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtcore-config.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtdeprecationdefinitions.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtcoreexports.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtversionchecks.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtypes.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qassert.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtcoreexports.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtdeprecationmarkers.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtclasshelpermacros.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtpreprocessorsupport.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qassert.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtnoop.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtypes.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtextstream.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiodevicebase.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qglobal.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtpreprocessorsupport.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtversion.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtypeinfo.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcontainerfwd.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qsysinfo.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qlogging.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qflags.h \
@@ -1884,6 +1915,7 @@ debug\gamelevel.obj: gamelevel.cpp GameLevel.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtresource.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qttranslation.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qversiontagging.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qchar.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcompare.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcomparehelpers.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\q20type_traits.h \
@@ -1905,57 +1937,48 @@ debug\gamelevel.obj: gamelevel.cpp GameLevel.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringliteral.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qscopedpointer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringconverter_base.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstring.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qlatin1stringview.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qanystringview.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qutf8stringview.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringtokenizer.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringconverter.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringconverter_base.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qcolor.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtguiglobal.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtgui-config.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtguiexports.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qrgb.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringlist.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qlist.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qsharedpointer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qshareddata.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qhashfunctions.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiterator.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbytearraylist.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qalgorithms.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringmatcher.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qrgba64.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qobjectdefs.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qobjectdefs_impl.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qsharedpointer_impl.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qmetatype.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatastream.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qscopedpointer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiodevicebase.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfloat16.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qmath.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qalgorithms.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiterable.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qmetacontainer.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcontainerinfo.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qobjectdefs.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qscopeguard.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdebug.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtextstream.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcontiguouscache.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qsharedpointer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qshareddata.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qlist.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiterator.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbytearraylist.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringlist.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qstringmatcher.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qmap.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qshareddata_impl.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qset.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qhash.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qlocale.h \
@@ -1969,9 +1992,63 @@ debug\gamelevel.obj: gamelevel.cpp GameLevel.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qurl.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qendian.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiodevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice \
+		Box2D\Box2D.h \
+		Box2D\Common\b2Settings.h \
+		Box2D\Common\b2Draw.h \
+		Box2D\Common\b2Math.h \
+		Box2D\Common\b2Timer.h \
+		Box2D\Collision\Shapes\b2CircleShape.h \
+		Box2D\Collision\Shapes\b2Shape.h \
+		Box2D\Common\b2BlockAllocator.h \
+		Box2D\Collision\b2Collision.h \
+		Box2D\Collision\Shapes\b2EdgeShape.h \
+		Box2D\Collision\Shapes\b2ChainShape.h \
+		Box2D\Collision\Shapes\b2PolygonShape.h \
+		Box2D\Collision\b2BroadPhase.h \
+		Box2D\Collision\b2DynamicTree.h \
+		Box2D\Common\b2GrowableStack.h \
+		Box2D\Collision\b2Distance.h \
+		Box2D\Collision\b2TimeOfImpact.h \
+		Box2D\Dynamics\b2Body.h \
+		Box2D\Dynamics\b2Fixture.h \
+		Box2D\Dynamics\b2WorldCallbacks.h \
+		Box2D\Dynamics\b2TimeStep.h \
+		Box2D\Dynamics\b2World.h \
+		Box2D\Common\b2StackAllocator.h \
+		Box2D\Dynamics\b2ContactManager.h \
+		Box2D\Dynamics\Contacts\b2Contact.h \
+		Box2D\Dynamics\Joints\b2DistanceJoint.h \
+		Box2D\Dynamics\Joints\b2Joint.h \
+		Box2D\Dynamics\Joints\b2FrictionJoint.h \
+		Box2D\Dynamics\Joints\b2GearJoint.h \
+		Box2D\Dynamics\Joints\b2MotorJoint.h \
+		Box2D\Dynamics\Joints\b2MouseJoint.h \
+		Box2D\Dynamics\Joints\b2PrismaticJoint.h \
+		Box2D\Dynamics\Joints\b2PulleyJoint.h \
+		Box2D\Dynamics\Joints\b2RevoluteJoint.h \
+		Box2D\Dynamics\Joints\b2RopeJoint.h \
+		Box2D\Dynamics\Joints\b2WeldJoint.h \
+		Box2D\Dynamics\Joints\b2WheelJoint.h \
+		Placeable.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qcolor.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtguiglobal.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtgui-config.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtguiexports.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qrgb.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qrgba64.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDateTime \
 		joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qrect.h \
@@ -1995,16 +2072,7 @@ debug\gamelevel.obj: gamelevel.cpp GameLevel.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qbrush.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qfontinfo.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qfont.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qfontmetrics.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qiodevice.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qfontmetrics.h
 
 debug\joint.obj: joint.cpp Joint.h \
 		Box2D\Box2D.h \
@@ -2403,7 +2471,79 @@ debug\main.obj: main.cpp MainWindow.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QPushButton \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qpushbutton.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdir.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdirlisting.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfileinfo.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimezone.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialog.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMessageBox \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmessagebox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialogbuttonbox.h \
+		ui_MainWindow.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QVariant \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QAction \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QApplication \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QGridLayout \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLabel \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlabel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qframe.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpicture.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextdocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLineEdit \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlineedit.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextcursor.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextformat.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpen.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextoption.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenu \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QScrollArea \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qscrollarea.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpacerItem \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpinBox \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qspinbox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qvalidator.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QWidget \
+		SceneWidget.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QMouseEvent \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QTimer \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
 		GameLevel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice \
 		Box2D\Box2D.h \
 		Box2D\Common\b2Settings.h \
 		Box2D\Common\b2Draw.h \
@@ -2443,33 +2583,11 @@ debug\main.obj: main.cpp MainWindow.h \
 		Box2D\Dynamics\Joints\b2WheelJoint.h \
 		Placeable.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDateTime \
 		joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextoption.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpen.h \
-		SceneWidget.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QWidget \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QMouseEvent \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QTimer \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
-		Joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QApplication \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qapplication.h
+		Joint.h
 
 debug\MainWindow.obj: MainWindow.cpp MainWindow.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMainWindow \
@@ -2669,7 +2787,79 @@ debug\MainWindow.obj: MainWindow.cpp MainWindow.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QPushButton \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qpushbutton.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdir.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdirlisting.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfileinfo.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimezone.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialog.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMessageBox \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmessagebox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialogbuttonbox.h \
+		ui_MainWindow.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QVariant \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QAction \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QApplication \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QGridLayout \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLabel \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlabel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qframe.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpicture.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextdocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLineEdit \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlineedit.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextcursor.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextformat.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpen.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextoption.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenu \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QScrollArea \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qscrollarea.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpacerItem \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpinBox \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qspinbox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qvalidator.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QVBoxLayout \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QWidget \
+		SceneWidget.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QMouseEvent \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QTimer \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
 		GameLevel.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonArray \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonarray.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonDocument \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QFile \
+		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QIODevice \
 		Box2D\Box2D.h \
 		Box2D\Common\b2Settings.h \
 		Box2D\Common\b2Draw.h \
@@ -2709,77 +2899,11 @@ debug\MainWindow.obj: MainWindow.cpp MainWindow.h \
 		Box2D\Dynamics\Joints\b2WheelJoint.h \
 		Placeable.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QColor \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QJsonObject \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdatetime.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qcalendar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\quuid.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDateTime \
 		joint.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QDebug \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QPainter \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpainter.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextoption.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpen.h \
-		SceneWidget.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QWidget \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QMouseEvent \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QTimer \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qbasictimer.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QWheelEvent \
-		Joint.h \
-		ui_MainWindow.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QVariant \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\QAction \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QApplication \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qapplication.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QGridLayout \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qgridlayout.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlayoutitem.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qboxlayout.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLabel \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlabel.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qframe.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qpicture.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextdocument.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QLineEdit \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qlineedit.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextcursor.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qtextformat.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenu \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenu.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMenuBar \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmenubar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QScrollArea \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qscrollarea.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractscrollarea.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpacerItem \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QSpinBox \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qspinbox.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qabstractspinbox.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtGui\qvalidator.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QStatusBar \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qstatusbar.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QVBoxLayout \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdir.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qdirlisting.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfile.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qfileinfo.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\qtimezone.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialog.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\QMessageBox \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qmessagebox.h \
-		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtWidgets\qdialogbuttonbox.h
+		Joint.h
 
 debug\placeable.obj: placeable.cpp Placeable.h \
 		..\..\..\..\QT\6.8.0\msvc2022_64\include\QtCore\QString \

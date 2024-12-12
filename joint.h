@@ -1,3 +1,13 @@
+/**
+ * Author: Yang Hong, Zimo Liu, Qixian Zhang
+ * Date: 12/12/2024
+ * Title: A9 Structure Simulator
+ *
+ * Summary: This file defines the Joint class, which handles the creation and
+ * management of joints between objects in the simulation, including revolute
+ * and distance joints with force limits.
+ */
+
 #ifndef JOINT_H
 #define JOINT_H
 
