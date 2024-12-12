@@ -237,12 +237,64 @@
             "length": 20.252222061157227,
             "maxForce": 50,
             "type": 3
+        },
+        {
+            "anchorAX": -18.117002487182617,
+            "anchorAY": 41.31353759765625,
+            "anchorBX": -4.7408976554870605,
+            "anchorBY": 26.07493782043457,
+            "bodyA_id": 12,
+            "bodyB_id": 2,
+            "dampingRatio": 0.20000000298023224,
+            "frequencyHz": 10,
+            "length": 20.276466369628906,
+            "maxForce": 50,
+            "type": 3
+        },
+        {
+            "anchorAX": 17.43973159790039,
+            "anchorAY": 40.466949462890625,
+            "anchorBX": 3.555673599243164,
+            "anchorBY": 25.90561866760254,
+            "bodyA_id": 11,
+            "bodyB_id": 2,
+            "dampingRatio": 0.20000000298023224,
+            "frequencyHz": 10,
+            "length": 20.119626998901367,
+            "maxForce": 50,
+            "type": 3
+        },
+        {
+            "anchorAX": -26.413572311401367,
+            "anchorAY": 40.63626480102539,
+            "anchorBX": -34.37150955200195,
+            "anchorBY": 26.582889556884766,
+            "bodyA_id": 12,
+            "bodyB_id": 9,
+            "dampingRatio": 0.20000000298023224,
+            "frequencyHz": 10,
+            "length": 16.15011215209961,
+            "maxForce": 50,
+            "type": 3
+        },
+        {
+            "anchorAX": 25.566984176635742,
+            "anchorAY": 40.466949462890625,
+            "anchorBX": 34.87946319580078,
+            "anchorBY": 26.752208709716797,
+            "bodyA_id": 11,
+            "bodyB_id": 10,
+            "dampingRatio": 0.20000000298023224,
+            "frequencyHz": 10,
+            "length": 16.577587127685547,
+            "maxForce": 50,
+            "type": 3
         }
     ],
     "placeables": [
         {
             "color": "#808080",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 10,
             "friction": 0.5,
             "height": 1,
@@ -252,11 +304,12 @@
             "posX": -0.7313151955604553,
             "posY": 25.88855743408203,
             "restitution": 0.10000000149011612,
+            "rotation": 0,
             "width": 10
         },
         {
             "color": "#808080",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 10,
             "friction": 0.5,
             "height": 1,
@@ -266,11 +319,12 @@
             "posX": -12.432357788085938,
             "posY": 25.88855743408203,
             "restitution": 0.10000000149011612,
+            "rotation": 0,
             "width": 10
         },
         {
             "color": "#808080",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 10,
             "friction": 0.5,
             "height": 1,
@@ -280,11 +334,12 @@
             "posX": 11.262253761291504,
             "posY": 25.88855743408203,
             "restitution": 0.10000000149011612,
+            "rotation": 0,
             "width": 10
         },
         {
             "color": "#ff0000",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -294,11 +349,12 @@
             "posX": -21.50066566467285,
             "posY": 25.88855743408203,
             "restitution": 0.5,
+            "rotation": 0,
             "width": 1
         },
         {
             "color": "#ff0000",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -308,11 +364,12 @@
             "posX": 20.62308692932129,
             "posY": 26.18108367919922,
             "restitution": 0.5,
+            "rotation": 0,
             "width": 1
         },
         {
             "color": "#a0a0a4",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 20,
             "friction": 0.5,
             "height": 10,
@@ -322,11 +379,12 @@
             "posX": -21.402116775512695,
             "posY": 33.564552307128906,
             "restitution": 0.10000000149011612,
+            "rotation": 0,
             "width": 2
         },
         {
             "color": "#a0a0a4",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 20,
             "friction": 0.5,
             "height": 10,
@@ -336,11 +394,12 @@
             "posX": 20.836421966552734,
             "posY": 33.281707763671875,
             "restitution": 0.10000000149011612,
+            "rotation": 0,
             "width": 2
         },
         {
             "color": "#ff0000",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -350,11 +409,12 @@
             "posX": -34.24749755859375,
             "posY": 26.56868553161621,
             "restitution": 0.5,
+            "rotation": 0,
             "width": 1
         },
         {
             "color": "#ff0000",
-            "cost": 1267436000,
+            "cost": -1061464128,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -364,7 +424,38 @@
             "posX": 34.70822525024414,
             "posY": 26.722261428833008,
             "restitution": 0.5,
+            "rotation": 0,
             "width": 1
+        },
+        {
+            "color": "#a0a0a4",
+            "cost": -1061464128,
+            "density": 10,
+            "friction": 0.5,
+            "height": 10,
+            "id": 11,
+            "isHail": false,
+            "name": "Box",
+            "posX": 21.67267417907715,
+            "posY": 40.297630310058594,
+            "restitution": 0.10000000149011612,
+            "rotation": 1.570796251296997,
+            "width": 2
+        },
+        {
+            "color": "#a0a0a4",
+            "cost": -1061464128,
+            "density": 10,
+            "friction": 0.5,
+            "height": 10,
+            "id": 12,
+            "isHail": false,
+            "name": "Box",
+            "posX": -22.180627822875977,
+            "posY": 40.63626480102539,
+            "restitution": 0.10000000149011612,
+            "rotation": 1.570796251296997,
+            "width": 2
         }
     ]
 }

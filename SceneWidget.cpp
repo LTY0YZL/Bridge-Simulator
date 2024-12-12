@@ -202,11 +202,11 @@ void SceneWidget::setCurrentTool(int ID)
     }
     else if (ID == 3)
     {
-        currentBlock = Placeable("Box", 200, Qt::gray, 2.0f, 10.0f, 20, 0.5, 0.1); // Beam
+        currentBlock = Placeable("Box", 200, Qt::gray, 2.0f, 10.0f, 10, 0.5, 0.1); // Beam
     }
     else if (ID == 4)
     {
-        currentBlock = Placeable("Box", 100, Qt::darkGray, 10.0f, 1.0f, 10, 0.5, 0.1); // frame
+        currentBlock = Placeable("Box", 100, Qt::darkGray, 10.0f, 1.0f, 5, 0.5, 0.1); // frame
     }
     else
     {

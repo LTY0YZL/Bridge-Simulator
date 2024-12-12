@@ -76,7 +76,7 @@ void MainWindow::on_playButton_clicked()
     }
     sceneWidget->startSimulation();
     ui->playButton->setEnabled(false);
-    //EditMode(false);
+    EditMode(false);
     sceneWidget->setCurrentTool(0);
 }
 
