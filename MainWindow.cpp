@@ -365,3 +365,9 @@ void MainWindow::EditMode(bool enabled)
     ui->playButton->setEnabled(enabled);
     ui->boxToolButton->setEnabled(true);
 }
+
+void MainWindow::on_selectToolButton_clicked()
+{
+
+}
+

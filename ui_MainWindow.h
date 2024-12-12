@@ -97,6 +97,7 @@ public:
     QLabel *label;
     QPushButton *saveButton;
     QPushButton *loadButton;
+    QPushButton *selectToolButton;
     QMenuBar *menubar;
     QMenu *menuSelectLevel_todo;
     QStatusBar *statusbar;
@@ -396,6 +397,9 @@ public:
 
         verticalLayout_4->addWidget(loadButton);
 
+        selectToolButton = new QPushButton(centralwidget);
+        selectToolButton->setObjectName("selectToolButton");
+        selectToolButton->setGeometry(QRect(40, 590, 80, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -459,6 +463,7 @@ public:
         label->setText(QCoreApplication::translate("MainWindow", "Level Edit Tool:", nullptr));
         saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
         loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
+        selectToolButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "Structural Simulation V0.1", nullptr));
     } // retranslateUi
 

@@ -1,24 +1,21 @@
-QMAKE_CXX.QT_COMPILER_STDCXX = 201703L
-QMAKE_CXX.QMAKE_CLANG_MAJOR_VERSION = 17
-QMAKE_CXX.QMAKE_CLANG_MINOR_VERSION = 0
-QMAKE_CXX.QMAKE_CLANG_PATCH_VERSION = 6
-QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 4
-QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 2
-QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 1
+QMAKE_CXX.QT_COMPILER_STDCXX = 199711L
+QMAKE_CXX.QMAKE_MSC_VER = 1942
+QMAKE_CXX.QMAKE_MSC_FULL_VER = 194234435
 QMAKE_CXX.COMPILER_MACROS = \
     QT_COMPILER_STDCXX \
-    QMAKE_CLANG_MAJOR_VERSION \
-    QMAKE_CLANG_MINOR_VERSION \
-    QMAKE_CLANG_PATCH_VERSION \
-    QMAKE_GCC_MAJOR_VERSION \
-    QMAKE_GCC_MINOR_VERSION \
-    QMAKE_GCC_PATCH_VERSION
+    QMAKE_MSC_VER \
+    QMAKE_MSC_FULL_VER
 QMAKE_CXX.INCDIRS = \
-    C:/Qt/Tools/llvm-mingw1706_64/include/c++/v1 \
-    C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17/include \
-    C:/Qt/Tools/llvm-mingw1706_64/include
+    D:\\VisualStudiolocation\\Huancun\\VC\\Tools\\MSVC\\14.42.34433\\include \
+    D:\\VisualStudiolocation\\Huancun\\VC\\Tools\\MSVC\\14.42.34433\\ATLMFC\\include \
+    D:\\VisualStudiolocation\\Huancun\\VC\\Auxiliary\\VS\\include \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\ucrt" \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\um" \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\shared" \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\winrt" \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\cppwinrt"
 QMAKE_CXX.LIBDIRS = \
-    C:/Qt/Tools/llvm-mingw1706_64/lib/clang/17 \
-    C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/lib \
-    C:/Qt/Tools/llvm-mingw1706_64/x86_64-w64-mingw32/mingw/lib \
-    C:/Qt/Tools/llvm-mingw1706_64/lib
+    D:\\VisualStudiolocation\\Huancun\\VC\\Tools\\MSVC\\14.42.34433\\ATLMFC\\lib\\x64 \
+    D:\\VisualStudiolocation\\Huancun\\VC\\Tools\\MSVC\\14.42.34433\\lib\\x64 \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.22621.0\\ucrt\\x64" \
+    "C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.22621.0\\\\um\\x64"
