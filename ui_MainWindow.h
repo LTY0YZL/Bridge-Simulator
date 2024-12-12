@@ -92,8 +92,8 @@ public:
     QSpacerItem *verticalSpacer_3;
     QLabel *label_4;
     QLabel *label_7;
-    QLabel *label_8;
-    QWidget *widget;
+    QLabel *helpLabel;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_3;
     QPushButton *playButton;
     QPushButton *restartButton;
@@ -371,21 +371,21 @@ public:
         font1.setPointSize(10);
         font1.setBold(true);
         label_7->setFont(font1);
-        label_8 = new QLabel(centralwidget);
-        label_8->setObjectName("label_8");
-        label_8->setGeometry(QRect(230, 0, 53, 15));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(150, 520, 511, 61));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        helpLabel = new QLabel(centralwidget);
+        helpLabel->setObjectName("helpLabel");
+        helpLabel->setGeometry(QRect(230, 0, 421, 16));
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(150, 520, 511, 61));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget1);
         verticalLayout_3->setObjectName("verticalLayout_3");
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        playButton = new QPushButton(widget);
+        playButton = new QPushButton(layoutWidget1);
         playButton->setObjectName("playButton");
 
         verticalLayout_3->addWidget(playButton);
 
-        restartButton = new QPushButton(widget);
+        restartButton = new QPushButton(layoutWidget1);
         restartButton->setObjectName("restartButton");
 
         verticalLayout_3->addWidget(restartButton);
@@ -452,7 +452,7 @@ public:
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Weather System:", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "HELP INFO:", nullptr));
-        label_8->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        helpLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         playButton->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
         restartButton->setText(QCoreApplication::translate("MainWindow", "Restart", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "Structural Simulation V0.1", nullptr));

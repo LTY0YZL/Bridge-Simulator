@@ -20,7 +20,7 @@ public:
               float restitution = 0.5f);
 
     // Method to create a Box2D body in the given world
-    b2Body* createBody( b2World* world, float posX, float posY);
+    b2Body* createBody(b2World* world, float posX, float posY, float rotation);
 
     // Accessors
     int getCost() const;

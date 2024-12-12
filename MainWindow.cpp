@@ -106,7 +106,7 @@ void MainWindow::on_selectTool_clicked()
 void MainWindow::on_boxToolButton_clicked()
 {
     sceneWidget->setCurrentTool(0);
-    qDebug() << "Tool 0";
+    ui->helpLabel->setText("Weight Load tool click to add load.");
 }
 
 

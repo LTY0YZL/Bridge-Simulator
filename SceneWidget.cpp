@@ -127,10 +127,19 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
             const b2PolygonShape* polygon = static_cast<const b2PolygonShape*>(shape);
 
             QPolygonF qPolygon;
+            float bodyAngle = body->GetAngle(); // Get rotation angle in radians
+            b2Vec2 bodyPosition = body->GetPosition();
+
             for (int i = 0; i < polygon->m_count; ++i)
             {
-                b2Vec2 vertex = body->GetWorldPoint(polygon->m_vertices[i]);
-                QPointF qPoint = box2DWorldToScreen(vertex);
+                // Get the vertex in local space
+                b2Vec2 vertex = polygon->m_vertices[i];
+
+                // Transform the vertex to world space using Box2D's built-in method
+                b2Vec2 transformedVertex = body->GetWorldPoint(vertex);
+
+                // Convert to screen coordinates
+                QPointF qPoint = box2DWorldToScreen(transformedVertex);
                 qPolygon << qPoint;
             }
             painter.drawPolygon(qPolygon);
@@ -146,6 +155,7 @@ void SceneWidget::drawShape(QPainter &painter, const b2Body* body, const QColor 
         }
     }
 }
+
 
 void SceneWidget::drawJoints(QPainter& painter, const std::vector<b2Joint*>& joints)
 {

@@ -53,11 +53,11 @@ b2Body* GameLevel::createGround(float posX, float posY, float width, float heigh
     return newGroundBody;
 }
 
-b2Body* GameLevel::createDynamicBody(Placeable placeable, float posX, float posY)
+b2Body* GameLevel::createDynamicBody(Placeable placeable, float posX, float posY, float rotation)
 {
     placeable.setID(nextPlaceableID++);
     // Use Placeable's createBody to create a Box2D body
-    b2Body* body = placeable.createBody(&world, posX, posY);
+    b2Body* body = placeable.createBody(&world, posX, posY, rotation);
 
     // Add the Placeable to the list
     placeables.push_back(placeable);
@@ -239,7 +239,9 @@ bool GameLevel::loadLevel(const QString& filename)
         QJsonObject placeableObj = value.toObject();
         Placeable placeable = Placeable::fromJson(placeableObj);
 
-        b2Body* dynamicBody = createDynamicBody(placeable, placeable.getPosX(), placeable.getPosY());
+        float rotation = placeableObj.contains("rotation") ? placeableObj["rotation"].toDouble() : 0.0f;
+
+        b2Body* dynamicBody = createDynamicBody(placeable, placeable.getPosX(), placeable.getPosY(), rotation);
         bodyMap[placeable.getID()] = dynamicBody;
     }
 

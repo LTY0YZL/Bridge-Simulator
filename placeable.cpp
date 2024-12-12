@@ -49,7 +49,7 @@ void Placeable::setDisplayColor( QColor color)
 }
 
 // Method to create a Box2D body
-b2Body* Placeable::createBody(b2World* world, float posX, float posY)
+b2Body* Placeable::createBody(b2World* world, float posX, float posY, float rotation)
 {
     // Store the position in the member variables
     this->posX = posX;
@@ -59,13 +59,13 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY)
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(posX, posY);
+    bodyDef.angle = rotation; // Set the rotation
 
     b2Body* newBody = world->CreateBody(&bodyDef);
 
     // If this is hail, use a circular shape
     if (hail && name == "Hail") {
         b2CircleShape circle;
-        // radius is half the width if we assume width=height for hail
         circle.m_radius = width / 2.0f;
 
         b2FixtureDef fixtureDef;
@@ -95,6 +95,7 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY)
     return newBody;
 }
 
+
 QJsonObject Placeable::toJson() const
 {
     QJsonObject obj;
@@ -108,6 +109,7 @@ QJsonObject Placeable::toJson() const
     obj["restitution"] = restitution;
     obj["posX"] = posX;
     obj["posY"] = posY;
+    obj["rotation"] = body ? body->GetAngle() : 0.0f;
     obj["isHail"] = hail;
     obj["id"] = id;
     return obj;
@@ -125,6 +127,7 @@ Placeable Placeable::fromJson(const QJsonObject& obj)
     float restitution = obj["restitution"].toDouble();
     float posX = obj["posX"].toDouble();
     float posY = obj["posY"].toDouble();
+    float rotation = obj.contains("rotation") ? obj["rotation"].toDouble() : 0.0f;
 
     Placeable placeable(name, cost, color, width, height, density, friction, restitution);
     placeable.setPosition(posX, posY);
@@ -140,6 +143,7 @@ Placeable Placeable::fromJson(const QJsonObject& obj)
 
     return placeable;
 }
+
 
 void Placeable::setPosition(float x, float y)
 {
