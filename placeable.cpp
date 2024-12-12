@@ -8,17 +8,32 @@ Placeable::Placeable(const QString& name, const int,
                      float density,
                      float friction,
                      float restitution)
-    : cost(cost), name(name), color(color), displayColor(color),
-    width(width),height(height), density(density), friction(friction), restitution(restitution),body(nullptr), posX(0.0f), posY(0.0f), hail(false), id(-1) {}
+    : cost(cost),
+    name(name),
+    color(color),
+    displayColor(color),
+    width(width),
+    height(height),
+    density(density),
+    friction(friction),
+    restitution(restitution),
+    body(nullptr),
+    posX(0.0f),
+    posY(0.0f),
+    hail(false),
+    id(-1)
+{}
 
 void Placeable::assignBody(b2Body* body)
 {
     this->body = body;
 }
+
 int Placeable::getCost() const
 {
     return cost;
 }
+
 b2Body* Placeable::getBody() const
 {
     return body;
@@ -33,6 +48,7 @@ QColor Placeable::getColor() const
 {
     return displayColor;
 }
+
 QColor Placeable::getOriginalColor() const
 {
     return color;
@@ -43,7 +59,7 @@ void Placeable::setName(const QString& name)
     this->name = name;
 }
 
-void Placeable::setDisplayColor( QColor color)
+void Placeable::setDisplayColor(QColor color)
 {
     this->displayColor = color;
 }
@@ -64,7 +80,8 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY, float rota
     b2Body* newBody = world->CreateBody(&bodyDef);
 
     // If this is hail, use a circular shape
-    if (hail && name == "Hail") {
+    if (hail && name == "Hail")
+    {
         b2CircleShape circle;
         circle.m_radius = width / 2.0f;
 
@@ -75,7 +92,9 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY, float rota
         fixtureDef.restitution = restitution;
 
         newBody->CreateFixture(&fixtureDef);
-    } else {
+    }
+    else
+    {
         // Default to a box shape for non-hail
         b2PolygonShape boxShape;
         boxShape.SetAsBox(width / 2.0f, height / 2.0f);
@@ -94,7 +113,6 @@ b2Body* Placeable::createBody(b2World* world, float posX, float posY, float rota
 
     return newBody;
 }
-
 
 QJsonObject Placeable::toJson() const
 {
@@ -132,24 +150,26 @@ Placeable Placeable::fromJson(const QJsonObject& obj)
     Placeable placeable(name, cost, color, width, height, density, friction, restitution);
     placeable.setPosition(posX, posY);
 
-    if (obj.contains("isHail")) {
+    if (obj.contains("isHail"))
+    {
         bool isHail = obj["isHail"].toBool();
         placeable.setAsHail(isHail);
     }
 
-    if (obj.contains("id")) {
+    if (obj.contains("id"))
+    {
         placeable.setID(obj["id"].toInt());
     }
 
     return placeable;
 }
 
-
 void Placeable::setPosition(float x, float y)
 {
     posX = x;
     posY = y;
 }
+
 void Placeable::setRotation(float angle)
 {
     if (body)
@@ -187,10 +207,12 @@ QDateTime Placeable::getCreationTime() const
 {
     return creationTime;
 }
+
 float Placeable::getWidth() const
 {
     return width;
 }
+
 float Placeable::getHeight() const
 {
     return height;

@@ -3,24 +3,25 @@
 
 #include <QString>
 #include <QColor>
-#include <Box2D/Box2D.h>
 #include <QJsonObject>
 #include <QDateTime>
+#include <Box2D/Box2D.h>
 
 class Placeable
 {
 public:
-    Placeable(const QString& name,
-              const int cost = 50,
-              const QColor& color= Qt::blue,
+    // Constructor
+    Placeable(const QString &name,
+              int cost = 50,
+              const QColor &color = Qt::blue,
               float width = 1.0f,
               float height = 1.0f,
               float density = 0.5f,
               float friction = 0.5f,
               float restitution = 0.5f);
 
-    // Method to create a Box2D body in the given world
-    b2Body* createBody(b2World* world, float posX, float posY, float rotation);
+    // Box2D body creation
+    b2Body* createBody(b2World *world, float posX, float posY, float rotation);
 
     // Accessors
     int getCost() const;
@@ -30,28 +31,26 @@ public:
     b2Body* getBody() const;
     float getWidth() const;
     float getHeight() const;
-
-    // Mutators
-    void setName(const QString& name);
-    void setDisplayColor(QColor color);
-    void setPosition(float x, float y);
-    void setRotation(float angle);
-    // Assign Box2D body to Placeable
-    void assignBody(b2Body* body);
-
-    // Serialization methods
-    QJsonObject toJson() const;
-    static Placeable fromJson(const QJsonObject& obj);
-
-    // Accessors for position
     float getPosX() const;
     float getPosY() const;
 
-    //hail tracking
+    // Mutators
+    void setName(const QString &name);
+    void setDisplayColor(QColor color);
+    void setPosition(float x, float y);
+    void setRotation(float angle);
+    void assignBody(b2Body *body);
+
+    // Serialization
+    QJsonObject toJson() const;
+    static Placeable fromJson(const QJsonObject &obj);
+
+    // Hail-related methods
     void setAsHail(bool hail);
     bool isHailStone() const;
 
-    void setCreationTime(const QDateTime& time);
+    // Creation time tracking
+    void setCreationTime(const QDateTime &time);
     QDateTime getCreationTime() const;
 
     // ID handling
@@ -60,18 +59,22 @@ public:
 
 private:
     int cost;
-    QString name;       // Name of the object
-    QColor color;       // Color of the object
-    QColor displayColor;// Color for display
-    float width;        // Width of the object
-    float height;       // Height of the object
-    float density;      // Density for Box2D fixture
-    float friction;     // Friction for Box2D fixture
-    float restitution;  // Restitution (bounciness) for Box2D fixture
-    b2Body* body;       // Pointer to the associated Box2D body
-    float posX;         // Position X for serialization
-    float posY;         // Position Y for serialization
-    bool hail;          // Indicates hail
+    QString name;
+    QColor color;
+    QColor displayColor;
+
+    float width;
+    float height;
+    float density;
+    float friction;
+    float restitution;
+
+    b2Body *body;
+
+    float posX;
+    float posY;
+
+    bool hail;
     QDateTime creationTime;
     int id;
 };

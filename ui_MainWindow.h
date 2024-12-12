@@ -57,7 +57,6 @@ public:
     QSpacerItem *verticalSpacer_2;
     QLabel *label_2;
     QLabel *label_5;
-    QLabel *label_6;
     QPushButton *helpButton;
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_5;
@@ -67,10 +66,6 @@ public:
     QLabel *levelNumberLabel;
     QPushButton *goToLevelButton;
     QLineEdit *levelLineEdit;
-    QLabel *label;
-    QPushButton *saveButton;
-    QPushButton *loadButton;
-    QLabel *label_3;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QGridLayout *gridLayout;
@@ -97,6 +92,11 @@ public:
     QVBoxLayout *verticalLayout_3;
     QPushButton *playButton;
     QPushButton *restartButton;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_4;
+    QLabel *label;
+    QPushButton *saveButton;
+    QPushButton *loadButton;
     QMenuBar *menubar;
     QMenu *menuSelectLevel_todo;
     QStatusBar *statusbar;
@@ -120,11 +120,11 @@ public:
         mouseLocation->setFrameShape(QFrame::Shape::Box);
         scrollArea_2 = new QScrollArea(centralwidget);
         scrollArea_2->setObjectName("scrollArea_2");
-        scrollArea_2->setGeometry(QRect(10, 90, 111, 261));
+        scrollArea_2->setGeometry(QRect(20, 80, 111, 281));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 109, 259));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 109, 279));
         gridLayout_2 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_2->setObjectName("gridLayout_2");
         toolArea_2 = new QVBoxLayout();
@@ -186,24 +186,20 @@ public:
         scrollArea_2->setWidget(scrollAreaWidgetContents_2);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(10, 40, 111, 16));
+        label_2->setGeometry(QRect(20, 60, 111, 16));
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(150, 20, 321, 16));
+        label_5->setGeometry(QRect(110, 20, 321, 16));
         QFont font;
-        font.setPointSize(11);
+        font.setPointSize(9);
         font.setBold(true);
         label_5->setFont(font);
-        label_6 = new QLabel(centralwidget);
-        label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(10, 60, 111, 19));
-        label_6->setFont(font);
         helpButton = new QPushButton(centralwidget);
         helpButton->setObjectName("helpButton");
-        helpButton->setGeometry(QRect(10, 360, 111, 51));
+        helpButton->setGeometry(QRect(20, 490, 121, 91));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(670, 230, 201, 343));
+        layoutWidget->setGeometry(QRect(670, 230, 201, 351));
         verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -234,27 +230,6 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout_10);
 
-        label = new QLabel(layoutWidget);
-        label->setObjectName("label");
-
-        verticalLayout_2->addWidget(label);
-
-        saveButton = new QPushButton(layoutWidget);
-        saveButton->setObjectName("saveButton");
-
-        verticalLayout_2->addWidget(saveButton);
-
-        loadButton = new QPushButton(layoutWidget);
-        loadButton->setObjectName("loadButton");
-
-        verticalLayout_2->addWidget(loadButton);
-
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName("label_3");
-        label_3->setFont(font);
-
-        verticalLayout_2->addWidget(label_3);
-
 
         verticalLayout_5->addLayout(verticalLayout_2);
 
@@ -263,6 +238,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -280,6 +256,9 @@ public:
 =======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 183, 136));
 >>>>>>> 286b58d (Add helpInfo page)
+=======
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 235));
+>>>>>>> bef630c (UI update and united code spacing)
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -366,14 +345,20 @@ public:
         label_4->setGeometry(QRect(670, 0, 111, 16));
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(150, 0, 81, 16));
+        label_7->setGeometry(QRect(10, 0, 101, 31));
         QFont font1;
-        font1.setPointSize(10);
+        font1.setPointSize(12);
         font1.setBold(true);
         label_7->setFont(font1);
+        label_7->setStyleSheet(QString::fromUtf8("color: red;"));
         helpLabel = new QLabel(centralwidget);
         helpLabel->setObjectName("helpLabel");
-        helpLabel->setGeometry(QRect(230, 0, 421, 16));
+        helpLabel->setGeometry(QRect(110, 0, 551, 20));
+        QFont font2;
+        font2.setPointSize(10);
+        font2.setBold(true);
+        helpLabel->setFont(font2);
+        helpLabel->setFrameShape(QFrame::Shape::Box);
         layoutWidget1 = new QWidget(centralwidget);
         layoutWidget1->setObjectName("layoutWidget1");
         layoutWidget1->setGeometry(QRect(150, 520, 511, 61));
@@ -389,6 +374,27 @@ public:
         restartButton->setObjectName("restartButton");
 
         verticalLayout_3->addWidget(restartButton);
+
+        verticalLayoutWidget_2 = new QWidget(centralwidget);
+        verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
+        verticalLayoutWidget_2->setGeometry(QRect(20, 369, 121, 111));
+        verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(verticalLayoutWidget_2);
+        label->setObjectName("label");
+
+        verticalLayout_4->addWidget(label);
+
+        saveButton = new QPushButton(verticalLayoutWidget_2);
+        saveButton->setObjectName("saveButton");
+
+        verticalLayout_4->addWidget(saveButton);
+
+        loadButton = new QPushButton(verticalLayoutWidget_2);
+        loadButton->setObjectName("loadButton");
+
+        verticalLayout_4->addWidget(loadButton);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -434,16 +440,11 @@ public:
 >>>>>>> 81e6226 (Finish merge)
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "Click To Use", nullptr));
         helpButton->setText(QCoreApplication::translate("MainWindow", "Help Page", nullptr));
         nextLevelButton->setText(QCoreApplication::translate("MainWindow", "Play Next Level", nullptr));
         levelNumberLabel->setText(QCoreApplication::translate("MainWindow", "level", nullptr));
         goToLevelButton->setText(QCoreApplication::translate("MainWindow", "Go to Level", nullptr));
         levelLineEdit->setText(QCoreApplication::translate("MainWindow", "Enter level number", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Level Edit Tool:", nullptr));
-        saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
-        loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Right Click To Use", nullptr));
         drawGroundButton->setText(QCoreApplication::translate("MainWindow", "DrawGround", nullptr));
         deleteGroundButton->setText(QCoreApplication::translate("MainWindow", "DeleteGround", nullptr));
         createAnchorButton->setText(QCoreApplication::translate("MainWindow", "Create Anchor", nullptr));
@@ -451,10 +452,13 @@ public:
         hailButton->setText(QCoreApplication::translate("MainWindow", "Hail", nullptr));
         earthquakeButton->setText(QCoreApplication::translate("MainWindow", "Earthquake", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Weather System:", nullptr));
-        label_7->setText(QCoreApplication::translate("MainWindow", "HELP INFO:", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "TOOL INFO:", nullptr));
         helpLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         playButton->setText(QCoreApplication::translate("MainWindow", "Simulate", nullptr));
         restartButton->setText(QCoreApplication::translate("MainWindow", "Restart", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Level Edit Tool:", nullptr));
+        saveButton->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
+        loadButton->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         menuSelectLevel_todo->setTitle(QCoreApplication::translate("MainWindow", "Structural Simulation V0.1", nullptr));
     } // retranslateUi
 

@@ -4,10 +4,10 @@
 #include <QMainWindow>
 #include <QDesktopServices>
 #include <QUrl>
-#include <QPushbutton>
+#include <QPushButton>
+
 #include "GameLevel.h"
 #include "SceneWidget.h"
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,59 +21,45 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+signals:
+         // No custom signals currently
+
 private slots:
-    void updateMouseLocation(float x, float y); // Slot to update the mouse location label
+    // Slot to update the mouse location label
+    void updateMouseLocation(float x, float y);
 
+    // UI interaction slots
     void on_playButton_clicked();
-
     void on_pushButton_clicked();
-
     void on_selectTool_clicked();
-
     void on_boxToolButton_clicked();
-
     void on_deleteToolButton_clicked();
-
     void on_stringToolButton_clicked();
-
     void on_rebarToolButton_clicked();
-
     void on_drawGroundButton_clicked();
-
     void on_deleteGroundButton_clicked();
-
     void on_createAnchorButton_clicked();
-
     void on_deleteAnchorButton_clicked();
-
     void on_saveButton_clicked();
-
     void on_loadButton_clicked();
-
     void on_nextLevelButton_clicked();
-
     void on_goToLevelButton_clicked();
-
     void on_hailButton_clicked();
-
     void on_earthquakeButton_clicked();
-
     void on_beamToolButton_clicked();
-
     void on_frameToolButton_clicked();
-
     void on_restartButton_clicked();
-
     void on_helpButton_clicked();
     void EditMode(bool enabled);
-
-    void on_selectToolButton_clicked();
+    void on_selectToolButton_clicked(); // This slot was in original code but not placed in sequence, now placed here for consistency.
 
 private:
     Ui::MainWindow *ui;
-    GameLevel* gameLevel; // Pointer to the GameLevel instance
-    SceneWidget* sceneWidget;
+
+    GameLevel* gameLevel;               // Pointer to the GameLevel instance
+    SceneWidget* sceneWidget;           // Pointer to the SceneWidget
     QList<QPushButton*> controllableButtons;
+
     int currentLevelNumber;
     QString levelsDirectory;
 };

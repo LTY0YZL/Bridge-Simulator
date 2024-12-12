@@ -25,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent)
         ui->stringToolButton,
         ui->deleteAnchorButton,
         ui->createAnchorButton
-
     };
 
     // Initialize the game level
@@ -47,10 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->verticalLayout->addWidget(sceneWidget);
 
     ui->playButton->setEnabled(true);
-
+    ui->helpLabel->setText("Weight Load tool click to add load to structure.");
     // Connect the mouseMovedInWorld signal to update the label
     connect(sceneWidget, &SceneWidget::mouseMovedInWorld, this, &MainWindow::updateMouseLocation);
-
 }
 
 MainWindow::~MainWindow()
@@ -82,12 +80,11 @@ void MainWindow::on_playButton_clicked()
     sceneWidget->setCurrentTool(0);
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
     float randomX = (rand() % 20) - 10.0f; // Random X position between -10 and 10
     float skyY = 30.0f; // Fixed Y position above the ground
-    Placeable skyBox("SkyBox", 100, Qt::red,  0.5f, 0.5f); // Customize name, color, and size as needed
+    Placeable skyBox("SkyBox", 100, Qt::red, 0.5f, 0.5f); // Customize name, color, and size as needed
 
     // Add the Placeable to the GameLevel
     gameLevel->createDynamicBody(skyBox, randomX, skyY);
@@ -96,64 +93,70 @@ void MainWindow::on_pushButton_clicked()
     sceneWidget->update();
 }
 
-
 void MainWindow::on_selectTool_clicked()
 {
     sceneWidget->setCurrentTool(1);
+    ui->helpLabel->setText("Select tool click to select, DRAG to move, SCROLL to rotate selected object. ");
 }
-
 
 void MainWindow::on_boxToolButton_clicked()
 {
     sceneWidget->setCurrentTool(0);
-    ui->helpLabel->setText("Weight Load tool click to add load.");
+    ui->helpLabel->setText("Weight Load tool click to add load to structure.");
 }
-
 
 void MainWindow::on_deleteToolButton_clicked()
 {
     sceneWidget->setCurrentTool(2);
+    ui->helpLabel->setText("Delete tool click to delete Placeable (Will remove joints).");
 }
 
 void MainWindow::on_beamToolButton_clicked()
 {
     sceneWidget->setCurrentTool(3);
+    ui->helpLabel->setText("Beam tool click to add beam.");
 }
 
-
-void MainWindow::on_frameToolButton_clicked(){
+void MainWindow::on_frameToolButton_clicked()
+{
     sceneWidget->setCurrentTool(4);
+    ui->helpLabel->setText("Frame tool click to add frame.");
 }
 
 void MainWindow::on_stringToolButton_clicked()
 {
     sceneWidget->setCurrentTool(5);
+    ui->helpLabel->setText("String tool click two points to add (connect Anchor and Placeable), loose connection.");
 }
 
 void MainWindow::on_rebarToolButton_clicked()
 {
     sceneWidget->setCurrentTool(6);
+    ui->helpLabel->setText("Rebar tool click two points to add (connect Anchor and Placeable), tight connection.");
 }
 
 void MainWindow::on_drawGroundButton_clicked()
 {
     sceneWidget->setCurrentTool(-1);
+    ui->helpLabel->setText(" Draw Ground tool RIGHT click two points to add ground.");
 }
-
 
 void MainWindow::on_deleteGroundButton_clicked()
 {
     sceneWidget->setCurrentTool(-2);
+    ui->helpLabel->setText(" Delete Ground tool RIGHT click to delete target.");
 }
 
 void MainWindow::on_createAnchorButton_clicked()
 {
     sceneWidget->setCurrentTool(-3);
+    ui->helpLabel->setText(" Draw Anchor tool RIGHT click to add Anchor(Placed on ground only).");
 }
 
 void MainWindow::on_deleteAnchorButton_clicked()
 {
     sceneWidget->setCurrentTool(-4);
+    ui->helpLabel->setText(" Delete Anchor tool RIGHT click to delete target.");
 }
 
 void MainWindow::on_saveButton_clicked()
@@ -183,6 +186,8 @@ void MainWindow::on_loadButton_clicked()
         {
             sceneWidget->stopSimulation();
             ui->playButton->setEnabled(true);
+            ui->hailSpinBox->setValue(gameLevel->getHailLevel());
+            ui->earthquakeSpinBox->setValue(gameLevel->getEarthquakeLevel());
             sceneWidget->update();
 
             sceneWidget->hailSpawnPaused = true;
@@ -221,6 +226,8 @@ void MainWindow::on_nextLevelButton_clicked()
     {
         sceneWidget->stopSimulation();
         ui->playButton->setEnabled(true);
+        ui->hailSpinBox->setValue(gameLevel->getHailLevel());
+        ui->earthquakeSpinBox->setValue(gameLevel->getEarthquakeLevel());
         ui->levelNumberLabel->setText(QString("Level %1").arg(currentLevelNumber));
         sceneWidget->update();
 
@@ -263,6 +270,8 @@ void MainWindow::on_goToLevelButton_clicked()
     {
         sceneWidget->stopSimulation();
         ui->playButton->setEnabled(true);
+        ui->hailSpinBox->setValue(gameLevel->getHailLevel());
+        ui->earthquakeSpinBox->setValue(gameLevel->getEarthquakeLevel());
         currentLevelNumber = levelNumber;
         ui->levelNumberLabel->setText(QString("Level %1").arg(currentLevelNumber));
         sceneWidget->update();
@@ -321,6 +330,8 @@ void MainWindow::on_restartButton_clicked()
     {
         sceneWidget->update();
         ui->playButton->setEnabled(true);
+        ui->hailSpinBox->setValue(gameLevel->getHailLevel());
+        ui->earthquakeSpinBox->setValue(gameLevel->getEarthquakeLevel());
         QMessageBox::information(this, "Restart Level", QString("Level loaded successfully from %1.").arg(fileToLoad));
         qDebug() << "Level loaded successfully from" << fileToLoad;
     }
@@ -332,7 +343,6 @@ void MainWindow::on_restartButton_clicked()
     EditMode(true);
 }
 
-
 void MainWindow::on_helpButton_clicked()
 {
     QUrl helpUrl("https://docs.google.com/document/d/1uLB2VtSkPZH3JmeTMuocncqlBDtEi_mnIQOjkWmUlU8/edit?usp=sharing");
@@ -341,11 +351,12 @@ void MainWindow::on_helpButton_clicked()
         qDebug() << "Failed to open URL:" << helpUrl.toString();
     }
 }
+
 void MainWindow::EditMode(bool enabled)
 {
     QList<QWidget*> buttons = findChildren<QWidget*>();
 
-    for (auto& button : controllableButtons)
+    for (auto &button : controllableButtons)
     {
         if (button != ui->boxToolButton) {
             button->setVisible(enabled);
@@ -354,5 +365,3 @@ void MainWindow::EditMode(bool enabled)
     ui->playButton->setEnabled(enabled);
     ui->boxToolButton->setEnabled(true);
 }
-
-

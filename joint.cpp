@@ -40,12 +40,12 @@ b2Joint* Joint::connectDistanceJoint(Placeable& bodyA, Placeable& bodyB, const b
 
     jointDef.length = (anchorA - anchorB).Length();
 
-    jointDef.frequencyHz = frequencyHz; // Stiffness
-    jointDef.dampingRatio = dampingRatio; // Damping (resistance)
+    jointDef.frequencyHz = frequencyHz;     // Stiffness
+    jointDef.dampingRatio = dampingRatio;   // Damping (resistance)
 
     b2Joint* joint = world->CreateJoint(&jointDef);
     joints.push_back({ joint, maxForce });
-    qDebug()<<"connect";
+    qDebug() << "connect";
     return joint;
 }
 
@@ -67,7 +67,6 @@ const std::vector<Joint::JointData>& Joint::getJointsData() const
 {
     return joints;
 }
-
 
 void Joint::deleteJointsForBody(b2Body* body)
 {
@@ -113,8 +112,10 @@ void Joint::update()
     }
 }
 
-void Joint::deleteAllJoints() {
-    for (auto& jd : joints) {
+void Joint::deleteAllJoints()
+{
+    for (auto& jd : joints)
+    {
         world->DestroyJoint(jd.joint);
     }
     joints.clear();

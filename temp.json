@@ -237,38 +237,12 @@
             "length": 20.252222061157227,
             "maxForce": 50,
             "type": 3
-        },
-        {
-            "anchorAX": -23.45941162109375,
-            "anchorAY": 56.82271194458008,
-            "anchorBX": -34.37150573730469,
-            "anchorBY": 26.752206802368164,
-            "bodyA_id": 13,
-            "bodyB_id": 9,
-            "dampingRatio": 0.20000000298023224,
-            "frequencyHz": 10,
-            "length": 31.98920249938965,
-            "maxForce": 50,
-            "type": 3
-        },
-        {
-            "anchorAX": -16.736953735351562,
-            "anchorAY": 52.550479888916016,
-            "anchorBX": 20.487449645996094,
-            "anchorBY": 26.244253158569336,
-            "bodyA_id": 13,
-            "bodyB_id": 6,
-            "dampingRatio": 0.20000000298023224,
-            "frequencyHz": 10,
-            "length": 45.58150863647461,
-            "maxForce": 50,
-            "type": 3
         }
     ],
     "placeables": [
         {
             "color": "#808080",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 10,
             "friction": 0.5,
             "height": 1,
@@ -283,7 +257,7 @@
         },
         {
             "color": "#808080",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 10,
             "friction": 0.5,
             "height": 1,
@@ -298,7 +272,7 @@
         },
         {
             "color": "#808080",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 10,
             "friction": 0.5,
             "height": 1,
@@ -313,7 +287,7 @@
         },
         {
             "color": "#ff0000",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -328,7 +302,7 @@
         },
         {
             "color": "#ff0000",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -343,7 +317,7 @@
         },
         {
             "color": "#a0a0a4",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 20,
             "friction": 0.5,
             "height": 10,
@@ -358,7 +332,7 @@
         },
         {
             "color": "#a0a0a4",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 20,
             "friction": 0.5,
             "height": 10,
@@ -373,7 +347,7 @@
         },
         {
             "color": "#ff0000",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -388,7 +362,7 @@
         },
         {
             "color": "#ff0000",
-            "cost": -382790944,
+            "cost": -557887776,
             "density": 0.5,
             "friction": 0.5,
             "height": 1,
@@ -400,51 +374,6 @@
             "restitution": 0.5,
             "rotation": 0,
             "width": 1
-        },
-        {
-            "color": "#a0a0a4",
-            "cost": -382790944,
-            "density": 20,
-            "friction": 0.5,
-            "height": 10,
-            "id": 11,
-            "isHail": false,
-            "name": "Box",
-            "posX": -21.491710662841797,
-            "posY": 40.595455169677734,
-            "restitution": 0.10000000149011612,
-            "rotation": 0,
-            "width": 2
-        },
-        {
-            "color": "#a0a0a4",
-            "cost": -382790944,
-            "density": 20,
-            "friction": 0.5,
-            "height": 10,
-            "id": 12,
-            "isHail": false,
-            "name": "Box",
-            "posX": 20.894723892211914,
-            "posY": 45.13260269165039,
-            "restitution": 0.10000000149011612,
-            "rotation": 0,
-            "width": 2
-        },
-        {
-            "color": "#a0a0a4",
-            "cost": -382790944,
-            "density": 20,
-            "friction": 0.5,
-            "height": 10,
-            "id": 13,
-            "isHail": false,
-            "name": "Box",
-            "posX": -20.487449645996094,
-            "posY": 54.52031707763672,
-            "restitution": 0.10000000149011612,
-            "rotation": -2.0943949222564697,
-            "width": 2
         }
     ]
 }
