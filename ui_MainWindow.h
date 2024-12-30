@@ -42,18 +42,10 @@ public:
     QPushButton *selectTool;
     QPushButton *deleteToolButton;
     QPushButton *boxToolButton;
-<<<<<<< HEAD
-    QPushButton *stringToolButton;
-    QPushButton *rebarToolButton;
-=======
     QPushButton *beamToolButton;
     QPushButton *frameToolButton;
-<<<<<<< HEAD
->>>>>>> c4273a2 (Placeable Preview)
-=======
     QPushButton *stringToolButton;
     QPushButton *rebarToolButton;
->>>>>>> 81e6226 (Finish merge)
     QSpacerItem *verticalSpacer_2;
     QLabel *label_2;
     QLabel *label_5;
@@ -145,17 +137,6 @@ public:
 
         toolArea_2->addWidget(boxToolButton);
 
-<<<<<<< HEAD
-        stringToolButton = new QPushButton(scrollAreaWidgetContents_2);
-        stringToolButton->setObjectName("stringToolButton");
-
-        toolArea_2->addWidget(stringToolButton);
-
-        rebarToolButton = new QPushButton(scrollAreaWidgetContents_2);
-        rebarToolButton->setObjectName("rebarToolButton");
-
-        toolArea_2->addWidget(rebarToolButton);
-=======
         beamToolButton = new QPushButton(scrollAreaWidgetContents_2);
         beamToolButton->setObjectName("beamToolButton");
 
@@ -165,7 +146,6 @@ public:
         frameToolButton->setObjectName("frameToolButton");
 
         toolArea_2->addWidget(frameToolButton);
->>>>>>> c4273a2 (Placeable Preview)
 
         stringToolButton = new QPushButton(scrollAreaWidgetContents_2);
         stringToolButton->setObjectName("stringToolButton");
@@ -239,27 +219,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        scrollAreaWidgetContents->setGeometry(QRect(0, -13, 183, 165));
-=======
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 123));
->>>>>>> 8ee3171 (Udptae A bit UI)
-=======
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 180, 132));
->>>>>>> 3e6fb54 (Added a restart button to restart the level and play again. reduce earthquake shaking effect)
-=======
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 183, 165));
->>>>>>> 81e6226 (Finish merge)
-=======
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 183, 136));
->>>>>>> 286b58d (Add helpInfo page)
-=======
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 197, 235));
->>>>>>> bef630c (UI update and united code spacing)
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         toolArea = new QVBoxLayout();
@@ -424,24 +384,11 @@ public:
         mouseLocation->setText(QCoreApplication::translate("MainWindow", "Mouse World Location", nullptr));
         selectTool->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
         deleteToolButton->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-<<<<<<< HEAD
-<<<<<<< HEAD
-        boxToolButton->setText(QCoreApplication::translate("MainWindow", "box", nullptr));
-        stringToolButton->setText(QCoreApplication::translate("MainWindow", "String", nullptr));
-        rebarToolButton->setText(QCoreApplication::translate("MainWindow", "Rebar", nullptr));
-=======
-        boxToolButton->setText(QCoreApplication::translate("MainWindow", "Testbox", nullptr));
-=======
         boxToolButton->setText(QCoreApplication::translate("MainWindow", "Weight", nullptr));
->>>>>>> f917bc5 (Select Drag Rotate Done)
         beamToolButton->setText(QCoreApplication::translate("MainWindow", "Beam", nullptr));
         frameToolButton->setText(QCoreApplication::translate("MainWindow", "Frame", nullptr));
-<<<<<<< HEAD
->>>>>>> c4273a2 (Placeable Preview)
-=======
         stringToolButton->setText(QCoreApplication::translate("MainWindow", "String", nullptr));
         rebarToolButton->setText(QCoreApplication::translate("MainWindow", "Rebar", nullptr));
->>>>>>> 81e6226 (Finish merge)
         label_2->setText(QCoreApplication::translate("MainWindow", "In Game Tool:", nullptr));
         label_5->setText(QCoreApplication::translate("MainWindow", "Scroll to Zoom, Middle Mouse To Shift", nullptr));
         helpButton->setText(QCoreApplication::translate("MainWindow", "Help Page", nullptr));
@@ -470,7 +417,7 @@ public:
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+class MainWindow: public Ui_MainWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE

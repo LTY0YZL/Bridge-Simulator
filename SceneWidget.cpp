@@ -32,7 +32,7 @@ SceneWidget::SceneWidget(GameLevel* level, QWidget* parent)
         handleHail();        // Handle hail functionality
         handleEarthquake();  // Handle earthquake functionality
 
-        update();
+        update(); // Repaint the widget
     });
 }
 
@@ -70,10 +70,6 @@ void SceneWidget::paintEvent(QPaintEvent *)
         }
     }
 
-    // Draw all joints
-    const auto& joints = gameLevel->getJoint().getJoints();
-    drawJoints(painter, joints);
-
     // Draw the preview if applicable
     if (showPreview && isFirstPointSet)
     {
@@ -82,11 +78,7 @@ void SceneWidget::paintEvent(QPaintEvent *)
             areaPreview(painter, firstPoint, currentMousePos);
             linePreview(painter, firstPoint, currentMousePos);
         }
-<<<<<<< HEAD
-        else if (currentTool == 3 || currentTool == 4)
-=======
         else if (currentTool == 5 || currentTool == 6)
->>>>>>> 81e6226 (Finish merge)
         {
             linePreview(painter, firstPoint, currentMousePos);
         }
@@ -237,17 +229,10 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
 
         if (event->button() == Qt::RightButton)
         {
-<<<<<<< HEAD
-            if (currentTool == -1) //Tool to create ground objects
-=======
             if (currentTool == -1) // Tool to create ground objects
->>>>>>> 81e6226 (Finish merge)
             {
                 createGroundWithTwoPoints(worldPos);
-<<<<<<< HEAD
-=======
                 showPreview = isFirstPointSet;
->>>>>>> bef630c (UI update and united code spacing)
                 return;
             }
             else if (currentTool == -2) // Tool to delete ground objects
@@ -270,35 +255,21 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
         auto& placeables = gameLevel->getPlaceables();
         if (currentTool == 0 || currentTool == 3 || currentTool == 4) // Left click case
         {
-<<<<<<< HEAD
-            Placeable newPlaceable("Box", 50, Qt::blue, 2.0f, 2.0f);
-            gameLevel->createDynamicBody(newPlaceable, worldPos.x(), worldPos.y());
-=======
             gameLevel->createDynamicBody(currentBlock, worldPos.x(), worldPos.y());
             update();
->>>>>>> c4273a2 (Placeable Preview)
         }
         else if (currentTool == 1) // Select tool
         {
             Placeable* placeable = findPlaceableAt(worldPos, placeables);
             if (placeable)
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                placeable->setDisplayColor(QColor("forestgreen"));
-=======
-                if (selectedPlaceable){
-                    // Reset the color
-=======
                 if (selectedPlaceable)
                 {
->>>>>>> bef630c (UI update and united code spacing)
                     selectedPlaceable->setDisplayColor(selectedPlaceable->getOriginalColor());
                 }
                 selectedPlaceable = placeable;
                 selectedPlaceable->setDisplayColor(QColor("forestgreen"));
                 update();
->>>>>>> f917bc5 (Select Drag Rotate Done)
             }
         }
         else if (currentTool == 2)
@@ -312,22 +283,15 @@ void SceneWidget::mousePressEvent(QMouseEvent* event)
                     gameLevel->destroyBody(body);
                 }
                 placeables.erase(it);
+                update();
             }
         }
-<<<<<<< HEAD
-        else if (currentTool == 3 || currentTool == 4) // Select two placeables to create a joint
-        {
-            createJointWithTwoPoints(worldPos);
-            return;
-=======
         else if (currentTool == 5 || currentTool == 6) // Select two placeables to create a joint
         {
             createJointWithTwoPoints(worldPos);
             update();
->>>>>>> 81e6226 (Finish merge)
         }
     }
-    update();
 }
 
 void SceneWidget::mouseMoveEvent(QMouseEvent* event)
@@ -483,35 +447,11 @@ void SceneWidget::createJointWithTwoPoints(const QPointF& worldPos)
             b2Vec2 anchorA(firstPoint.x(), firstPoint.y());
             b2Vec2 anchorB(secondPoint.x(), secondPoint.y());
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            if (currentTool == 3) // Create a more elastic joint
-            {
-                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
-            }
-            else if (currentTool == 4) // Create a less elastic joint
-=======
-            if (currentTool == 5) // Create a more elastic joint
-            {
-                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
-            }
-            else if (currentTool == 6) // Create a less elastic joint
->>>>>>> 81e6226 (Finish merge)
-=======
-            if (currentTool == 6) // Create a more elastic joint
-            {
-                gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
-            }
-            else if (currentTool == 5) // Create a less elastic joint
->>>>>>> f55cda1 (adjust joint force)
-=======
             if (currentTool == 6)
             {
                 gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 10.0f, 0.2f, 50.0f);
             }
             else if (currentTool == 5)
->>>>>>> bef630c (UI update and united code spacing)
             {
                 gameLevel->getJoint().connectDistanceJoint(*firstPlaceable, *secondPlaceable, anchorA, anchorB, 1.0f, 0.8f, 30.0f);
             }
@@ -632,8 +572,6 @@ void SceneWidget::linePreview(QPainter& painter, const QPointF& start, const QPo
 
     painter.drawLine(screenStart, screenEnd);
 }
-<<<<<<< HEAD
-=======
 
 void SceneWidget::drawPlaceablePreview(QPainter &painter)
 {
@@ -722,13 +660,6 @@ void SceneWidget::handleHail()
                                     }), placeables.end());
 }
 
-<<<<<<< HEAD
-
-<<<<<<< HEAD
->>>>>>> c4273a2 (Placeable Preview)
-=======
-=======
->>>>>>> bef630c (UI update and united code spacing)
 void SceneWidget::handleEarthquake()
 {
     int eqLevel = gameLevel->getEarthquakeLevel();
@@ -761,8 +692,3 @@ void SceneWidget::handleEarthquake()
         panOffsetY = 0;
     }
 }
-<<<<<<< HEAD
-
->>>>>>> 2f6f446 (Update Weather System)
-=======
->>>>>>> bef630c (UI update and united code spacing)
